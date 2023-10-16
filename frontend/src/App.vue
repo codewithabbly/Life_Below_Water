@@ -1,6 +1,11 @@
 <template>
   <div id="app">
 
+    <!-- header content -->
+    <header>
+
+    </header>
+
     <!-- navbar -->
     <nav class="navbar border-bottom fixed-top">
       <div class="container-fluid align-items-center">
@@ -63,6 +68,13 @@
         </div>
       </div>
     </nav>
+
+    <main>
+      <div>
+        <!-- rendering component based on current route -->
+        <router-view></router-view>
+      </div>
+    </main>
   </div>
 </template>
 

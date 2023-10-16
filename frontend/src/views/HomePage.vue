@@ -14,6 +14,9 @@
             mounted() {
                   document.title = "Sponge Bob Square Pants";
             },
+            created() {
+                  console.log("Test works")
+            }
       }
 </script>
 
