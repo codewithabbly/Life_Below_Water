@@ -1,7 +1,12 @@
 <template>
-      <div class="homePage">
-            <h1 class="page-title m-5">What can one person do to make a difference to the world's oceans?</h1>
-      </div>
+      <v-app>
+            <v-container>
+
+                  <div class="homePage">
+                        <h1 class="page-title m-5">What can one person do to make a difference to the world's oceans?</h1>
+                  </div>
+            </v-container>
+      </v-app>
 </template>
 
 <script>
@@ -14,6 +19,9 @@
             mounted() {
                   document.title = "Sponge Bob Square Pants";
             },
+            created() {
+                  console.log("Test works")
+            }
       }
 </script>
 

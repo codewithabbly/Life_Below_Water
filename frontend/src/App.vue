@@ -1,6 +1,11 @@
 <template>
   <div id="app">
 
+    <!-- header content -->
+    <header>
+
+    </header>
+
     <!-- navbar -->
     <nav class="navbar border-bottom fixed-top">
       <div class="container-fluid align-items-center">
@@ -63,6 +68,13 @@
         </div>
       </div>
     </nav>
+
+    <main>
+      <div>
+        <!-- rendering component based on current route -->
+        <router-view></router-view>
+      </div>
+    </main>
   </div>
 </template>
 
@@ -80,7 +92,7 @@
         routes: [
           {
             path: "/",
-            name: "homepage",
+            name: "home",
             // for testing purposes, do change this directory to the file which you are going to edit on in the views directory
             component: () => import('./views/HomePage.vue')
           }
@@ -92,10 +104,14 @@
 
 <style>
   .navbar-brand {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'glacial', sans-serif;
     font-size: 20px;
     color: #000000;
     text-decoration: none !important;
+    display: flex;
+    justify-content: center; /* Horizontally center the items */
+    align-items: center; /* Vertically center the items */
+    vertical-align: middle;
   }
 
   .navbar {
