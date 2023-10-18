@@ -7,6 +7,16 @@ const routes = [
             name: "Home",
             component: () => import("../views/HomePage.vue")
       },
+      {
+            path: "/home", // Add this route
+            name: "homePage",
+            component: () => import('../views/HomePage.vue')
+      },
+      {
+      path: "/LatestNewsPage", // Add this route
+      name: "LatestNewsPage",
+      component: () => import('../views/LatestNewsPage.vue')
+      }
 ]
 
 const router = createRouter(
