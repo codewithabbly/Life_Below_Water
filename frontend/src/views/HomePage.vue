@@ -1,18 +1,17 @@
 <template>
       <v-app>
             <v-container>
-
-                  <div class="homePage">
-                        <h1 class="page-title m-5">What can one person do to make a difference to the world's oceans?</h1>
+                  <div class="homePage ">
+                        <h1 class="page-title m-5 p-5">What can one person do to make a difference to the world's oceans?</h1>
                   </div>
             </v-container>
       </v-app>
 </template>
 
 <script>
-      import 'bootstrap/dist/css/bootstrap.css'
-      import 'bootstrap/dist/js/bootstrap'
-      import 'jquery/dist/jquery.min.js'
+      import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap';
+import 'jquery/dist/jquery.min.js';
 
       export default {
             name: 'homePage',

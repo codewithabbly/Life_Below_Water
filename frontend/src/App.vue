@@ -37,7 +37,14 @@
           </router-link>
 
           <!-- latest news page -->
-          <router-link to="{ name: 'latestnews' }">
+          <!-- <router-link to="{ name: 'latestnews' }">
+            <a href="./views/LatestNewsPage.vue" class="navbar-brand text-decoration-none">
+              Latest News
+            </a>
+          </router-link> -->
+
+          <!-- Latest News page -->
+          <router-link to="{ name: 'LatestNewsPage' }">
             <a href="./views/LatestNewsPage.vue" class="navbar-brand text-decoration-none">
               Latest News
             </a>
@@ -80,9 +87,9 @@
 
 <script>
   import 'bootstrap/dist/css/bootstrap.css'
-  import 'bootstrap/dist/js/bootstrap'
-  import 'jquery/dist/jquery.min.js'
-  import { createRouter, createWebHistory } from 'vue-router'
+import 'bootstrap/dist/js/bootstrap'
+import 'jquery/dist/jquery.min.js'
+import { createRouter, createWebHistory } from 'vue-router'
 
   export default {
     name: 'App',
@@ -95,6 +102,16 @@
             name: "home",
             // for testing purposes, do change this directory to the file which you are going to edit on in the views directory
             component: () => import('./views/HomePage.vue')
+          },
+          {
+            path: "/home", // Add this route
+            name: "homePage",
+            component: () => import('./views/HomePage.vue')
+          },
+          {
+            path: "/LatestNewsPage", // Add this route
+            name: "LatestNewsPage",
+            component: () => import('./views/LatestNewsPage.vue')
           }
         ]
       }
