@@ -1,11 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-      // for testing purposes, do change this directory to the file which you are going to edit on in the views directory
       {
             path: "/",
-            name: "Home",
+            name: "homePage",
             component: () => import("../views/HomePage.vue")
+      },
+      {
+            path: "/About-Us",
+            name: "aboutUs",
+            component: () => import("../views/AboutUsPage.vue")
+      },
+      {
+            path: "/Interactive-Maps",
+            name: "IMaps",
+            component: () => import("../views/InteractiveMapPage.vue")
+      },
+      {
+            path: "/Latest-News",
+            name: "latestNews",
+            component: () => import("../views/LatestNewsPage.vue")
+      },
+      {
+            path: "/Get-Involved",
+            name: "getInvolved",
+            component: () => import("../views/GetInvolvedPage.vue")
       },
 ]
 
