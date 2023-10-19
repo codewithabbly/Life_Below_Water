@@ -88,7 +88,7 @@ export default {
 
 
   created () {
-    axios.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey='+this.api_key)
+    axios.get('https://newsapi.org/v2/everything?q=water&apiKey='+this.api_key)
       .then(response => {
         this.articles = response.data.articles
         console.log('data:')
@@ -100,12 +100,11 @@ export default {
     
   },
 
-
   methods: {
      
       setResource(source){
 
-        axios.get('https://newsapi.org/v2/top-headlines?sources='+source+'&apiKey='+this.api_key)
+        axios.get('https://newsapi.org/v2/everything?sources='+source+'&apiKey='+this.api_key)
         .then(response => {
           //this.articles = response.data.articles
           this.articles = response.data.articles
