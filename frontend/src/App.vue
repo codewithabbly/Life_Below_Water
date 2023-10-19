@@ -102,7 +102,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .navbar-brand {
     font-family: 'glacial', sans-serif;
     font-size: 20px;
@@ -120,5 +120,15 @@
 
   .border-bottom-none {
     border-bottom: none !important;
+  }
+
+  @font-face {
+    font-family: 'glacial_bold';
+    src: url('~@/assets/fonts/GlacialIndifference-Bold.otf') format('opentype');
+  }
+
+  @font-face {
+      font-family: 'glacial';
+      src: url('~@/assets/fonts/GlacialIndifference-Regular.otf') format('opentype');
   }
 </style>
