@@ -134,4 +134,14 @@ export default {
 .border-bottom-none {
   border-bottom: none !important;
 }
+
+@font-face {
+  font-family: "glacial_bold";
+  src: url("~@/assets/fonts/GlacialIndifference-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "glacial";
+  src: url("~@/assets/fonts/GlacialIndifference-Regular.otf") format("opentype");
+}
 </style>
