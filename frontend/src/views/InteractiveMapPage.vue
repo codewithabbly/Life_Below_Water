@@ -43,6 +43,8 @@
                   axios("../assets/maps/world.svg")
                         .then(response => console.log(response.data))
                         .catch(error => console.error(error))
+
+                  document.title = "Interactive Map"
             }
       }
 </script>

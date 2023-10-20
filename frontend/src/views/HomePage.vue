@@ -59,7 +59,7 @@
 
 <style scoped>
 .background-image {
-      background-image: url('../assets/ocean.jpg'); 
+      background-image: url('../assets/images/ocean.jpg'); 
       background-position: center;
       background-size: cover;
       background-position: center;

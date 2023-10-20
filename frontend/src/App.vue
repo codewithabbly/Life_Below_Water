@@ -8,24 +8,21 @@
       <div class="container-fluid align-items-center">
         <div class="row">
           <div class="col-8 leftEle">
-            <!-- home page -->
-            <router-link :to="{ name: 'homePage' }">
-              <a href="./views/HomePage.vue" class="navbar-brand me-auto d-flex d-inline align-items-center" style="text-decoration: none; outline: none;">
-                <img src="./assets/companyLogo.png"
-                class="rounded-rect"
-                width="60" 
-                height="40"
-                alt="">
-              </a>
-            </router-link>
-            
-            <!-- about us page -->
-            <router-link :to="{ name: 'aboutUs' }">
-              <a href="./views/AboutUsPage.vue" class="navbar-brand border-bottom-none d-flex d-inline align-items-center" style="text-decoration: none; outline: none;">
-                About Us
-              </a>
-            </router-link>
-    
+
+            <!-- home page section -->
+            <a href="#home" class="navbar-brand me-auto d-flex d-inline align-items-center" style="text-decoration: none; outline: none;">
+              <img src="./assets/images/companyLogo.png"
+              class="rounded-rect"
+              width="65" 
+              height="60"
+              alt="">
+            </a>
+
+            <!-- about us section -->
+            <a href="#about-us" class="navbar-brand border-bottom-none d-flex d-inline align-items-center" style="text-decoration: none; outline: none;">
+              About Us
+            </a>
+
             <!-- map page -->
             <router-link :to="{ name: 'IMaps' }">
               <a href="./views/InteractiveMapPage.vue" class="navbar-brand border-bottom-none d-flex d-inline align-items-center" style="text-decoration: none; outline: none;">
@@ -39,7 +36,7 @@
                 Latest News
               </a>
             </router-link>
-    
+
             <!-- get involved page -->
             <router-link :to="{ name: 'getInvolved' }">
               <a href="./views/GetInvolvedPage.vue" class="navbar-brand border-bottom-none d-flex d-inline align-items-center" style="text-decoration: none; outline: none;">
@@ -48,25 +45,25 @@
             </router-link>
           </div>
         </div>
-
-        <!-- <div class="d-flex gap-5">
-          <a href="./views/ProfilePage.vue" class="navbar-brand">
-            <img
-              src="./assets/profileIcon.png"
-              class="rounded-rect"
-              width="40"
-              height="40"
-              alt=""
-            />
-          </a>
-        </div> -->
       </div>
     </nav>
 
     <hr class="my-0">
 
     <main>
-      <div>
+    <div>
+        <!-- home page -->
+        <div id="home">
+          <!-- add home page content here -->
+
+        </div>
+
+        <!-- about us section -->
+        <div id="about-us">
+          <!-- add your about us content here -->
+
+        </div>
+
         <!-- rendering component based on current route -->
         <router-view></router-view>
       </div>
@@ -75,42 +72,29 @@
 </template>
 
 <script>
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap";
-import "jquery/dist/jquery.min.js";
-import { createRouter, createWebHistory } from "vue-router";
+  import "bootstrap/dist/css/bootstrap.css"
+  import "bootstrap/dist/js/bootstrap"
+  import "jquery/dist/jquery.min.js"
 
   export default {
     name: 'App',
     computed: {
-    navbarBackgroundColor() {
-      const currentRoute = this.$route.path;
-      switch (currentRoute) {
-        case "/":
-          return "rgba(255, 255, 255, 0.5)";
-        case "/Interactive-Maps":
-          return "rgba(242, 242, 242, 0.5)";
-        case "/Latest-News":
-          return "rgba(230, 230, 230, 0.5)";
-        case "/Get-Involved":
-          return "rgba(217, 217, 217, 0.5)";
-        default:
-          return "rgba(255, 255, 255, 0.5)";
+      navbarBackgroundColor() {
+        const currentRoute = this.$route.path
+        switch (currentRoute) {
+          case "/":
+            return "rgba(255, 255, 255, 0.5)"
+          case "/Interactive-Maps":
+            return "rgba(242, 242, 242, 0.5)"
+          case "/Latest-News":
+            return "rgba(230, 230, 230, 0.5)"
+          case "/Get-Involved":
+            return "rgba(217, 217, 217, 0.5)"
+          default:
+            return "rgba(255, 255, 255, 0.5)"
+        }
       }
-    }
-  },
-    router: createRouter (
-      {
-        history: createWebHistory(process.env.BASE_URL),
-        routes: [
-          {
-            path: "/",
-            name: "homePage",
-            component: () => import('./views/HomePage.vue')
-          }
-        ]
-      }
-    )
+    },
   }
 </script>
 
@@ -132,9 +116,9 @@ import { createRouter, createWebHistory } from "vue-router";
     background-color: white;
   }
 
-.border-bottom-none {
-  border-bottom: none !important;
-}
+  .border-bottom-none {
+    border-bottom: none !important;
+  }
 
   .main-content {
     margin-top: 1rem;
@@ -148,13 +132,13 @@ import { createRouter, createWebHistory } from "vue-router";
     gap: 3rem;
   }
 
-@font-face {
-  font-family: "glacial_bold";
-  src: url("~@/assets/fonts/GlacialIndifference-Bold.otf") format("opentype");
-}
+  @font-face {
+    font-family: "glacial_bold";
+    src: url("~@/assets/fonts/GlacialIndifference-Bold.otf") format("opentype");
+  }
 
-@font-face {
-  font-family: "glacial";
-  src: url("~@/assets/fonts/GlacialIndifference-Regular.otf") format("opentype");
-}
+  @font-face {
+    font-family: "glacial";
+    src: url("~@/assets/fonts/GlacialIndifference-Regular.otf") format("opentype");
+  }
 </style>
