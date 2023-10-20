@@ -1,17 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
-  // this will be removed 
   {
     path: "/",
     name: "homePage",
     component: () => import("../views/HomePage.vue")
-  },
-  // this will be removed
-  {
-    path: "/About-Us",
-    name: "aboutUs",
-    component: () => import("../views/AboutUsPage.vue")
   },
   {
     path: "/Interactive-Maps",

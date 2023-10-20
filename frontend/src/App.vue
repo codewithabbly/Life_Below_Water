@@ -10,13 +10,15 @@
           <div class="col-8 leftEle">
 
             <!-- home page section -->
-            <a href="#home" class="navbar-brand me-auto d-flex d-inline align-items-center" style="text-decoration: none; outline: none;">
-              <img src="./assets/images/companyLogo.png"
-              class="rounded-rect"
-              width="65" 
-              height="60"
-              alt="">
-            </a>
+            <router-link :to="{ name: 'homePage' }">
+              <a href="./views/HomePage.vue" class="navbar-brand me-auto d-flex d-inline align-items-center">
+                <img src="./assets/images/companyLogo.png"
+                class="rounded-rect"
+                width="65" 
+                height="60"
+                alt="">
+              </a>
+            </router-link>
 
             <!-- about us section -->
             <a href="#about-us" class="navbar-brand border-bottom-none d-flex d-inline align-items-center" style="text-decoration: none; outline: none;">
@@ -25,21 +27,21 @@
 
             <!-- map page -->
             <router-link :to="{ name: 'IMaps' }">
-              <a href="./views/InteractiveMapPage.vue" class="navbar-brand border-bottom-none d-flex d-inline align-items-center" style="text-decoration: none; outline: none;">
+              <a href="./views/InteractiveMapPage.vue" class="navbar-brand border-bottom-none d-flex d-inline align-items-center">
                 Interactive Map
               </a>
             </router-link>
     
             <!-- latest news page -->
             <router-link :to="{ name: 'latestNews' }">
-              <a href="./views/LatestNewsPage.vue" class="navbar-brand border-bottom-none d-flex d-inline align-items-center" style="text-decoration: none; outline: none;">
+              <a href="./views/LatestNewsPage.vue" class="navbar-brand border-bottom-none d-flex d-inline align-items-center">
                 Latest News
               </a>
             </router-link>
 
             <!-- get involved page -->
             <router-link :to="{ name: 'getInvolved' }">
-              <a href="./views/GetInvolvedPage.vue" class="navbar-brand border-bottom-none d-flex d-inline align-items-center" style="text-decoration: none; outline: none;">
+              <a href="./views/GetInvolvedPage.vue" class="navbar-brand border-bottom-none d-flex d-inline align-items-center">
                 Get Involved
               </a>
             </router-link>
@@ -51,19 +53,7 @@
     <hr class="my-0">
 
     <main>
-    <div>
-        <!-- home page -->
-        <div id="home">
-          <!-- add home page content here -->
-
-        </div>
-
-        <!-- about us section -->
-        <div id="about-us">
-          <!-- add your about us content here -->
-
-        </div>
-
+      <div>
         <!-- rendering component based on current route -->
         <router-view></router-view>
       </div>
@@ -102,7 +92,7 @@
   .navbar-brand {
     font-family: 'glacial', sans-serif;
     font-size: 20px;
-    color: #000000;
+    color: white;
     text-decoration: none !important;
     display: flex;
     justify-content: center;
@@ -118,6 +108,18 @@
 
   .border-bottom-none {
     border-bottom: none !important;
+  }
+
+  .leftEle a {
+    text-decoration: none;
+  }
+
+  .leftEle a:hover {
+    color: black;
+  }
+
+  .leftEle a:active {
+    color: black;
   }
 
   .main-content {
