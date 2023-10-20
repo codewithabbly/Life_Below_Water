@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-
     <!-- header content -->
-    <header>
-
-    </header>
+    <header></header>
 
     <!-- navbar -->
     <nav class="navbar navbar-light navbar-expand-lg border-bottom border-dark fixed-top" :style="{ backgroundColor: navbarBackgroundColor }">
@@ -54,11 +51,13 @@
 
         <!-- <div class="d-flex gap-5">
           <a href="./views/ProfilePage.vue" class="navbar-brand">
-            <img src="./assets/profileIcon.png"
-            class="rounded-rect"
-            width="40" 
-            height="40"
-            alt="">
+            <img
+              src="./assets/profileIcon.png"
+              class="rounded-rect"
+              width="40"
+              height="40"
+              alt=""
+            />
           </a>
         </div> -->
       </div>
@@ -76,10 +75,10 @@
 </template>
 
 <script>
-  import 'bootstrap/dist/css/bootstrap.css'
-  import 'bootstrap/dist/js/bootstrap'
-  import 'jquery/dist/jquery.min.js'
-  import { createRouter, createWebHistory } from 'vue-router'
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap";
+import "jquery/dist/jquery.min.js";
+import { createRouter, createWebHistory } from "vue-router";
 
   export default {
     name: 'App',
@@ -106,8 +105,8 @@
         routes: [
           {
             path: "/",
-            name: "IMaps",
-            component: () => import('./views/InteractiveMapPage.vue')
+            name: "homePage",
+            component: () => import('./views/HomePage.vue')
           }
         ]
       }
@@ -133,9 +132,9 @@
     background-color: white;
   }
 
-  .border-bottom-none {
-    border-bottom: none !important;
-  }
+.border-bottom-none {
+  border-bottom: none !important;
+}
 
   .main-content {
     margin-top: 1rem;
@@ -148,4 +147,14 @@
     vertical-align: middle;
     gap: 3rem;
   }
+
+@font-face {
+  font-family: "glacial_bold";
+  src: url("~@/assets/fonts/GlacialIndifference-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "glacial";
+  src: url("~@/assets/fonts/GlacialIndifference-Regular.otf") format("opentype");
+}
 </style>
