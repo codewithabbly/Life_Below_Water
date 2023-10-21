@@ -1,19 +1,31 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
-      // for testing purposes, do change this directory to the file which you are going to edit on in the views directory
-      {
-            path: "/",
-            name: "LatestNewsPage",
-            component: () => import("../views/LatestNewsPage.vue")
-      },
+  {
+    path: "/",
+    name: "homePage",
+    component: () => import("../views/HomePage.vue")
+  },
+  {
+    path: "/Interactive-Maps",
+    name: "IMaps",
+    component: () => import("../views/InteractiveMapPage.vue")
+  },
+  {
+    path: "/Latest-News",
+    name: "latestNews",
+    component: () => import("../views/LatestNewsPage.vue")
+  },
+  {
+    path: "/Get-Involved",
+    name: "getInvolved",
+    component: () => import("../views/GetInvolvedPage.vue")
+  },
 ]
 
-const router = createRouter(
-      {
-            history: createWebHistory(process.env.BASE_URL),
-            routes
-      }
-)
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+});
 
-export default router
+export default router;
