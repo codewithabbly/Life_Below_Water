@@ -37,7 +37,7 @@
           </router-link>
 
           <!-- latest news page -->
-          <router-link to="{ name: 'latestnews' }">
+          <router-link to="{ name: 'LatestNewsPage' }">
             <a href="./views/LatestNewsPage.vue" class="navbar-brand text-decoration-none">
               Latest News
             </a>
@@ -55,7 +55,7 @@
             <a href="./views/GetInvolvedPage.vue" class="navbar-brand text-decoration-none">
               Get Involved
             </a>
-          </router-link>
+          </router-link> 
 
           <!-- profile icon -->
           <a href="./views/ProfilePage.vue" class="navbar-brand">
@@ -63,7 +63,7 @@
             class="rounded-rect"
             width="40" 
             height="40"
-            alt="">
+            alt=""> 
           </a>
         </div>
       </div>
@@ -92,9 +92,9 @@
         routes: [
           {
             path: "/",
-            name: "home",
+            name: "LatestNewsPage",
             // for testing purposes, do change this directory to the file which you are going to edit on in the views directory
-            component: () => import('./views/HomePage.vue')
+            component: () => import('./views/LatestNewsPage.vue')
           }
         ]
       }

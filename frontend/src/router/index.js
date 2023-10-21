@@ -4,8 +4,8 @@ const routes = [
       // for testing purposes, do change this directory to the file which you are going to edit on in the views directory
       {
             path: "/",
-            name: "Home",
-            component: () => import("../views/HomePage.vue")
+            name: "LatestNewsPage",
+            component: () => import("../views/LatestNewsPage.vue")
       },
 ]
 
