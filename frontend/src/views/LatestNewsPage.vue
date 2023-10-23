@@ -89,6 +89,7 @@ export default {
 
   created () {
     axios.get('https://newsapi.org/v2/everything?q=water&apiKey='+this.api_key)
+    axios.get('https://newsapi.org/v2/everything?q=environmental&apiKey='+this.api_key)
       .then(response => {
         this.articles = response.data.articles
         console.log('data:')
