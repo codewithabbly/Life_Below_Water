@@ -24,11 +24,11 @@
             data-bs-target="#collapseFilter"
           >
             <img
-              src="frontend/src/assets/filterIcon.png"
+              src="../assets/images/filterIcon.png"
               style="width: 15px"
               alt="Filter"
             />
-            filter by
+            filter
           </button>
         </p>
         <div class="collapse d-md-block" id="collapseFilter">
@@ -67,17 +67,24 @@
             v-for="(item, index) in filteredItems"
             :key="index"
           >
-            <div class="card h-100">
-              <img :src="item.image" class="card-img-top" alt="Item Image" />
+            <div class="card" style="height: 555px">
+              <img
+                :src="item.image"
+                class="card-img-top"
+                alt="Item Image"
+                style="max-height: 150px; object-fit: cover"
+              />
               <div class="card-body">
-                <h5 class="card-title">{{ item.name }}</h5>
-                <p class="card-text h-50">{{ item.description }}</p>
-                <div class="text-center">
+                <div class="h-75">
+                  <h5 class="card-title">{{ item.name }}</h5>
+                  <p class="card-text">{{ item.description }}</p>
+                </div>
+                <div class="text-center mt-5">
                   <a
-                    :href="item.purchaseLink"
+                    :href="item.donateLink"
                     target="_blank"
                     class="btn btn-primary"
-                    >Buy</a
+                    >Donate</a
                   >
                 </div>
               </div>
@@ -90,78 +97,84 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  name: "GetInvolvedPage",
+  name: "getInvolved",
   data() {
     return {
       selectedCountries: [], // Stores selected countries
       selectedCategories: [], // Stores selected categories
       items: [
-        {
-          name: "keyboard",
-          image: "frontend/src/assets/greenNudge.jpeg",
-          description: "A high-quality keyboard for typing and gaming.",
-          country: "Singapore",
-          category: "Electronics",
-          purchaseLink: "https://example.com/keyboard",
-        },
-        {
-          name: "mouse",
-          image: "mouse.jpg",
-          description: "An ergonomic mouse with customizable buttons.",
-          country: "Laos",
-          category: "Electronics",
-          purchaseLink: "https://example.com/keyboard",
-        },
-        {
-          name: "iPhone",
-          image: "iphone.jpg",
-          description: "The latest iPhone with a stunning display.",
-          country: "Philippines",
-          category: "Electronics",
-          purchaseLink: "https://example.com/keyboard",
-        },
-        {
-          name: "macbook",
-          image: "macbook.jpg",
-          description: "A sleek and powerful MacBook for your work.",
-          country: "Singapore",
-          category: "Electronics",
-          purchaseLink: "https://example.com/keyboard",
-        },
-        {
-          name: "adapter",
-          image: "adapter.jpg",
-          description: "A versatile adapter for your devices.",
-          country: "Laos",
-          category: "Electronics",
-          purchaseLink: "https://example.com/keyboard",
-        },
-        {
-          name: "apple",
-          image: "apple.jpg",
-          description: "A delicious and healthy fruit.",
-          country: "Philippines",
-          category: "Fruits",
-          purchaseLink: "https://example.com/keyboard",
-        },
-        {
-          name: "orange",
-          image: "orange.jpg",
-          description: "Sweet and juicy oranges from Spain.",
-          country: "Spain",
-          category: "Fruits",
-          purchaseLink: "https://example.com/keyboard",
-        },
-        {
-          name: "pear",
-          image: "pear.jpg",
-          description: "Fresh and crisp pears.",
-          country: "USA",
-          category: "Fruits",
-          purchaseLink: "https://example.com/keyboard",
-        },
+        // start of removing fake data
+        // {
+        //   name: "Waterways Watch Society",
+        //   image: "../assets/filterIcon.png",
+        //   description:
+        //     "This non-profit organization in Singapore focuses on the cleanup and conservation of waterways. They also conduct educational programs and outreach to promote water conservation.",
+        //   country: "Singapore",
+        //   category: "Electronics",
+        //   donateLink: "https://www.giving.sg/waterways-watch-society",
+        // },
+        // {
+        //   name: "WWF - World Wide Fund For Nature (Singapore)",
+        //   image: "wwfSg.jpeg",
+        //   description:
+        //     "WWF Singapore is a local arm of the global conservation organization, working to protect and conserve Singapore's unique wildlife and ecosystems.",
+        //   country: "Laos",
+        //   category: "Electronics",
+        //   donateLink:
+        //     "https://www.giving.sg/campaigns/help_singapore_wildlife_0823",
+        // },
+        // {
+        //   name: "iPhone",
+        //   image: "iphone.jpg",
+        //   description: "The latest iPhone with a stunning display.",
+        //   country: "Philippines",
+        //   category: "Electronics",
+        //   donateLink: "https://example.com/keyboard",
+        // },
+        // {
+        //   name: "macbook",
+        //   image: "macbook.jpg",
+        //   description: "A sleek and powerful MacBook for your work.",
+        //   country: "Singapore",
+        //   category: "Electronics",
+        //   donateLink: "https://example.com/keyboard",
+        // },
+        // {
+        //   name: "adapter",
+        //   image: "adapter.jpg",
+        //   description: "A versatile adapter for your devices.",
+        //   country: "Laos",
+        //   category: "Electronics",
+        //   donateLink: "https://example.com/keyboard",
+        // },
+        // {
+        //   name: "apple",
+        //   image: "apple.jpg",
+        //   description: "A delicious and healthy fruit.",
+        //   country: "Philippines",
+        //   category: "Fruits",
+        //   donateLink: "https://example.com/keyboard",
+        // },
+        // {
+        //   name: "orange",
+        //   image: "orange.jpg",
+        //   description: "Sweet and juicy oranges from Spain.",
+        //   country: "Spain",
+        //   category: "Fruits",
+        //   donateLink: "https://example.com/keyboard",
+        // },
+        // {
+        //   name: "pear",
+        //   image: "pear.jpg",
+        //   description: "Fresh and crisp pears.",
+        //   country: "USA",
+        //   category: "Fruits",
+        //   donateLink: "https://example.com/keyboard",
+        // },
         // Add more items with different countries and categories here
+        // end of removing fake data
       ],
     };
   },
@@ -177,22 +190,85 @@ export default {
 
       if (this.selectedCategories.length > 0) {
         filtered = filtered.filter((item) =>
-          this.selectedCategories.includes(item.category)
+          item.category.some((cat) => this.selectedCategories.includes(cat))
         );
       }
-
       return filtered;
     },
     uniqueCountries() {
       return Array.from(new Set(this.items.map((item) => item.country)));
     },
+    // uniqueCategories() {
+    //   return Array.from(new Set(this.items.map((item) => item.category)));
+    // },
     uniqueCategories() {
-      return Array.from(new Set(this.items.map((item) => item.category)));
+      const uniqueCategories = this.items
+        .reduce((categories, item) => categories.concat(item.category), [])
+        .filter((value, index, self) => self.indexOf(value) === index);
+      return uniqueCategories;
     },
   },
-  methods: {},
+  methods: {
+    getData() {
+      const url =
+        "https://api.globalgiving.org/api/public/projectservice/themes/water/projects/active";
+      var key = "dfbf4532-53b3-407c-8b2b-d96dc0135ee3";
+      axios
+        .get(url, {
+          params: {
+            api_key: key,
+          },
+        })
+        .then((response) => {
+          var arrProj = response.data.projects.project;
+          for (var obj of arrProj) {
+            var title = obj.title;
+            var image = obj.image.imagelink.find(
+              (link) => link.size === "large"
+            ).url;
+            var description;
+            if (obj.activities.indexOf(".") !== -1) {
+              description = obj.activities.slice(
+                0,
+                obj.activities.indexOf(".")
+              );
+            } else {
+              description = obj.activities;
+            }
+
+            var country = obj.contactCountry;
+            var category = [];
+            var categoriesArr = obj.themes.theme;
+
+            for (var categoryObj of categoriesArr) {
+              var categoryName = categoryObj.name;
+              category.push(categoryName);
+            }
+
+            var donateLink = obj.projectLink;
+
+            var newObj = {
+              name: title,
+              image: image,
+              description: description,
+              country: country,
+              category: category,
+              donateLink: donateLink,
+            };
+
+            this.items.push(newObj);
+          }
+          // Update your component's 'items' with the fetched data
+          // this.items = response.data;
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    },
+  },
   created() {
     console.log("get involve page Test works");
+    this.getData();
   },
 };
 </script>
