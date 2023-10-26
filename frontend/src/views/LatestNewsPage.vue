@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background-color: #8fc1e3;">
     <div class="latest-news-page mt-5 ms-5 pt-5">
         <h1>Latest News</h1>
         <p>Welcome to the latest news page. Here, you can find the most recent updates and articles.</p>
@@ -9,7 +9,7 @@
       <div class="row">
 
         <!-- Bootstrap card -->
-        <div class="card ms-5 mb-5 me-5 p-0" v-for="article in articles" :key="article.title">
+        <div class="card ms-5 mb-5 me-5 p-0" v-for="article in articles" :key="article.title" style="border: 1px solid #5085a5; background-color: #f3ebdf;">
           <div class="row g-0 " >
             <div class="col-md-3">
               <img v-bind:src="article.urlToImage" class="d-block w-100" alt="...">
