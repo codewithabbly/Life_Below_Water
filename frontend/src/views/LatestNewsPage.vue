@@ -1,8 +1,10 @@
 <template>
-  <div style="background-color: #8fc1e3;">
-    <div class="latest-news-page mt-5 ms-5 pt-5">
+  <div id="background" >
+
+    
+    <div class="latest-news-header">
         <h1>Latest News</h1>
-        <p>Welcome to the latest news page. Here, you can find the most recent updates and articles.</p>
+        <h4>Welcome to the latest news page. Here, you can find the most recent updates and articles.</h4>
     </div>
     
     <div class="container-fluid">
@@ -18,7 +20,8 @@
               <div class="card-body">
                 <h2 class="card-title">{{ article.title }}</h2>
                 <p class="card-text">{{ article.description }}</p>
-                <a class="btn btn-secondary" v-bind:href="article.url" role="button">READ NEWS</a>
+                <a class="btn" v-bind:href="article.url" role="button">READ NEWS</a>
+                <!--style="background-color: #023047; color: #f7f9fb"-->
               </div>
             </div>
           </div>
@@ -83,7 +86,67 @@ export default {
   }
 </script>
 
-  <style scoped>
+<style>
   /* Add your CSS styles here */
-  </style>
+  .latest-news-header {
+    padding-top: 150px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    position: sticky; /* why is it not sticky?? */
+  }
+
+  #background {
+    background-color: #8fc1e3;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='18' viewBox='0 0 100 18'%3E%3Cpath fill='%235085a5' fill-opacity='0.07' d='M61.82 18c3.47-1.45 6.86-3.78 11.3-7.34C78 6.76 80.34 5.1 83.87 3.42 88.56 1.16 93.75 0 100 0v6.16C98.76 6.05 97.43 6 96 6c-9.59 0-14.23 2.23-23.13 9.34-1.28 1.03-2.39 1.9-3.4 2.66h-7.65zm-23.64 0H22.52c-1-.76-2.1-1.63-3.4-2.66C11.57 9.3 7.08 6.78 0 6.16V0c6.25 0 11.44 1.16 16.14 3.42 3.53 1.7 5.87 3.35 10.73 7.24 4.45 3.56 7.84 5.9 11.31 7.34zM61.82 0h7.66a39.57 39.57 0 0 1-7.34 4.58C57.44 6.84 52.25 8 46 8S34.56 6.84 29.86 4.58A39.57 39.57 0 0 1 22.52 0h15.66C41.65 1.44 45.21 2 50 2c4.8 0 8.35-.56 11.82-2z'%3E%3C/path%3E%3C/svg%3E");
+
+  }
+
+  .btn {
+    --color: #5085a5;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2em;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+  }
+
+  .btn:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+  }
+
+  .btn:hover {
+    color: #fff;
+  }
+
+  .btn:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+  }
+
+  .btn:hover:before {
+    top: -30px;
+    left: -30px;
+  }
+
+  .btn:active:before {
+    background: #3a0ca3;
+    transition: background 0s;
+  }
+</style>
   
