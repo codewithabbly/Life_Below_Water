@@ -1,14 +1,34 @@
 <template>
-    <v-app>
-        <v-container>
-            <div class="latest-news-page mt-5 ms-5 pt-5">
-                <h1>Latest News</h1>
-                <p>Welcome to the latest news page. Here, you can find the most recent updates and articles.</p>
-            </div>
-        </v-container>
+    
+  <div class="latest-news-page mt-5 ms-5 pt-5">
+      <h1>Latest News</h1>
+      <p>Welcome to the latest news page. Here, you can find the most recent updates and articles.</p>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="row">
 
+      <!-- Bootstrap card -->
+      <div class="card ms-5 mt-6 mb-6" v-for="article in articles" :key="article.title">
+        <div class="row g-0 align-items-center" >
+          <div class="col-md-3">
+            <img v-bind:src="article.urlToImage" class="d-block w-100" alt="...">
+          </div>
+          <div class="col-md-9">
+            <div class="card-body">
+              <h2 class="card-title">{{ article.title }}</h2>
+              <p class="card-text">{{ article.description }}</p>
+              <a class="btn btn-secondary" href="#" role="button">READ NEWS</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+    <!-- <v-app> -->
         <!-- code for news content -->
-        <v-content>
+        <!-- <v-content>
             <v-container fluid>
                 <v-layout row wrap align-center>
                 <v-flex xs8  offset-md2>
@@ -67,7 +87,7 @@
             </v-container>
         </v-content>
         
-    </v-app>
+    </v-app> -->
 </template>
   
 <script>
