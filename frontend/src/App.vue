@@ -4,7 +4,7 @@
     <header></header>
 
     <!-- navbar -->
-    <nav class="navbar navbar-light navbar-expand-lg border-bottom border-dark fixed-top" :style="{ backgroundColor: navbarBackgroundColor }">
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top" :style="{ backgroundColor: navbarBackgroundColor }">
       <div class="container-fluid align-items-center">
         <div class="row">
           <div class="col-8 leftEle">
@@ -12,10 +12,10 @@
             <!-- home page section -->
             <router-link :to="{ name: 'homePage' }">
               <a href="./views/HomePage.vue" class="navbar-brand me-auto d-flex d-inline align-items-center">
-                <img src="./assets/images/companyLogo.png"
+                <img src="./assets/images/ourLogo.png"
                 class="rounded-rect"
-                width="65" 
-                height="60"
+                width="45"
+                height="30"
                 alt="">
               </a>
             </router-link>
@@ -50,7 +50,7 @@
       </div>
     </nav>
 
-    <hr class="my-0">
+    <!-- <hr class="my-0"> -->
 
     <main>
       <div>
@@ -73,15 +73,15 @@
         const currentRoute = this.$route.path
         switch (currentRoute) {
           case "/":
-            return "rgba(255, 255, 255, 0.5)"
+            return "transparent"
           case "/Interactive-Maps":
-            return "rgba(242, 242, 242, 0.5)"
+            return "#5085A5"
           case "/Latest-News":
-            return "rgba(230, 230, 230, 0.5)"
+            return "transparent"
           case "/Get-Involved":
-            return "rgba(217, 217, 217, 0.5)"
+            return "transparent"
           default:
-            return "rgba(255, 255, 255, 0.5)"
+            return "transparent"
         }
       }
     },
@@ -102,10 +102,6 @@
     outline: none;
   }
 
-  .navbar {
-    background-color: white;
-  }
-
   .border-bottom-none {
     border-bottom: none !important;
   }
@@ -115,11 +111,11 @@
   }
 
   .leftEle a:hover {
-    color: black;
+    color: #023047;
   }
 
   .leftEle a:active {
-    color: black;
+    color: #023047;
   }
 
   .main-content {
