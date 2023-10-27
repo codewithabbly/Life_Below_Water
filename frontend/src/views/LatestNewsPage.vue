@@ -101,9 +101,10 @@ export default {
 
   } */
   #snow{
-    background: none;
+    background-color: #8fc1e3;
     font-family: Androgyne;
-    background-image: url('../assets/images/turtle.png'), url('/dorphin.png');
+    background-image: url('../assets/images/turtle.png'), url('../assets/images/dorphin.png');
+    background-repeat: no-repeat;
     height: 100%;
     left: 0;
     position: absolute;
