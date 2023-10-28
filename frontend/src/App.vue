@@ -65,13 +65,13 @@
                 Get Involved
               </a>
             </router-link>
+
           </div>
         </div>
       </div>
     </nav>
 
     <hr class="my-0" />
-    <!-- <hr class="my-0"> -->
 
     <main>
       <div>
@@ -176,6 +176,54 @@ transition: transform 0.25s ease-out;
 .hover-underline-animation:hover::after {
 transform: scaleX(1);
 transform-origin: bottom left;
+}
+
+.custom-btn {
+  --color: #5085a5;
+  font-family: inherit;
+  display: inline-block;
+  width: 8em;
+  height: 2.6em;
+  line-height: 2em;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color .5s;
+  z-index: 1;
+  font-size: 17px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
+}
+
+.custom-btn:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.custom-btn:hover {
+  color: #fff;
+}
+
+.custom-btn:before {
+  top: 100%;
+  left: 100%;
+  transition: all .7s;
+}
+
+.custom-btn:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.custom-btn:active:before {
+  background: #023047;
+  transition: background 0s;
 }
 
 @font-face {

@@ -17,7 +17,7 @@
           />
           <div class="card-body">
             <router-link to="/Get-Involved/Donate">
-              <button class="btn btn-primary">Donate</button>
+              <button class="btn custom-btn">Donate</button>
             </router-link>
           </div>
         </div>
@@ -33,7 +33,7 @@
           />
           <div class="card-body">
             <router-link to="/Get-Involved/Volunteer">
-              <button class="btn btn-primary">Volunteer</button>
+              <button class="btn custom-btn">Volunteer</button>
             </router-link>
           </div>
         </div>
