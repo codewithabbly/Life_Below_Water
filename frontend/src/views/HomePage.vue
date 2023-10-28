@@ -2,9 +2,7 @@
       <v-app>
             <v-container>
                   <div class="background-image">
-                        <div class="text-container">
-                              <h1 class="title typewriter">What can one person do to make a<br> difference to the world's oceans?</h1>
-                        </div>
+                        <h1 class="title">What can one person do to make a<br> difference to the world's oceans?</h1>
                   </div>
 
                   <div class="scrollable-content">
@@ -70,14 +68,8 @@
       height: 100vh;
       margin: 0;
       padding: 0;
-}
-.text-container {
-      display: flex;
-      position: relative;
-      justify-content: center;
-      padding-top: 200px;
-      height: 100vh; /* Center vertically in the viewport */
-}
+      }
+
 .title {
       color: #023047;
       text-align: center;
@@ -85,32 +77,6 @@
       line-height: 1em;
       font-family:'Times New Roman', Times, serif;
       font-weight: 100;
+      padding-top: 290px;
 }
-
-.typewriter {
-  overflow: hidden; /* Hide overflow text */
-  white-space: nowrap; /* Make text stay on one line */
-  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes blink-caret {
-  from,
-  to {
-    border-right-color: transparent;
-  }
-  50% {
-    border-right-color: #000; /* Blinking cursor color */
-  }
-}
-
-
 </style>
