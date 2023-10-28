@@ -28,40 +28,56 @@
             </router-link>
 
             <!-- about us section -->
+<<<<<<< Updated upstream
             <a
               href="#about-us"
               class="navbar-brand border-bottom-none d-flex d-inline align-items-center"
               style="text-decoration: none; outline: none"
             >
+=======
+            <a href="#about-us" class="navbar-brand hover-underline-animation border-bottom-none d-flex d-inline align-items-center" style="text-decoration: none; outline: none;">
+>>>>>>> Stashed changes
               About Us
             </a>
 
             <!-- map page -->
             <router-link :to="{ name: 'IMaps' }">
+<<<<<<< Updated upstream
               <a
                 href="./views/InteractiveMapPage.vue"
                 class="navbar-brand border-bottom-none d-flex d-inline align-items-center"
               >
+=======
+              <a href="./views/InteractiveMapPage.vue" class="navbar-brand hover-underline-animation border-bottom-none d-flex d-inline align-items-center">
+>>>>>>> Stashed changes
                 Interactive Map
               </a>
             </router-link>
 
             <!-- latest news page -->
             <router-link :to="{ name: 'latestNews' }">
+<<<<<<< Updated upstream
               <a
                 href="./views/LatestNewsPage.vue"
                 class="navbar-brand border-bottom-none d-flex d-inline align-items-center"
               >
+=======
+              <a href="./views/LatestNewsPage.vue" class="navbar-brand hover-underline-animation border-bottom-none d-flex d-inline align-items-center">
+>>>>>>> Stashed changes
                 Latest News
               </a>
             </router-link>
 
             <!-- get involved page -->
             <router-link :to="{ name: 'getInvolved' }">
+<<<<<<< Updated upstream
               <a
                 href="./views/GetInvolvedPage.vue"
                 class="navbar-brand border-bottom-none d-flex d-inline align-items-center"
               >
+=======
+              <a href="./views/GetInvolvedPage.vue" class="navbar-brand hover-underline-animation border-bottom-none d-flex d-inline align-items-center">
+>>>>>>> Stashed changes
                 Get Involved
               </a>
             </router-link>
@@ -131,6 +147,7 @@ export default {
   text-decoration: none;
 }
 
+<<<<<<< Updated upstream
 .leftEle a:hover {
   color: #023047;
 }
@@ -150,14 +167,70 @@ export default {
   vertical-align: middle;
   gap: 3rem;
 }
+=======
+  .main-content {
+    margin-top: 1rem;
+  }
+>>>>>>> Stashed changes
 
 @font-face {
   font-family: "glacial_bold";
   src: url("~@/assets/fonts/GlacialIndifference-Bold.otf") format("opentype");
 }
 
+<<<<<<< Updated upstream
 @font-face {
   font-family: "glacial";
   src: url("~@/assets/fonts/GlacialIndifference-Regular.otf") format("opentype");
 }
+=======
+  .leftEle a {
+    text-decoration: none;
+  }
+
+  .leftEle a:hover {
+    color: black;
+  }
+
+  .leftEle a:active {
+    color: black;
+  }
+
+  .hover-underline-animation:hover {
+    cursor:pointer;
+  }
+
+  .hover-underline-animation {
+    display: inline-block;
+    position: relative;
+  }
+
+  .hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  @font-face {
+    font-family: "glacial_bold";
+    src: url("~@/assets/fonts/GlacialIndifference-Bold.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "glacial";
+    src: url("~@/assets/fonts/GlacialIndifference-Regular.otf") format("opentype");
+  }
+>>>>>>> Stashed changes
 </style>
