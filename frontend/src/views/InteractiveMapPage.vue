@@ -1,7 +1,11 @@
 <template>
       <div class="app">
-            <div class="map-container">
-                  <img src="../assets/maps/world.svg" alt="World Map" class="map-image">
+            <div class="row">
+                  <div class="col-12">
+                        <div class="map-container">
+                              <img src="../assets/maps/world.svg" alt="World Map" class="map-image">
+                        </div>
+                  </div>
             </div>
       </div>
 </template>

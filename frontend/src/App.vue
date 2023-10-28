@@ -5,7 +5,7 @@
 
     <!-- navbar -->
     <nav
-      class="navbar navbar-light navbar-expand-lg border-bottom border-dark fixed-top"
+      class="navbar navbar-light navbar-expand-lg fixed-top"
       :style="{ backgroundColor: navbarBackgroundColor }"
     >
       <div class="container-fluid align-items-center">
@@ -18,10 +18,10 @@
                 class="navbar-brand me-auto d-flex d-inline align-items-center"
               >
                 <img
-                  src="./assets/images/companyLogo.png"
+                  src="./assets/images/ourLogo.png"
                   class="rounded-rect"
-                  width="65"
-                  height="60"
+                  width="45"
+                  height="30"
                   alt=""
                 />
               </a>
@@ -71,6 +71,7 @@
     </nav>
 
     <hr class="my-0" />
+    <!-- <hr class="my-0"> -->
 
     <main>
       <div>
@@ -93,15 +94,15 @@ export default {
       const currentRoute = this.$route.path;
       switch (currentRoute) {
         case "/":
-          return "rgba(255, 255, 255, 0.5)";
+          return "transparent";
         case "/Interactive-Maps":
-          return "rgba(242, 242, 242, 0.5)";
+          return "#5085A5";
         case "/Latest-News":
-          return "rgba(230, 230, 230, 0.5)";
+          return "transparent";
         case "/Get-Involved":
-          return "rgba(217, 217, 217, 0.5)";
+          return "transparent";
         default:
-          return "rgba(255, 255, 255, 0.5)";
+          return "transparent";
       }
     },
   },
@@ -122,10 +123,6 @@ export default {
   outline: none;
 }
 
-.navbar {
-  background-color: white;
-}
-
 .border-bottom-none {
   border-bottom: none !important;
 }
@@ -135,11 +132,11 @@ export default {
 }
 
 .leftEle a:hover {
-  color: black;
+  color: #023047;
 }
 
 .leftEle a:active {
-  color: black;
+  color: #023047;
 }
 
 .main-content {
