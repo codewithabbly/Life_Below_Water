@@ -30,7 +30,7 @@
             <!-- about us section -->
             <a
               href="#about-us"
-              class="navbar-brand border-bottom-none d-flex d-inline align-items-center"
+              class="navbar-brand border-bottom-none hover-underline-animation d-flex d-inline align-items-center"
               style="text-decoration: none; outline: none"
             >
               About Us
@@ -40,7 +40,7 @@
             <router-link :to="{ name: 'IMaps' }">
               <a
                 href="./views/InteractiveMapPage.vue"
-                class="navbar-brand border-bottom-none d-flex d-inline align-items-center"
+                class="navbar-brand border-bottom-none hover-underline-animation d-flex d-inline align-items-center"
               >
                 Interactive Map
               </a>
@@ -50,7 +50,7 @@
             <router-link :to="{ name: 'latestNews' }">
               <a
                 href="./views/LatestNewsPage.vue"
-                class="navbar-brand border-bottom-none d-flex d-inline align-items-center"
+                class="navbar-brand border-bottom-none hover-underline-animation d-flex d-inline align-items-center"
               >
                 Latest News
               </a>
@@ -60,7 +60,7 @@
             <router-link :to="{ name: 'getInvolved' }">
               <a
                 href="./views/GetInvolvedPage.vue"
-                class="navbar-brand border-bottom-none d-flex d-inline align-items-center"
+                class="navbar-brand border-bottom-none hover-underline-animation d-flex d-inline align-items-center"
               >
                 Get Involved
               </a>
@@ -127,6 +127,18 @@ export default {
   border-bottom: none !important;
 }
 
+.main-content {
+  margin-top: 1rem;
+}
+
+.leftEle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  vertical-align: middle;
+  gap: 3rem;
+}
+
 .leftEle a {
   text-decoration: none;
 }
@@ -139,16 +151,31 @@ export default {
   color: #023047;
 }
 
-.main-content {
-  margin-top: 1rem;
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
 }
 
-.leftEle {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  vertical-align: middle;
-  gap: 3rem;
+.hover-underline-animation:hover {
+  cursor:pointer;
+}
+
+.hover-underline-animation::after {
+content: '';
+position: absolute;
+width: 100%;
+transform: scaleX(0);
+height: 2px;
+bottom: 0;
+left: 0;
+background-color: #000000;
+transform-origin: bottom right;
+transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+transform: scaleX(1);
+transform-origin: bottom left;
 }
 
 @font-face {
