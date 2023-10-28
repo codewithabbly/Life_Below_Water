@@ -15,7 +15,7 @@
               <div class="input-group " style="border-radius: var(--bs-border-radius);">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search for keyword in title" aria-label="Search">
               
-                <button class="btn my-2 my-sm-0" style="margin-left:10px; border-radius: var(--bs-border-radius);" type="submit">Search</button>
+                <button class="btn my-2 my-sm-0 custom-btn" style="margin-left:10px; border-radius: var(--bs-border-radius);" type="submit">Search</button>
               
               </div>
             </form>
@@ -68,7 +68,7 @@
               <div class="card-body">
                 <h2 class="card-title">{{ article.title }}</h2>
                 <p class="card-text">{{ article.description }}</p>
-                <a class="btn" v-bind:href="article.url" role="button">READ NEWS</a>
+                <a class="btn custom-btn" v-bind:href="article.url" role="button">READ NEWS</a>
                 <!--style="background-color: #023047; color: #f7f9fb"-->
               </div>
             </div>
@@ -211,7 +211,7 @@ export default {
   } */
   #snow{
     background-color: #8fc1e3;
-    font-family: Androgyne;
+    font-family: "glacial", sans-serif;
     background-image: url('../assets/images/dorphin.png'), url('../assets/images/turtle.png');
     background-repeat: no-repeat;
     height: 1000%;
@@ -248,55 +248,6 @@ export default {
 }   
 /** styling for background effects end here */
 
-/** styling for buttons start here */
-  .btn {
-    --color: #5085a5;
-    font-family: inherit;
-    display: inline-block;
-    width: 8em;
-    height: 2.6em;
-    line-height: 2em;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid var(--color);
-    transition: color .5s;
-    z-index: 1;
-    font-size: 17px;
-    border-radius: 6px;
-    font-weight: 500;
-    color: var(--color);
-  }
-
-  .btn:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    background: var(--color);
-    height: 150px;
-    width: 200px;
-    border-radius: 50%;
-  }
-
-  .btn:hover {
-    color: #fff;
-  }
-
-  .btn:before {
-    top: 100%;
-    left: 100%;
-    transition: all .7s;
-  }
-
-  .btn:hover:before {
-    top: -30px;
-    left: -30px;
-  }
-
-  .btn:active:before {
-    background: #023047;
-    transition: background 0s;
-  }
-/** styling for buttons end here */
 
 </style>
   
