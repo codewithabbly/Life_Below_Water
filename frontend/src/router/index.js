@@ -4,24 +4,34 @@ const routes = [
   {
     path: "/",
     name: "homePage",
-    component: () => import("../views/HomePage.vue")
+    component: () => import("../views/HomePage.vue"),
   },
   {
     path: "/Interactive-Maps",
     name: "IMaps",
-    component: () => import("../views/InteractiveMapPage.vue")
+    component: () => import("../views/InteractiveMapPage.vue"),
   },
   {
     path: "/Latest-News",
     name: "latestNews",
-    component: () => import("../views/LatestNewsPage.vue")
+    component: () => import("../views/LatestNewsPage.vue"),
   },
   {
     path: "/Get-Involved",
     name: "getInvolved",
-    component: () => import("../views/GetInvolvedPage.vue")
+    component: () => import("../views/GetInvolvedPage.vue"),
   },
-]
+  {
+    path: "/Get-Involved/Donate",
+    name: "gIDonate",
+    component: () => import("../views/DonateGetInvolvedPage.vue"),
+  },
+  {
+    path: "/Get-Involved/Volunteer",
+    name: "gIVolunteer",
+    component: () => import("../views/VolunteerGetInvolvedPage.vue"),
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
