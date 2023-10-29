@@ -16,7 +16,8 @@
     "jquery": "^3.7.1",
     "topojson": "^3.0.2",
     "vue": "^3.2.13",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vuetify": "^3.3.23"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
