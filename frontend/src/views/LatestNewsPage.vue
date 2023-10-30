@@ -216,7 +216,7 @@ export default {
   #snow{
     background-color: #8fc1e3;
     font-family: "glacial", sans-serif;
-    background-image: url('../assets/images/dorphin.png'), url('../assets/images/turtle.png');
+    background-image: url('../assets/images/dolphin.png'), url('../assets/images/turtle.png');
     background-repeat: no-repeat;
     height: 1000%;
     left: 0;
