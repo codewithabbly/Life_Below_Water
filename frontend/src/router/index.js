@@ -31,6 +31,11 @@ const routes = [
     name: "gIVolunteer",
     component: () => import("../views/VolunteerGetInvolvedPage.vue"),
   },
+  {
+    path: "/Personality-Test",
+    name: "personalityTest",
+    component: () => import("../views/PersonalityTest.vue"),
+  },
 ];
 
 const router = createRouter({

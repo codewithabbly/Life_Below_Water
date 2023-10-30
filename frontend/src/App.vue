@@ -66,6 +66,16 @@
               </a>
             </router-link>
 
+            <!-- personality test page -->
+            <router-link :to="{ name: 'personalityTest' }">
+              <a
+                href="./views/PersonalityTest.vue"
+                class="navbar-brand border-bottom-none hover-underline-animation d-flex d-inline align-items-center"
+              >
+                Personality Test
+              </a>
+            </router-link>
+
           </div>
         </div>
       </div>

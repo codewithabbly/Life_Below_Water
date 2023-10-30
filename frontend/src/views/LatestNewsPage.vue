@@ -86,7 +86,7 @@ import axios from 'axios'; //importing the axios a HTTP library to connects the 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap'
 import 'jquery/dist/jquery.min.js'
-import * as d3 from 'd3';
+// import * as d3 from 'd3';
 
 export default {
   name: 'LatestNewsPage',
