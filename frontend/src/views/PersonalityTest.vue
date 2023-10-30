@@ -92,6 +92,7 @@ button {
     transform: scaleX(-1);
 }
 
+/* start of CSS for bubble animation */
 .bubbles{
     position:absolute;
     width:100%;
