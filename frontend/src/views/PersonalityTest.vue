@@ -96,6 +96,14 @@ button {
     transform: scaleX(-1);
 }
 
+.gradient-background {
+    background-image: url('../assets/images/homePage_background.png');
+    min-width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: repeat; 
+  }
+
 /* start of CSS for bubble animation */
 .bubbles{
     position:absolute;
