@@ -36,6 +36,11 @@ const routes = [
     name: "personalityTest",
     component: () => import("../views/PersonalityTest.vue"),
   },
+  {
+    path: "/Personality-Test/Questions",
+    name: "personalityTestQns",
+    component: () => import("../views/PersonalityTestQns.vue")
+  }
 ];
 
 const router = createRouter({

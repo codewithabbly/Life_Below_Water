@@ -1,10 +1,13 @@
 <template>
-    <div class="app">
+    <div class="app gradient-background">
         <div class="quizStart">
             <div class="largeHeader">What marine animal are you?</div>
             <div class="medHeader">Take this quick personality test and find out what marine animal you are!</div>
-            <button type="button" class="custom-btn">Click to begin</button>
 
+            <router-link :to="{ name: 'personalityTestQns'}">
+                <button type="button" class="custom-btn">Click to begin</button>
+            </router-link>
+            
             <img class="seaweed-left" src="../assets/images/seaweed.png">
             <img class="seaweed-right" src="../assets/images/seaweed.png">
 
@@ -41,18 +44,19 @@ export default {
 
 <style scoped>
 .app {
-    background-color: #8FC1E3;
     font-family: "glacial", sans-serif;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .quizStart {
     text-align: center;
     background-color: #F7F9FB;
-    color: #0B3146;
+    color: #023047;
     margin: auto;
     border-radius: 20px;
     height: 80%;

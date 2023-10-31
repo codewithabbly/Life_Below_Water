@@ -236,6 +236,13 @@ transform-origin: bottom left;
   transition: background 0s;
 }
 
+.gradient-background {
+  background-image: url('./assets/images/homePage_background.png');
+  min-width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat; 
+}
+
 @font-face {
   font-family: "glacial_bold";
   src: url("~@/assets/fonts/GlacialIndifference-Bold.otf") format("opentype");
