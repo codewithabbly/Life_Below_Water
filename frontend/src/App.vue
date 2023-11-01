@@ -110,7 +110,7 @@ export default {
         case "/Latest-News":
           return "transparent";
         case "/Get-Involved":
-          return "transparent";
+          return "#5085A5";
         default:
           return "transparent";
       }
