@@ -42,9 +42,16 @@ const routes = [
     component: () => import("../views/PersonalityTestQns.vue")
   },
   {
-    path: "/Personality-Test/Results",
+    path: "/Personality-Test/Results/:maxAnimal",
     name: "personalityTestResults",
-    component: () => import("../views/PersonalityTestResults.vue")
+    component: () => import("../views/PersonalityTestResults.vue"),
+    props: true
+  },
+  {
+    path: "/Personality-Test/How-to-Protect/:maxAnimal",
+    name: "personalityTestProtect",
+    component: () => import("../views/PersonalityTestProtect.vue"),
+    props: true
   }
 ];
 

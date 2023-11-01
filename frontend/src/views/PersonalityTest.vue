@@ -1,6 +1,6 @@
 <template>
     <div class="app gradient-background">
-        <div class="quizStart">
+        <div class="largeBox">
             <div class="largeHeader">What marine animal are you?</div>
             <div class="medHeader">Take this quick personality test and find out what marine animal you are!</div>
 
@@ -53,7 +53,7 @@ export default {
     padding: 0;
 }
 
-.quizStart {
+.largeBox {
     text-align: center;
     background-color: #F7F9FB;
     color: #023047;

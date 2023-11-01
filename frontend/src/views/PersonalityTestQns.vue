@@ -37,7 +37,7 @@
             <div class="row m-5 submit">
                 <div class="col-md-4"></div>
                 <div class="col-md-4 submit">
-                    <router-link :to="{ name: 'personalityTestResults'}">
+                    <router-link :to="{ name: 'personalityTestResults', params: { maxAnimal: calcResult() } }">
                         <button type="button" class="custom-btn">Submit Test</button>
                     </router-link>
                 </div>
@@ -109,18 +109,9 @@ export default {
         }
     },
     methods: {
-        // isActive(animal, index) {
-        //     return this.buttons[index][animal];
-        // },
         toggleActive(animal, index) {
             console.log(index);
             console.log(animal);
-            // console.log(this.isActive(animal, index));
-            // if (this.isActive(animal, index) === true) {
-            //     this.buttons[index][animal] = false;
-            // } else {
-            //     this.buttons[index][animal] = true;
-            // }
             this.buttons[index][animal] = !this.buttons[index][animal];
             this.computeScore(animal, index);
         },
@@ -148,6 +139,21 @@ export default {
             }
             
             console.log(this.score);
+        },
+        calcResult() {
+            let maxScore = -1;
+            let maxAnimal = null;
+
+            for (const animal in this.score) {
+                if (this.score[animal] > maxScore) {
+                    maxScore = this.score[animal];
+                    maxAnimal = animal;
+                }
+            }
+
+            console.log(maxAnimal);
+
+            return maxAnimal;
         }
     },
     
