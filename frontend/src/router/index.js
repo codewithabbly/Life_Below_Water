@@ -40,6 +40,11 @@ const routes = [
     path: "/Personality-Test/Questions",
     name: "personalityTestQns",
     component: () => import("../views/PersonalityTestQns.vue")
+  },
+  {
+    path: "/Personality-Test/Results",
+    name: "personalityTestResults",
+    component: () => import("../views/PersonalityTestResults.vue")
   }
 ];
 

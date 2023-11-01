@@ -10,29 +10,38 @@
                     <!-- first row of questions -->
                     <div class="row my-1 m-md-4">
                         <div class="col-md-1"></div>
-                        <button class="col-md-4 p-4 my-3 m-md-0 questionBox">
-                            {{qn.options.turtle }}
+                        <button class="col-md-4 p-4 my-3 m-md-0 questionBox" :class="{ active: buttons[index].turtle }" @click="toggleActive('turtle', index)" :disabled="buttons[index].dolphin || buttons[index].otter || buttons[index].penguin">
+                            {{ qn.options.turtle }}
                         </button>
                         <div class="col-md-2"></div>
-                        <button class="col-md-4 p-4 my-3 m-md-0 questionBox">
-                            {{qn.options.dolphin }}
+                        <button class="col-md-4 p-4 my-3 m-md-0 questionBox" :class="{ active: buttons[index].dolphin }" @click="toggleActive('dolphin', index)" :disabled="buttons[index].turtle || buttons[index].otter || buttons[index].penguin">
+                            {{ qn.options.dolphin }}
                         </button>
                         <div class="col-md-1"></div>
                     </div>
                     <!-- second row of questions -->
                     <div class="row my-1 m-md-4">
                         <div class="col-md-1"></div>
-                        <button class="col-md-4 p-4 my-3 m-md-0 questionBox">
-                            {{qn.options.otter}}
+                        <button class="col-md-4 p-4 my-3 m-md-0 questionBox" :class="{ active: buttons[index].otter }" @click="toggleActive('otter', index)" :disabled="buttons[index].turtle || buttons[index].dolphin || buttons[index].penguin">
+                            {{ qn.options.otter}}
                         </button>
                         <div class="col-md-2"></div>
-                        <button class="col-md-4 p-4 my-3 m-md-0 questionBox">
-                            {{qn.options.penguin}}
+                        <button class="col-md-4 p-4 my-3 m-md-0 questionBox" :class="{ active: buttons[index].penguin }" @click="toggleActive('penguin', index)" :disabled="buttons[index].turtle || buttons[index].dolphin || buttons[index].otter">
+                            {{ qn.options.penguin}}
                         </button>
                         <div class="col-md-1"></div>
                     </div>
             
                 </div>
+            </div>
+            <div class="row m-5 submit">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 submit">
+                    <router-link :to="{ name: 'personalityTestResults'}">
+                        <button type="button" class="custom-btn">Submit Test</button>
+                    </router-link>
+                </div>
+                <div class="col-md-4"></div>
             </div>
         </div>
     </div>
@@ -86,9 +95,61 @@ export default {
                                     dolphin: "The sea, once it casts its spell, holds one in its net of wonder forever.",
                                     otter: "Life is better when you’re surfing.",
                                     penguin: "Life’s a journey that’s homeward bound."}}
-            ]
+            ],
+            buttons: [{turtle: false, dolphin: false, otter: false, penguin: false},
+                        {turtle: false, dolphin: false, otter: false, penguin: false},
+                        {turtle: false, dolphin: false, otter: false, penguin: false},
+                        {turtle: false, dolphin: false, otter: false, penguin: false},
+                        {turtle: false, dolphin: false, otter: false, penguin: false},
+                        {turtle: false, dolphin: false, otter: false, penguin: false},
+                        {turtle: false, dolphin: false, otter: false, penguin: false},
+                        {turtle: false, dolphin: false, otter: false, penguin: false},
+                    ],
+            score: {turtle: 0, dolphin: 0, otter: 0, penguin: 0},
         }
-    }
+    },
+    methods: {
+        // isActive(animal, index) {
+        //     return this.buttons[index][animal];
+        // },
+        toggleActive(animal, index) {
+            console.log(index);
+            console.log(animal);
+            // console.log(this.isActive(animal, index));
+            // if (this.isActive(animal, index) === true) {
+            //     this.buttons[index][animal] = false;
+            // } else {
+            //     this.buttons[index][animal] = true;
+            // }
+            this.buttons[index][animal] = !this.buttons[index][animal];
+            this.computeScore(animal, index);
+        },
+        computeScore(animal, index) {
+            if (this.buttons[index][animal]) {
+                if (animal === "turtle") {
+                    this.score.turtle += 1;
+                } else if (animal === "dolphin") {
+                    this.score.dolphin += 1;
+                } else if (animal === "otter") {
+                    this.score.otter += 1;
+                } else if (animal === "penguin") {
+                    this.score.penguin += 1;
+                }
+            } else {
+                if (animal === "turtle") {
+                    this.score.turtle -= 1;
+                } else if (animal === "dolphin") {
+                    this.score.dolphin -= 1;
+                } else if (animal === "otter") {
+                    this.score.otter -= 1;
+                } else if (animal === "penguin") {
+                    this.score.penguin -= 1;
+                }
+            }
+            
+            console.log(this.score);
+        }
+    },
     
 }
 </script>
@@ -126,14 +187,25 @@ export default {
     align-items: center;
 }
 
+@media (max-width: 992px) {
+    .questionBox {
+        font-size: 0.75em;
+    }
+}
+
 .questionBox:hover {
     background-color: #5085A5;
     color: #F7F9FB;
 }
 
-.questionBox:active {
+.active {
     background-color: #5085A5;
     color: #F7F9FB;
+}
+
+.questionBox:disabled {
+    background-color: #d4d3d3;
+    color: #5085A5;
 }
 
 .largeHeader {
@@ -149,4 +221,8 @@ export default {
     background-repeat: repeat;
 }
 
+.submit {
+    display: flex;
+    justify-content: center;
+}
 </style>
