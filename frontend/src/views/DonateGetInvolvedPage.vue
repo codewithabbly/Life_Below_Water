@@ -2,12 +2,12 @@
   <div>
     <h1 class="text-center" style="margin-top: 150px">Donate!</h1>
   </div>
-  <div id="app" class="container">
+  <div class="container">
     <div class="row">
       <div class="col-md-12">
         <!-- Display the card count in a separate row -->
         <div class="row">
-          <div class="col-md-4">
+          <div>
             <p>{{ filteredItems.length }} RESULT(S) FOUND</p>
           </div>
         </div>
@@ -62,30 +62,38 @@
       </div>
       <div class="col-md-9">
         <div class="row">
-          <div
-            class="col-md-4"
-            v-for="(item, index) in filteredItems"
-            :key="index"
-          >
-            <div class="card" style="height: 555px">
-              <img
-                :src="item.image"
-                class="card-img-top"
-                alt="Item Image"
-                style="max-height: 150px; object-fit: cover"
-              />
-              <div class="card-body">
-                <div class="h-75">
-                  <h5 class="card-title">{{ item.name }}</h5>
-                  <p class="card-text">{{ item.description }}</p>
+          <div v-for="(item, index) in filteredItems" :key="index">
+            <div class="card container" style="height: auto">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="card-body oppTitle">{{ item.name }}</div>
+                  <div class="card-body overflow-hide">
+                    <p class="card-text" v-if="!item.expanded">
+                      {{ shortenDescription(item) }}
+                    </p>
+                    <p class="card-text" v-else>{{ item.description }}</p>
+                    <div style="text-align: right">
+                      <button class="read" @click="toggleExpand(item)">
+                        {{ item.expanded ? "Read Less" : "Read More" }}
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div class="text-center mt-5">
-                  <a
-                    :href="item.donateLink"
-                    target="_blank"
-                    class="btn btn-primary"
-                    >Donate</a
-                  >
+                <div class="col-md-4">
+                  <img
+                    :src="item.image"
+                    class="card-img-top"
+                    alt="Item Image"
+                    style="max-height: 200px; object-fit: cover"
+                  />
+                  <div class="text-center mt-5 mb-1">
+                    <a
+                      :href="item.donateLink"
+                      target="_blank"
+                      class="btn btn-primary"
+                      >Donate</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
@@ -153,15 +161,7 @@ export default {
             var image = obj.image.imagelink.find(
               (link) => link.size === "large"
             ).url;
-            var description;
-            if (obj.activities.indexOf(".") !== -1) {
-              description = obj.activities.slice(
-                0,
-                obj.activities.indexOf(".")
-              );
-            } else {
-              description = obj.activities;
-            }
+            var description = obj.activities;
 
             var country = obj.contactCountry;
             var category = [];
@@ -181,14 +181,28 @@ export default {
               country: country,
               category: category,
               donateLink: donateLink,
+              expanded: false,
             };
 
             this.items.push(newObj);
+            console.log(this.items);
           }
         })
         .catch((error) => {
           console.log(error.message);
         });
+    },
+    toggleExpand(item) {
+      console.log(item);
+      item.expanded = !item.expanded;
+    },
+
+    shortenDescription(item) {
+      if (item.description.length > 300) {
+        // Change the character limit as needed
+        return item.description.slice(0, 300) + "...";
+      }
+      return item.description;
     },
   },
   created() {
@@ -198,4 +212,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.read {
+  text-decoration: underline;
+  color: black;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+.oppTitle {
+  color: #023047;
+  font-weight: 700;
+  font-size: 1.6em;
+}
+</style>
