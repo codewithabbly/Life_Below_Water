@@ -1,26 +1,26 @@
 <template>
-  <div id="snow" style="background-color: #8fc1e3;" >
+  <LoadingScreen v-if="isLoading"></LoadingScreen>
+  <div v-else id="snow" style="background-color: #8fc1e3;" >
 
-    
-    <div class="latest-news-header">
+    <div class="latest-news-header" >
         <div class="row">
           <div class="col-9">
             <h1>Latest News</h1>
             <h4>Welcome to the latest news page. Here, you can find the most recent updates and articles.</h4>
           </div>
           
+          <!-- search bar -->
           <div class="col-3">
             
             <form class="form-inline">
-              <div class="input-group " style="border-radius: var(--bs-border-radius);">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search for keyword in title" aria-label="Search">
+              <div class="input-group " style="border-radius: 50%;">
+                <input id="titleSearch" class="form-control mr-sm-2" @keyup="getSearchResultAfterEnter" type="search" placeholder="Search for keyword in title" aria-label="Search">
               
-                <button class="btn my-2 my-sm-0 custom-btn" style="margin-left:10px; border-radius: var(--bs-border-radius);" type="submit">Search</button>
+                <button id="searchBtn" class="btn my-2 my-sm-0 custom-btn" @click="getSearchResult" style="margin-left:10px; border-radius: var(--bs-border-radius); background-color: #f3ebdf;" type="submit">Search</button>
               
               </div>
             </form>
-            
-            
+
           </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
       <div class="row">
 
         <!-- Bootstrap card -->
-        <div class="card ms-5 mb-5 me-5 p-0" v-for="article in articles" :key="article.title" style="border: 1px solid #5085a5; background-color: #f3ebdf;">
+        <div class="card ms-5 mb-5 me-5 p-0" v-for="article in filteredArticles" :key="article.title" style="border: 1px solid #5085a5; background-color: #f3ebdf; ">
           <div class="row g-0 " >
             <div class="col-md-3">
               <img v-bind:src="article.urlToImage" class="d-block w-100" alt="...">
@@ -86,20 +86,28 @@ import axios from 'axios'; //importing the axios a HTTP library to connects the 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
 import 'jquery/dist/jquery.min.js';
+import LoadingScreen from "../components/LoadingScreen.vue";
 // import * as d3 from 'd3';
 
 export default {
   name: 'LatestNewsPage',
-
+  components: { LoadingScreen },
   data() {
     return {
       
       api_key:'131bc06ba3ec4c71b80d985828b87d0b',
       articles: [],
-      errors: [] 
+      searchResults: [],
+      errors: [],
+      hasActivatedSearch: false,
+      isLoading: true
     }
   },
-
+  mounted() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
+  },
   created () {
     // axios.get('https://newsapi.org/v2/everything?q=water&apiKey='+this.api_key)
     axios.get('https://newsapi.org/v2/everything?q=environmental&apiKey='+this.api_key)
@@ -134,8 +142,47 @@ export default {
       //   console.error('Error:', error.message);
       // }
     })
-    
+  },
+  methods: {
+    getSearchResultAfterEnter() {
+      console.log(event) // event is a global object that points to the event that just occurs, not recommended to use this
+      
+      if (event.key == 'Enter') {
+        this.getSearchResult()
+        console.log("user hit enter, now rendering getSearchResult() function......")
+      }
+    },
+
+    getSearchResult() {
+      for (var i = 0; i < this.articles.length; i++) {
+        // console.log(articles[i]);
+        
+        let title = this.articles[i].title;
+        let userInput = document.getElementById("titleSearch").ariaValueMax;
+        if (title.includes(userInput)) {
+          this.searchResults.push(this.articles[i])
+        }
+      }
+      this.hasActivatedSearch = true
+
+    }
+  },
+  computed: {
+    filteredArticles() {
+      if (!this.hasActivatedSearch) {
+          return this.articles;
+      } else {
+          if (this.searchResults.length > 0) {
+            return this.searchResults;
+          } else {
+            // return a (JSON object / message) to say that there's no related search result
+            return "";
+          }
+      }
+    }   
   }
+
+  // make the search value all toLowerCase()
 }
 
 
@@ -143,6 +190,18 @@ export default {
 
 <style>
   /* Add your CSS styles here */
+
+  /** customize bootstrap card border-radius */
+  :root {
+  --bs-card-border-radius: 15px;
+  }
+
+  .d-block {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+  /** end of boostrap card border-radius */
+
   .row {
     padding-right: 100px;
   }
@@ -170,7 +229,7 @@ export default {
     position: sticky; /* why is it not sticky?? */
   }
 
-  /** styling for loading waves start here */
+/** styling for loading waves start here */
   /* .game-wave {
   display: flex;
   flex-direction: column;
