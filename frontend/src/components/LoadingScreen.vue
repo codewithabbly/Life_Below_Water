@@ -1,9 +1,9 @@
 <template>
   <div class="container-fluid" id="loading">
-    <div class="row d-flex align-items-center justify-content-center">
+    <div class="row d-flex p-0 align-items-center justify-content-center">
       <h1 class="d-flex align-items-center justify-content-center">Stay afloat, we're loading...</h1>
     </div>
-    <div class="row d-flex align-items-center justify-content-center">
+    <div class="row d-flex p-0 align-items-center justify-content-center">
       <img
         class="img"
         src="../assets/images/jellyfishDancing.gif"
@@ -51,7 +51,8 @@ export default {
 #loading div h1 {
   padding-top: 150px;
   padding-bottom: 10px;
-  padding-left: 50px;
+  margin-left: auto;
+  margin-right: auto;
 
   position: relative;
   z-index: 1;
@@ -61,14 +62,14 @@ export default {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 20%;
+    width: 30%;
 }
 
 .seaweed-right {
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 20%;
+    width: 30%;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }
