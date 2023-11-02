@@ -1,8 +1,9 @@
 <template>
     <div class="app gradient-background">
+        <!-- TODO: text inside box is not vertically centered if you change the window size -->
         <div class="largeBox">
             <div class="largeHeader">What marine animal are you?</div>
-            <div class="medHeader">Take this quick personality test and find out what marine animal you are!</div>
+            <div class="medHeader">Take this quick personality test to find out what marine animal you are!</div>
 
             <router-link :to="{ name: 'personalityTestQns'}">
                 <button type="button" class="custom-btn">Click to begin</button>
@@ -14,7 +15,7 @@
             
             <section class="sticky">
                 <div class="bubbles">
-                    <div class="bubble"></div>
+                <div class="bubble"></div>
                 <div class="bubble"></div>
                 <div class="bubble"></div>
                 <div class="bubble"></div>
@@ -74,6 +75,7 @@ export default {
     margin: auto;
     font-size: 2.5vw;
     width: 80%;
+    color: black;
 }
 
 button {
@@ -102,7 +104,7 @@ button {
     height: 100vh;
     background-size: cover;
     background-repeat: repeat; 
-  }
+}
 
 /* start of CSS for bubble animation */
 .bubbles{
