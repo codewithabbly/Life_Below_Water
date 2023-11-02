@@ -1,7 +1,7 @@
 <template>
     <div class="app gradient-background">
         <div class="resultsBox mt-5" id="results">
-            <div class="largeHeader">You are a <span class="animalName">{{ getAnimalName(maxAnimal) }}</span></div>
+            <div class="largeHeader">You are a <span class="animalName">{{ getAnimalName(maxAnimal) }}</span>!</div>
             <img class="animalImage move" :src="getAnimalImage(maxAnimal)">
             <div class="shortDesc">{{ getAnimalShortDesc(maxAnimal) }}</div>
 
@@ -160,16 +160,13 @@ export default {
 }
 
 .move {
-    animation: MoveUpDown 5s linear infinite;}
-  
-  @keyframes MoveUpDown {
-    0%, 100% {
-      bottom: 0;
-    }
-    50% {
-      bottom: 30px;
-    }
-  }
+    animation: rotate 4s infinite;
+}
+
+@keyframes rotate {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(15deg); }
+}
 
 /* start of CSS for bubble animation */
 .bubbles{

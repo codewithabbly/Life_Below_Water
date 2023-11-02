@@ -1,7 +1,7 @@
 <template>
     <div class="app gradient-background">
         <div class="container m-5">
-            <div class="row m-5" v-for="(qn, index) in testQuestions" :key="index">
+            <div class="row m-5" v-for="(qn, index) in testQuestions" :key="index" :id="index">
                 <div class="overallBox container text-center">
                     <div class="row m-4">
                         <div class="largeHeader">{{ qn.question }}</div>
@@ -114,6 +114,12 @@ export default {
             console.log(animal);
             this.buttons[index][animal] = !this.buttons[index][animal];
             this.computeScore(animal, index);
+
+            if (index < this.testQuestions.length-1) {
+                var nextContent = document.getElementById(index + 1);
+                nextContent.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+            
         },
         computeScore(animal, index) {
             if (this.buttons[index][animal]) {
