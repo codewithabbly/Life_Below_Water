@@ -31,7 +31,7 @@ def get_water_data():
                         "code": 200,
                         "message": "Retrieved all data",
                         "data": {
-                              "products": data_list
+                              "data_list": data_list
                   }
                   }
             ), 200
