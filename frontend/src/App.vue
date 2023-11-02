@@ -66,16 +66,6 @@
               </a>
             </router-link>
 
-            <!-- personality test page -->
-            <router-link :to="{ name: 'personalityTest' }">
-              <a
-                href="./views/PersonalityTest.vue"
-                class="navbar-brand border-bottom-none hover-underline-animation d-flex d-inline align-items-center"
-              >
-                Personality Test
-              </a>
-            </router-link>
-
           </div>
         </div>
       </div>
@@ -222,13 +212,13 @@ transform-origin: bottom left;
 
 .custom-btn:before {
   top: 100%;
-  right: 100%;
+  left: 100%;
   transition: all .7s;
 }
 
 .custom-btn:hover:before {
   top: -30px;
-  right: -30px;
+  left: -30px;
 }
 
 .custom-btn:active:before {
