@@ -22,7 +22,7 @@
                   </div>
 
                   <!-- dolphin animation -->
-                  <!-- TODO: make dolphin size responsive, make dolphin appear onload (delay typewriter), might need to replace the whole gif tbh -->
+                  <!-- TODO: make dolphin size responsive, dolphin feels like stop motion -->
                   <div class="dolphin-section">
                         <img id="dolphinGIF" style="display: none" src="../assets/images/homepage_dolphinAnimation.gif">
                   </div>
@@ -55,7 +55,6 @@
 
                   <h1 style="color: #0B3146"><b>Our Goals</b></h1>
 
-                  <!-- TODO: carousel's image is stuck on the last image -->
                   <div id="carouselExampleIndicators" class="carousel slide center-items" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -66,25 +65,25 @@
                         <div class="carousel-inner">
                               <div class="carousel-item active justify-content-center align-items-center">
                                     <img src="../assets/images/homePage_fishes.jpeg" class="w-75" alt="Slide 1 Image">
-                                    <div class="carousel-caption">
-                                          <h4 class="text-center">Raise Awareness About Ocean Sustainability</h4>
-                                          <p class="text-center p-4">Inform and educate the public about the detrimental effects of marine pollution on ocean ecosystems. We aim to inspire individuals to take a more active role in preserving our oceans.</p>
+                                    <div class="carousel-caption carousel-center">
+                                          <h3 class="carousel-medium text-center">Raise Awareness About Ocean Sustainability</h3>
+                                          <p class="carousel-small text-center p-4">Inform and educate the public about the detrimental effects of marine pollution on ocean ecosystems. We aim to inspire individuals to take a more active role in preserving our oceans.</p>
                                     </div>
                               </div>
                         
                               <div class="carousel-item justify-content-center align-items-center">
                                     <img src="../assets/images/homePage_turtle.jpg" class="w-75" alt="Slide 2 Image">
-                                    <div class="carousel-caption">
-                                          <h4 class="text-center">Provide a Platform for Activists to Organize Cleanup Projects for Rivers and Oceans</h4>
-                                          <p class="text-center p-4">Empower activists and concerned citizens to initiate and coordinate cleanup efforts in their local communities, by serving as a hub for organizing events, sharing resources, and connecting individuals and groups dedicated to safeguarding the health of our rivers and oceans.</p>
+                                    <div class="carousel-caption carousel-center">
+                                          <h3 class="carousel-medium text-center">Provide a Platform for Activists to Organize Cleanup Projects for Rivers and Oceans</h3>
+                                          <p class="carousel-small text-center p-4">Empower activists and concerned citizens to initiate and coordinate cleanup efforts in their local communities, by serving as a hub for organizing events, sharing resources, and connecting individuals and groups dedicated to safeguarding the health of our rivers and oceans.</p>
                                     </div>
                               </div>
                   
                               <div class="carousel-item justify-content-center align-items-center">
                                     <img src="../assets/images/homePage_dolphins.jpg" class="w-75" alt="Slide 3 Image">
-                                    <div class="carousel-caption">
-                                          <h4 class="text-center">Establish a Platform for Donations Supporting Scientific Knowledge, Research, and Technology for Ocean Health</h4>
-                                          <p class="text-center p-4">Facilitate contributions to initiatives aimed at advancing scientific research and technological innovation play, in hopes of driving financial support towards research projects, conservation efforts, and technologies that promote sustainable ocean management and rehabilitation.</p>
+                                    <div class="carousel-caption carousel-center">
+                                          <h3 class="carousel-medium text-center">Establish a Platform for Donations Supporting Scientific Knowledge, Research, and Technology for Ocean Health</h3>
+                                          <p class="carousel-small text-center p-4">Facilitate contributions to initiatives aimed at advancing scientific research and technological innovation play, in hopes of driving financial support towards research projects, conservation efforts, and technologies that promote sustainable ocean management and rehabilitation.</p>
                                     </div>
                               </div>
                         </div>
@@ -105,7 +104,7 @@
 
                   <div class="row">
                         <div class="col-md-3">
-                              <img src="../assets/images/ourLogo.png" class="img-fluid" width="50px">
+                              <img src="../assets/images/ourLogo.png" class="img-fluid" style="height:100px">
                         </div>
 
                         <div class="col-md-3">
@@ -158,29 +157,28 @@ function reveal() {
 }
 window.addEventListener("scroll", reveal);
 
-// TODO: fix this function
+// TODO: dolphin does not appear when screen loads
 document.addEventListener("DOMContentLoaded", function() {
-      function showDolphin(){
-            let dolphinGIF = document.getElementById("dolphinGIF");
-            dolphinGIF.style.display = "block";
-            setTimeout(() => {
-                  dolphinGIF.style.display = "none";
-            }, 2500);
-
+      let dolphinGIF = document.getElementById("dolphinGIF");
+      function showDolphin() {
+            if (dolphinGIF) {  
+                  if (dolphinGIF.style.display === "none") {
+                        dolphinGIF.style.display = "block";
+                        setTimeout(() => {
+                        dolphinGIF.style.display = "none";
+                        }, 2500);
+                  } else {
+                        dolphinGIF.style.display = "none";
+                  }
+            }
       }
       showDolphin();
       document.addEventListener("click", showDolphin);
-      // if (!dolphinGIF.playing) {
-      //       dolphinGIF.play();
-      //       setTimeout(() => {
-      //             dolphinGIF.style.display = "none";
-      //       }, 2500);
-      // } 
 });
 
 document.addEventListener("click", function() {
       let dolphinGIF = document.getElementById("dolphinGIF");
-      if (dolphinGIF) {  // Check if the element exists
+      if (dolphinGIF) {  
             if (dolphinGIF.style.display === "none") {
                   dolphinGIF.style.display = "block";
                   setTimeout(() => {
@@ -241,6 +239,14 @@ p {
 
 .vertical-center {
       display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+}
+
+.carousel-center {
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100%;
@@ -321,30 +327,34 @@ p {
       margin-top: 30px;
 }
 
+.carousel-item img {
+      opacity: 50%;
+}
+
+.carousel-medium {
+      font-size: 2.5vw;
+}
+
+.carousel-small {
+      font-size: 1.5vw;
+}
+
 footer {
-      background-color: white;
+      background-color: #8FC1E3;
       min-width: 100vw;
       padding: 40px;
+      margin-top: 300px;
 }
 
 footer a {
-color: #999;
-text-decoration:none;
+      color: #ffffff;
+      text-decoration:none;
 }
 
 footer a:hover, footer a:focus {
-color: #aaa;
-text-decoration:none;
-border-bottom:1px dotted #999;
-}
-
-footer .form-control {
-      background-color: #1f2022;
-      box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
-      border: none;
-      resize: none;
-      color: #d1d2d2;
-      padding: 0.7em 1em;
+      color: #ffffff;
+      text-decoration:none;
+      border-bottom:1px dotted #999;
 }
 
 /* Animations */
@@ -484,4 +494,6 @@ footer .form-control {
             opacity: 1;
       }
 }
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
 </style>
