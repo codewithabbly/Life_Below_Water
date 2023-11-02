@@ -3,70 +3,52 @@
   <div v-else id="snow" style="background-color: #8fc1e3;" >
 
     <div class="latest-news-header" >
-        <div class="row">
-          <div class="col-9">
+      <form class="form-inline">
+        <div class="row" style="padding-right: 50px;">
+          <div class="col float-start">
             <h1>Latest News</h1>
+          </div>
+
+          
+
+          <!-- search bar -->
+          <div class="col float-end">
+            <div class="float-end">
+              <input id="titleSearch" class="form-control d-inline " style="width:219px; height: 44.19px;" @keyup="getSearchResultAfterEnter" type="search" placeholder="Search for keyword in title" aria-label="Search">
+           
+              <button id="searchBtn" class="btn my-2 my-sm-0 custom-btn d-inline " @click="getSearchResult" style="margin-left:10px; border-radius: var(--bs-border-radius); background-color: #f3ebdf;" type="submit">Search</button>
+         
+            </div>
+          </div>
+          <!-- <div class="col-1">
+            <button id="searchBtn" class="btn my-2 my-sm-0 custom-btn" @click="getSearchResult" style="margin-left:10px; border-radius: var(--bs-border-radius); background-color: #f3ebdf;" type="submit">Search</button>
+          </div> -->
+          
+        </div>
+      
+        <div class="row">
+          <div class="col-12">
             <h4>Welcome to the latest news page. Here, you can find the most recent updates and articles.</h4>
           </div>
-          
-          <!-- search bar -->
-          <div class="col-3">
-            
-            <form class="form-inline">
-              <div class="input-group " style="border-radius: 50%;">
-                <input id="titleSearch" class="form-control mr-sm-2" @keyup="getSearchResultAfterEnter" type="search" placeholder="Search for keyword in title" aria-label="Search">
-              
-                <button id="searchBtn" class="btn my-2 my-sm-0 custom-btn" @click="getSearchResult" style="margin-left:10px; border-radius: var(--bs-border-radius); background-color: #f3ebdf;" type="submit">Search</button>
-              
-              </div>
-            </form>
-
-          </div>
         </div>
+      </form>
     </div>
     
     
     <div class="container-fluid">
       <button id="back-to-top" title="Back to Top">Back to Top ↑</button>
-<!--       
-      <div class="game-wave ms-5" data-type="wave">
-        <div class="controls">
-          <h1 class="tip">LOADING...</h1>
-        </div>
-        <div class="checkboxes"><input type="checkbox" id="checkbox-1" disabled="">
-          <input type="checkbox" id="checkbox-2" disabled="">
-          <input type="checkbox" id="checkbox-3" disabled="">
-          <input type="checkbox" id="checkbox-4" disabled="">
-          <input type="checkbox" id="checkbox-5" disabled="">
-          <input type="checkbox" id="checkbox-6" disabled="">
-          <input type="checkbox" id="checkbox-7" disabled="">
-          <input type="checkbox" id="checkbox-8" disabled="">
-          <input type="checkbox" id="checkbox-9" disabled="">
-          <input type="checkbox" id="checkbox-10" disabled="">
-          <input type="checkbox" id="checkbox-11" disabled="">
-          <input type="checkbox" id="checkbox-12" disabled="">
-          <input type="checkbox" id="checkbox-13" disabled="">
-          <input type="checkbox" id="checkbox-14" disabled="">
-          <input type="checkbox" id="checkbox-15" disabled="">
-          <input type="checkbox" id="checkbox-16" disabled="">
-          <input type="checkbox" id="checkbox-17" disabled="">
-          <input type="checkbox" id="checkbox-18" disabled="">
-          <input type="checkbox" id="checkbox-19" disabled="">
-          <input type="checkbox" id="checkbox-20" disabled="">
-        </div>
-      </div> -->
       
       <div class="row">
 
         <!-- Bootstrap card -->
         <div class="card ms-5 mb-5 me-5 p-0" v-for="article in filteredArticles" :key="article.title" style="border: 1px solid #5085a5; background-color: #f3ebdf; ">
-          <div class="row g-0 " >
-            <div class="col-md-3">
+          <div class="row g-0 p-0" >
+            <div class="col-12 col-sm-6 col-lg-5">
               <img v-bind:src="article.urlToImage" class="d-block w-100" alt="...">
             </div>
-            <div class="col-md-9">
+            <div class="col-12 col-sm-6 col-lg-7">
               <div class="card-body">
-                <h2 class="card-title">{{ article.title }}</h2>
+                <h3 class="card-title">{{ article.title }}</h3>
                 <p class="card-text">{{ article.description }}</p>
                 <a class="btn custom-btn" v-bind:href="article.url" role="button">READ NEWS</a>
                 <!--style="background-color: #023047; color: #f7f9fb"-->
@@ -106,44 +88,48 @@ export default {
   mounted() {
     setTimeout(() => {
       this.isLoading = false;
-    }, 2000);
+    }, 3000);
   },
   created () {
-    // axios.get('https://newsapi.org/v2/everything?q=water&apiKey='+this.api_key)
-    axios.get('https://newsapi.org/v2/everything?q=environmental&apiKey='+this.api_key)
-    
-    .then(response => {
-      this.articles = response.data.articles
-      console.log('data:')
-      console.log(response.data.articles)
-    })
-    // .catch(e => {
-    //   this.errors.push(e)
-    // })
-    .catch(error => {
-      // Handle errors in this block
-      if (error.response) {
-        // The request was made and the server responded with a status code
-        console.error('Status Code:', error.response.status);
-        console.error('Response Data:', error.response.data);
-      } else if (error.request) {
-        // The request was made, but no response was received
-        console.error('No response received:', error.request);
-      } else {
-        // Something else went wrong
-        console.error('Error:', error.message);
-      }
-      // // Check if the error is due to a network issue (ERR_NAME_NOT_RESOLVED)
-      // if (error.message.includes('ERR_NAME_NOT_RESOLVED')) {
-      //   console.error('Network error: Failed to resolve domain name');
-      //   // Handle the specific network error here
-      // } else {
-      //   // Handle other types of errors
-      //   console.error('Error:', error.message);
-      // }
-    })
+    this.getArticles();
   },
   methods: {
+    getArticles() {
+      // axios.get('https://newsapi.org/v2/everything?q=water&apiKey='+this.api_key)
+      axios.get('https://newsapi.org/v2/everything?q=environmental&apiKey='+this.api_key)
+          
+      .then(response => {
+        this.articles = response.data.articles
+        console.log('data:')
+        console.log(response.data.articles)
+      })
+      // .catch(e => {
+      //   this.errors.push(e)
+      // })
+      .catch(error => {
+        // Handle errors in this block
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          console.error('Status Code:', error.response.status);
+          console.error('Response Data:', error.response.data);
+        } else if (error.request) {
+          // The request was made, but no response was received
+          console.error('No response received:', error.request);
+        } else {
+          // Something else went wrong
+          console.error('Error:', error.message);
+        }
+        // // Check if the error is due to a network issue (ERR_NAME_NOT_RESOLVED)
+        // if (error.message.includes('ERR_NAME_NOT_RESOLVED')) {
+        //   console.error('Network error: Failed to resolve domain name');
+        //   // Handle the specific network error here
+        // } else {
+        //   // Handle other types of errors
+        //   console.error('Error:', error.message);
+        // }
+      })
+    }, 
+
     getSearchResultAfterEnter() {
       console.log(event) // event is a global object that points to the event that just occurs, not recommended to use this
       
@@ -154,6 +140,7 @@ export default {
     },
 
     getSearchResult() {
+      this.hasActivatedSearch = true
       for (var i = 0; i < this.articles.length; i++) {
         // console.log(articles[i]);
         
@@ -163,7 +150,7 @@ export default {
           this.searchResults.push(this.articles[i])
         }
       }
-      this.hasActivatedSearch = true
+      
 
     }
   },
@@ -192,14 +179,14 @@ export default {
   /* Add your CSS styles here */
 
   /** customize bootstrap card border-radius */
-  :root {
+  /* :root {
   --bs-card-border-radius: 15px;
   }
 
   .d-block {
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-  }
+  } */
   /** end of boostrap card border-radius */
 
   .row {
@@ -228,43 +215,6 @@ export default {
     
     position: sticky; /* why is it not sticky?? */
   }
-
-/** styling for loading waves start here */
-  /* .game-wave {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.checkboxes {
-  display: flex;
-  animation: wave 2s infinite linear;
-  transform-origin: center;
-  margin-top: 100px;
-}
-
-.wave-checkbox {
-  animation: checkbox-wave 2s infinite linear alternate;
-}
-
-@keyframes wave {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-100px); 
-  }
-}
-
-@keyframes checkbox-wave {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-100px); 
-} */
-/** styling for loading waves end here */
-
 
 /** styling for background effects start here */
   /* #background {
