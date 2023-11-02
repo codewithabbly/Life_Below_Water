@@ -1,6 +1,9 @@
 import Aus from "../assets/images/cleanUpAustralia.jpeg";
-import Ocean from "../assets/images/ocean.jpg";
-import Man from "../assets/images/sevencleanseas.jpeg";
+import green from "../assets/images/greenNudge.jpeg";
+import reef from "../assets/images/reefx.png";
+import fish from "../assets/images/fishx.png";
+import sea from "../assets/images/sevencleanseas.jpeg";
+import Aus2 from "../assets/images/cleanUpAustralia2.jpeg";
 
 const volunteeringOpp = [
   {
@@ -13,7 +16,7 @@ const volunteeringOpp = [
     category: ["First-Timers", "Family", "Organisations"],
     country: "Singapore",
     volunteerLink: "https://www.greennudge.sg/volunteer",
-    dataImage: Man,
+    dataImage: green,
   },
   {
     name: "ReefX Expedition",
@@ -26,7 +29,7 @@ const volunteeringOpp = [
     country: "Singapore",
     volunteerLink:
       "https://www.marinestewards.org/product-page/reefx-survey-dive",
-    dataImage: Aus,
+    dataImage: reef,
   },
   {
     name: "FishX",
@@ -38,7 +41,7 @@ const volunteeringOpp = [
     category: ["First-Timers", "Family", "Students", "Fishing Enthusiasts"],
     country: "Singapore",
     volunteerLink: "https://www.marinestewards.org/fishxbedok",
-    dataImage: Ocean,
+    dataImage: fish,
   },
   {
     name: "Beach Cleanup Batam Indonesia",
@@ -56,7 +59,7 @@ const volunteeringOpp = [
     category: ["First-Timers", "Family", "Organisations"],
     country: "Indonesia",
     volunteerLink: "https://www.sevencleanseas.com/projects/bintan",
-    dataImage: Man,
+    dataImage: sea,
   },
   {
     name: "Marian 4753 Pioneer River Clean Up",
@@ -84,7 +87,7 @@ const volunteeringOpp = [
     country: "Australia",
     volunteerLink:
       "https://register.cleanup.org.au/fundraisers/steveshedden/lake-burrumbeet",
-    dataImage: Aus,
+    dataImage: Aus2,
   },
 ];
 

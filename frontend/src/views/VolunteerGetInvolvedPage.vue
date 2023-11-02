@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div>
-      <h1 class="text-center" style="margin-top: 150px">Volunteer!</h1>
-    </div>
+  <div class="gradient-background">
     <div class="container">
+      <div>
+        <h1 class="text-center latest-news-header">Volunteer!</h1>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <!-- Display the card count in a separate row -->
@@ -94,16 +94,16 @@
                       <img
                         :src="item.dataImage"
                         class="card-img-top"
-                        :alt="Image"
+                        :alt="item.dataImage"
                         style="max-height: 200px; object-fit: cover"
                       />
                     </div>
 
                     <!-- information header -->
-                    <div class="infoHeader">Volunteering Details:</div>
+                    <!-- <div class="infoHeader">Volunteering Details:</div> -->
 
                     <!-- date -->
-                    <div class="information">
+                    <!-- <div class="information">
                       <img
                         src="../assets/images/dateIcon.png"
                         alt=""
@@ -112,9 +112,9 @@
                       <div style="padding: 0; font-size: 1rem">
                         {{ item.date }}
                       </div>
-                    </div>
+                    </div> -->
                     <!-- time -->
-                    <div class="information">
+                    <!-- <div class="information">
                       <img
                         src="../assets/images/timeIcon.png"
                         alt=""
@@ -123,9 +123,9 @@
                       <div style="padding: 0; font-size: 1rem">
                         {{ item.time }}
                       </div>
-                    </div>
+                    </div> -->
                     <!-- location -->
-                    <div class="information">
+                    <!-- <div class="information">
                       <img
                         src="../assets/images/locationIcon.png"
                         alt="Location: "
@@ -134,7 +134,7 @@
                       <div style="padding: 0; font-size: 1rem">
                         {{ item.location }}
                       </div>
-                    </div>
+                    </div> -->
                     <!-- information header -->
                     <div class="infoHeader">Profile Categories:</div>
                     <!-- category -->
@@ -257,8 +257,11 @@ export default {
   flex-direction: row;
   font-weight: 350;
   margin: 10px;
+  margin-top: 0;
 }
 .infoHeader {
+  padding-top: 10px;
+  margin-bottom: 0;
   font-weight: 500;
   font-size: 1rem;
   color: #023047;
@@ -271,10 +274,15 @@ export default {
 .space {
   margin-bottom: 20px;
 }
-/* .gradient-background {
+.gradient-background {
   background-image: url("../assets/images/homePage_background.png");
   min-width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
-} */
+}
+.latest-news-header {
+  padding-top: 150px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+}
 </style>

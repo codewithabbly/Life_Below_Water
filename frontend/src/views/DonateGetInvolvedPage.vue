@@ -1,10 +1,10 @@
 <template>
   <LoadingScreen v-if="isLoading"></LoadingScreen>
-  <div v-else>
-    <div>
-      <h1 class="text-center" style="margin-top: 150px">Donate!</h1>
-    </div>
+  <div class="gradient-background" v-else>
     <div class="container">
+      <div>
+        <h1 class="text-center latest-news-header">Donate!</h1>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <!-- Display the card count in a separate row -->
@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3 whenError">
+        <div class="col-md-3">
           <!-- START filter  -->
           <p class="d-md-none">
             <button
@@ -236,6 +236,7 @@ export default {
     },
     showErrorMessage() {
       document.getElementById("error-message").style.display = "block";
+      document.getElementById("whenErrorDisappear").style.display = "none";
     },
     shortenDescription(item) {
       if (item.description.length > 300) {
@@ -260,6 +261,12 @@ export default {
 </script>
 
 <style>
+.gradient-background {
+  background-image: url("../assets/images/homePage_background.png");
+  min-width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .amount {
   font-size: 1.5rem;
 }
@@ -286,7 +293,9 @@ export default {
 .space {
   margin-bottom: 20px;
 }
-.whenError {
-  background-color: green;
+.latest-news-header {
+  padding-top: 150px;
+  padding-bottom: 50px;
+  padding-left: 50px;
 }
 </style>

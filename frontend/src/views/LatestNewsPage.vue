@@ -97,6 +97,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
 import "jquery/dist/jquery.min.js";
 // import * as d3 from 'd3';
+import LoadingScreen from "@/components/LoadingScreen.vue";
 
 export default {
   name: "LatestNewsPage",
