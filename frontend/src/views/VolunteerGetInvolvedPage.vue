@@ -1,102 +1,153 @@
 <template>
   <div>
-    <h1 class="text-center" style="margin-top: 150px">Volunteer!</h1>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <!-- Display the card count in a separate row -->
-        <div class="row">
-          <div>
-            <p>{{ filteredItems.length }} RESULT(S) FOUND</p>
-          </div>
-        </div>
-      </div>
+    <div>
+      <h1 class="text-center" style="margin-top: 150px">Volunteer!</h1>
     </div>
-    <div class="row">
-      <div class="col-md-3">
-        <!-- START filter  -->
-        <p class="d-md-none">
-          <button
-            class="btn btn-light rounded-pill"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseFilter"
-          >
-            <img
-              src="../assets/images/filterIcon.png"
-              style="width: 15px"
-              alt="Filter"
-            />
-            filter
-          </button>
-        </p>
-        <div class="collapse d-md-block" id="collapseFilter">
-          <div class="card card-body">
-            <h4>Filter by</h4>
-            <h5>Location</h5>
-            <div v-for="country in uniqueCountries" :key="country">
-              <label>
-                <input
-                  type="checkbox"
-                  v-model="selectedCountries"
-                  :value="country"
-                />
-                {{ country }}
-              </label>
-            </div>
-            <h5>Categories</h5>
-            <div v-for="category in uniqueCategories" :key="category">
-              <label>
-                <input
-                  type="checkbox"
-                  v-model="selectedCategories"
-                  :value="category"
-                />
-                {{ category }}
-              </label>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Display the card count in a separate row -->
+          <div class="row">
+            <div>
+              <p>{{ filteredItems.length }} RESULT(S) FOUND</p>
             </div>
           </div>
         </div>
-        <!-- END filter -->
       </div>
-      <div class="col-md-9">
-        <div class="row">
-          <div v-for="(item, index) in filteredItems" :key="index">
-            <div class="card container" style="height: auto">
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="card-body oppTitle">{{ item.name }}</div>
-                  <div class="card-body overflow-hide">
-                    <p class="card-text" v-if="!item.expanded">
-                      {{ shortenDescription(item) }}
-                    </p>
-                    <p class="card-text" v-else>{{ item.description }}</p>
-                    <!-- start of read more button -->
-                    <div v-if="shouldShowButton(item)">
-                      <div style="text-align: right">
-                        <button class="read" @click="toggleExpand(item)">
-                          {{ item.expanded ? "Read Less" : "Read More" }}
-                        </button>
+      <div class="row">
+        <div class="col-md-3">
+          <!-- START filter  -->
+          <p class="d-md-none">
+            <button
+              class="btn btn-light rounded-pill"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseFilter"
+            >
+              <img
+                src="../assets/images/filterIcon.png"
+                style="width: 15px"
+                alt="Filter"
+              />
+              filter
+            </button>
+          </p>
+          <div class="collapse d-md-block" id="collapseFilter">
+            <div class="card card-body">
+              <h4>Filter by</h4>
+              <h5>Location</h5>
+              <div v-for="country in uniqueCountries" :key="country">
+                <label>
+                  <input
+                    type="checkbox"
+                    v-model="selectedCountries"
+                    :value="country"
+                  />
+                  {{ country }}
+                </label>
+              </div>
+              <h5>Categories</h5>
+              <div v-for="category in uniqueCategories" :key="category">
+                <label>
+                  <input
+                    type="checkbox"
+                    v-model="selectedCategories"
+                    :value="category"
+                  />
+                  {{ category }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- END filter -->
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            <div v-for="(item, index) in filteredItems" :key="index">
+              <div class="card container" style="height: auto">
+                <div class="row">
+                  <!-- left side of card -->
+                  <div class="col-md-8">
+                    <div class="card-body oppTitle">{{ item.name }}</div>
+                    <div class="card-body org">
+                      by {{ item.organisation }}, {{ item.country }}
+                    </div>
+                    <div class="card-body overflow-hide">
+                      <p class="card-text" v-if="!item.expanded">
+                        {{ shortenDescription(item) }}
+                      </p>
+                      <p class="card-text" v-else>{{ item.description }}</p>
+                      <!-- start of read more button -->
+                      <div v-if="shouldShowButton(item)">
+                        <div style="text-align: right">
+                          <button class="read" @click="toggleExpand(item)">
+                            {{ item.expanded ? "Read Less" : "Read More" }}
+                          </button>
+                        </div>
+                      </div>
+                      <!-- end of read more button -->
+                    </div>
+                  </div>
+                  <!-- right side of card -->
+                  <div class="col-md-4">
+                    <div>
+                      <!-- <img
+                        :src="item.image"
+                        class="card-img-top"
+                        alt="Item Image"
+                        style="max-height: 200px; object-fit: cover"
+                      /> -->
+                    </div>
+                    <!-- information header -->
+                    <div class="infoHeader">Volunteering Details:</div>
+
+                    <!-- date -->
+                    <div class="information">
+                      <img
+                        src="../assets/images/dateIcon.png"
+                        alt=""
+                        class="infoIcon"
+                      />
+                      <div style="padding: 0; font-size: 1rem">
+                        {{ item.date }}
                       </div>
                     </div>
-                    <!-- end of read more button -->
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <img
-                    :src="item.image"
-                    class="card-img-top"
-                    alt="Item Image"
-                    style="max-height: 200px; object-fit: cover"
-                  />
-                  <div class="text-center mt-5 mb-1">
-                    <a
-                      :href="item.volunteerLink"
-                      target="_blank"
-                      class="btn btn-primary"
-                      >Volunteer</a
-                    >
+                    <!-- time -->
+                    <div class="information">
+                      <img
+                        src="../assets/images/timeIcon.png"
+                        alt=""
+                        class="infoIcon"
+                      />
+                      <div style="padding: 0; font-size: 1rem">
+                        {{ item.time }}
+                      </div>
+                    </div>
+                    <!-- location -->
+                    <div class="information">
+                      <img
+                        src="../assets/images/locationIcon.png"
+                        alt="Location: "
+                        class="infoIcon"
+                      />
+                      <div style="padding: 0; font-size: 1rem">
+                        {{ item.location }}
+                      </div>
+                    </div>
+                    <!-- information header -->
+                    <div class="infoHeader">Profile Categories:</div>
+                    <!-- category -->
+                    <div class="information">
+                      {{ listCategories(item) }}
+                    </div>
+                    <div class="text-center mt-5 mb-1">
+                      <a
+                        :href="item.volunteerLink"
+                        target="_blank"
+                        class="btn custom-btn"
+                        >Volunteer</a
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
@@ -110,7 +161,6 @@
 
 <script>
 import { volunteeringOpp } from "../data/volunteerOpportunities";
-
 export default {
   name: "gIVolunteer",
   data() {
@@ -168,6 +218,13 @@ export default {
       }
       return false;
     },
+    listCategories(item) {
+      if (item.category.length > 0) {
+        return item.category.join(", ");
+      } else {
+        return "No suggested category";
+      }
+    },
   },
   created() {
     console.log("get involved volunteer page works");
@@ -187,5 +244,32 @@ export default {
   color: #023047;
   font-weight: 700;
   font-size: 1.6em;
+  padding-bottom: 0;
 }
+.org {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.information {
+  display: flex;
+  flex-direction: row;
+  font-weight: 350;
+  margin: 10px;
+}
+.infoHeader {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #023047;
+}
+.infoIcon {
+  width: auto;
+  height: 1.5rem;
+  margin-right: 5px;
+}
+/* .gradient-background {
+  background-image: url("../assets/images/homePage_background.png");
+  min-width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
 </style>

@@ -10,7 +10,8 @@ const volunteeringOpp = [
     category: ["First-Timers", "Family", "Organisations"],
     country: "Singapore",
     volunteerLink: "https://www.greennudge.sg/volunteer",
-    image: "../assets/images/filterIcon.png",
+    image:
+      "https://assets-global.website-files.com/5f6c5abb4a1622516fb569b6/5f9980074ad8ffb5d4c5afc3_resources.jpg",
   },
   {
     //ctual 2
@@ -18,13 +19,13 @@ const volunteeringOpp = [
     description: `ReefX is an initiative for recreational scuba divers to contribute towards local reef conservation work in Singapore. On our expeditions, you will get involved with every aspect, from measuring sea cucumbers and recording depths of fish, to taking ID shots (maybe even creating a new biodiversity record!) and helping us input the data for the researchers. Through this experience, you will be undertaking first-hand marine conservation work.`,
     organisation: "Marine Stewards",
     date: "Sat, 2 Dec 2023",
-    time: "12pM - 5PM",
+    time: "12PM - 5PM",
     location: "Hantu West",
     category: ["Divers"],
     country: "Singapore",
     volunteerLink:
       "https://www.marinestewards.org/product-page/reefx-survey-dive",
-    image: "../assets/images/reefx.png",
+    image: "/assets/images/reefx.png",
   },
   {
     //actual 3
