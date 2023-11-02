@@ -104,11 +104,11 @@ export default {
       const currentRoute = this.$route.path;
       switch (currentRoute) {
         case "/":
-          return "transparent";
+          return "#8fc1e3";
         case "/Interactive-Maps":
           return "#5085A5";
         case "/Latest-News":
-          return "transparent";
+          return "#8fc1e3";
         case "/Get-Involved":
           return "#5085A5";
         default:
