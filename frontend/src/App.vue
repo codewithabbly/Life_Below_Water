@@ -106,13 +106,13 @@ export default {
         case "/":
           return "#8fc1e3";
         case "/Interactive-Maps":
-          return "#5085A5";
+          return "#8fc1e3";
         case "/Latest-News":
           return "#8fc1e3";
         case "/Get-Involved":
-          return "#5085A5";
+          return "#8fc1e3";
         default:
-          return "transparent";
+          return "#8fc1e3";
       }
     },
   },
