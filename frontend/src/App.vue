@@ -227,13 +227,13 @@ transform-origin: bottom left;
 
 .custom-btn:before {
   top: 100%;
-  left: 100%;
+  right: 100%;
   transition: all .7s;
 }
 
 .custom-btn:hover:before {
   top: -30px;
-  left: -30px;
+  right: -30px;
 }
 
 .custom-btn:active:before {
