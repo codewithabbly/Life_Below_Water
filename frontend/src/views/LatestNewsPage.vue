@@ -106,7 +106,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.isLoading = false;
-    }, 3000);
+    }, 2000);
   },
   created () {
     // axios.get('https://newsapi.org/v2/everything?q=water&apiKey='+this.api_key)
