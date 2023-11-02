@@ -94,13 +94,13 @@ export default {
       const currentRoute = this.$route.path;
       switch (currentRoute) {
         case "/":
-          return "transparent";
+          return "#8fc1e3";
         case "/Interactive-Maps":
           return "#5085A5";
         case "/Latest-News":
-          return "transparent";
+          return "#8fc1e3";
         case "/Get-Involved":
-          return "transparent";
+          return "#5085A5";
         default:
           return "transparent";
       }
@@ -110,18 +110,23 @@ export default {
 </script>
 
 <style>
-.navbar-brand {
-  font-family: "glacial", sans-serif;
-  font-size: 20px;
-  color: white;
-  text-decoration: none !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
-  text-decoration: none;
-  outline: none;
-}
+  /* .navbar {
+    position: sticky;
+    top: 0;
+  } */
+  
+  .navbar-brand {
+    font-family: 'glacial', sans-serif;
+    font-size: 20px;
+    color: white;
+    text-decoration: none !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    text-decoration: none;
+    outline: none;
+  }
 
 .border-bottom-none {
   border-bottom: none !important;

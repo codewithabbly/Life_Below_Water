@@ -1,93 +1,97 @@
 <template>
-      <div class="app">
-            <div class="row">
-                  <div class="col-12">
-                        <div class="map-container">
-                              <img src="../assets/maps/world.svg" alt="World Map" class="map-image">
-                        </div>
-                  </div>
-            </div>
+      <div style="height: 100vh; width: 100%;">
+            <l-map :zoom="zoom" :center="center" :options="mapOptions">
+                  <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+                  <l-marker 
+                        v-for="(item, index) in waterData" 
+                        :key="index" 
+                        :lat-lng="item.latLng" 
+                        @update:click="selectedCity = item"
+                        >
+                        <l-popup v-if="selectedCity === item">
+                              <h2>{{ item.city }}</h2>
+                              <p>{{ item.water_history }}</p>
+                              <p>Water pH Level: {{ item.water_pH_level }}</p>
+                        </l-popup>
+                  </l-marker>
+            </l-map>
       </div>
 </template>
 
 <script>
-      import axios from "axios"
+      import { LMap, LTileLayer } from 'vue3-leaflet'
+      import { server } from "../utils/helper.js"
+      import axios from 'axios'
+      import 'leaflet/dist/leaflet.css'
 
       export default {
-            name: "IMaps",
-            mounted() {
-                  // can drag around to play with it
-                  const mapImage = document.querySelector(".map-image")
-                  let isDragging = false
-                  let startX, startY, translateX, translateY
+            name: 'IMaps',
+            components: {
+                  LMap,
+                  LTileLayer,
+            },
+            data() {
+                  return {
+                        zoom: 13,
+                        center: [1.3521, 103.8198],
+                        url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                        attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                        mapOptions: {
+                              maxBounds: [
+                                    [-90, -180],
+                                    [90, 180]
+                              ]
+                        },
+                        waterData: [],
+                        latLngData: [],
+                        latitude: null,
+                        longitude: null,
+                        selectedCity: null,
+                  };
+            },
+            async created() {
+                  this.getData()
+                  for (let item of this.waterData) {
+                        item.latLng = await this.getLatLng(item.city)
+                  }
+            },
+            methods: {
+                  getData() {
+                        axios.get(`${server.baseURL}/water_data`)
+                              .then(
+                                    (response) => {
+                                          this.waterData = response.data.data.data_list
+                                    }
+                              ) 
+                              .catch(
+                                    (error) => {
+                                          console.error(error)
+                                    }
+                              )
+                  },
+                  async getLatLng(city) {
+                        try {
+                              const response = await axios.get("https://api.api-ninjas.com/v1/geocoding?city=" + city, {
+                                    headers: {
+                                          'X-Api-Key': 'FEpzYx8KU1vP+l8s/9IZow==WBoyeHhJnShjOtjq'
+                                    }
+                              });
 
-                  mapImage.addEventListener("mousedown", e => {
-                        isDragging = true
-                        startX = e.clientX - mapImage.offsetLeft
-                        startY = e.clientY - mapImage.offsetTop
-                        translateX = mapImage.style.transform ? parseInt(mapImage.style.transform.split("(")[1].split(")")[0].split(",")[0]) : 0
-                        translateY = mapImage.style.transform ? parseInt(mapImage.style.transform.split("(")[1].split(")")[0].split(",")[1]) : 0
-                  });
-
-                  mapImage.addEventListener("mouseup", () => {
-                        isDragging = false
-                  });
-
-                  mapImage.addEventListener("mousemove", e => {
-                        if (!isDragging) return
-                        e.preventDefault()
-                        const x = e.clientX - mapImage.offsetLeft
-                        const y = e.clientY - mapImage.offsetTop
-                        const translateXNew = translateX + x - startX
-                        const translateYNew = translateY + y - startY
-                        mapImage.style.transform = `translate(${translateXNew}px, ${translateYNew}px)`
-                  });
-
-                  // fetching the data from the world.svg file
-                  axios("../assets/maps/world.svg")
-                        .then(response => console.log(response.data))
-                        .catch(error => console.error(error))
-
-                  document.title = "Interactive Map"
-            }
+                              this.latLngData = response.data
+                              const firstLocation = this.latLngData[0]
+                              this.latitude= firstLocation.latitude
+                              this.longitude = firstLocation.longitude
+                        } catch (error) {
+                              console.error(error);
+                        }
+                  }
+            },
       }
 </script>
 
 <style>
-      .app {
-            background-color: #5085a5;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-      }
-
-      .map-container {
-            position: relative;
-            width: 100%;
+      .l-map {
             height: 100%;
-            overflow: hidden;
-      }
-
-      .map-image {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            cursor: grab;
-            user-select: none;
-      }
-
-      .map-image:active {
-            cursor: grabbing;
-      }
-
-      .country {
-            fill: white;
-      }
-
-      .country:hover {
-            fill: pink;
       }
 </style>
