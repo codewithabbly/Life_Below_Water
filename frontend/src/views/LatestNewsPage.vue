@@ -2,25 +2,25 @@
   <div id="snow" style="background-color: #8fc1e3;" >
 
     
-    <div class="latest-news-header">
+    <div class="latest-news-header" >
         <div class="row">
           <div class="col-9">
             <h1>Latest News</h1>
             <h4>Welcome to the latest news page. Here, you can find the most recent updates and articles.</h4>
           </div>
           
+          <!-- search bar -->
           <div class="col-3">
             
             <form class="form-inline">
-              <div class="input-group " style="border-radius: var(--bs-border-radius);">
+              <div class="input-group " style="border-radius: 50%;">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search for keyword in title" aria-label="Search">
               
                 <button class="btn my-2 my-sm-0 custom-btn" style="margin-left:10px; border-radius: var(--bs-border-radius);" type="submit">Search</button>
               
               </div>
             </form>
-            
-            
+
           </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
       <div class="row">
 
         <!-- Bootstrap card -->
-        <div class="card ms-5 mb-5 me-5 p-0" v-for="article in articles" :key="article.title" style="border: 1px solid #5085a5; background-color: #f3ebdf;">
+        <div class="card ms-5 mb-5 me-5 p-0" v-for="article in articles" :key="article.title" style="border: 1px solid #5085a5; background-color: #f3ebdf; ">
           <div class="row g-0 " >
             <div class="col-md-3">
               <img v-bind:src="article.urlToImage" class="d-block w-100" alt="...">
@@ -143,6 +143,17 @@ export default {
 
 <style>
   /* Add your CSS styles here */
+
+  /** customize bootstrap card border-radius */
+  :root {
+  --bs-card-border-radius: 15px;
+  }
+
+  .d-block {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+
   .row {
     padding-right: 100px;
   }
