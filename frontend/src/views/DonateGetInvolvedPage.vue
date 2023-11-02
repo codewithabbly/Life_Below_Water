@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 whenError">
           <!-- START filter  -->
           <p class="d-md-none">
             <button
@@ -65,7 +65,7 @@
         <div class="col-md-9">
           <div class="row">
             <div v-for="(item, index) in filteredItems" :key="index">
-              <div class="card container test" style="height: auto">
+              <div class="card container space" style="height: auto">
                 <div class="row">
                   <!-- left side of card -->
                   <div class="col-md-8">
@@ -93,8 +93,12 @@
                       alt="Item Image"
                       style="max-height: 200px; object-fit: cover"
                     />
+
                     <!-- progress bar  -->
-                    <div></div>
+                    <div class="text-center mt-2">
+                      <span class="amount">${{ item.currentAmt }}</span>
+                      raised of <span class="amount">${{ item.goalAmt }}</span>
+                    </div>
                     <div class="progress">
                       <div
                         class="progress-bar"
@@ -223,13 +227,16 @@ export default {
         })
         .catch((error) => {
           console.log(error.message);
+          // showErrorMessage();
         });
     },
     toggleExpand(item) {
       // console.log(item);
       item.expanded = !item.expanded;
     },
-
+    showErrorMessage() {
+      document.getElementById("error-message").style.display = "block";
+    },
     shortenDescription(item) {
       if (item.description.length > 300) {
         // Change the character limit as needed
@@ -253,6 +260,9 @@ export default {
 </script>
 
 <style>
+.amount {
+  font-size: 1.5rem;
+}
 .read {
   text-decoration: underline;
   color: black;
@@ -273,7 +283,10 @@ export default {
   padding-top: 0;
   padding-bottom: 0;
 }
-.test {
+.space {
   margin-bottom: 20px;
+}
+.whenError {
+  background-color: green;
 }
 </style>

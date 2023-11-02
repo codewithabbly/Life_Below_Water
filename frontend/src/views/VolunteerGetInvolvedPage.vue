@@ -64,7 +64,7 @@
         <div class="col-md-9">
           <div class="row">
             <div v-for="(item, index) in filteredItems" :key="index">
-              <div class="card container" style="height: auto">
+              <div class="card container space" style="height: auto">
                 <div class="row">
                   <!-- left side of card -->
                   <div class="col-md-8">
@@ -91,13 +91,14 @@
                   <!-- right side of card -->
                   <div class="col-md-4">
                     <div>
-                      <!-- <img
-                        :src="item.image"
+                      <img
+                        :src="item.dataImage"
                         class="card-img-top"
-                        alt="Item Image"
+                        :alt="Image"
                         style="max-height: 200px; object-fit: cover"
-                      /> -->
+                      />
                     </div>
+
                     <!-- information header -->
                     <div class="infoHeader">Volunteering Details:</div>
 
@@ -140,7 +141,7 @@
                     <div class="information">
                       {{ listCategories(item) }}
                     </div>
-                    <div class="text-center mt-5 mb-1">
+                    <div class="text-center mt-4 mb-4">
                       <a
                         :href="item.volunteerLink"
                         target="_blank"
@@ -161,6 +162,7 @@
 
 <script>
 import { volunteeringOpp } from "../data/volunteerOpportunities";
+
 export default {
   name: "gIVolunteer",
   data() {
@@ -265,6 +267,9 @@ export default {
   width: auto;
   height: 1.5rem;
   margin-right: 5px;
+}
+.space {
+  margin-bottom: 20px;
 }
 /* .gradient-background {
   background-image: url("../assets/images/homePage_background.png");
