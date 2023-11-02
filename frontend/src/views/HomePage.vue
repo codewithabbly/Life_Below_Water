@@ -9,11 +9,12 @@
                   <!-- title -->
                   <div class="title-section">
                         <div class="row">
-                              <!-- TODO: fix typewriter animation to appear one at a time -->
                               <p class="responsive-title typewriter">
                                     <span>What can one person do to make </span>
-                              </p>
-                              <br/>
+                              </p><br/>
+                        </div>
+                        
+                        <div class="row">
                               <p class="responsive-title typewriter2">
                                     <span>a difference to the world's oceans?</span>
                               </p>
@@ -99,6 +100,36 @@
                         </button>
                   </div>
             </div>
+
+            <footer class="footer">
+
+                  <div class="row">
+                        <div class="col-md-3">
+                              <img src="../assets/images/ourLogo.png" class="img-fluid" width="50px">
+                        </div>
+
+                        <div class="col-md-3">
+                              <ul class="list-unstyled">
+                                    <li><a href="">Contact Us</a></li>
+                                    <li><a href="">Privacy Policy</a></li>
+                                    <li><a href="">Legal Terms</a></li>
+                                    <li><a href="">Terms and Conditions</a></li>
+                              </ul>
+                        </div>
+                              
+                        <div div class="col-md-3">
+                              <ul class="nav">
+                              <li class="nav-item"><a href="" class="nav-link pl-0"><i class="fa fa-facebook fa-lg"></i></a></li>
+                              <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-twitter fa-lg"></i></a></li>
+                              <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-github fa-lg"></i></a></li>
+                              <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-instagram fa-lg"></i></a></li>
+                              </ul>
+                              <br>
+                        </div>
+
+                  </div>
+            </footer>
+                              
       </div>
 
 </template>
@@ -129,23 +160,35 @@ window.addEventListener("scroll", reveal);
 
 // TODO: fix this function
 document.addEventListener("DOMContentLoaded", function() {
-      let dolphinGIF = document.getElementById("dolphinGIF");
-      if (!dolphinGIF.playing) {
-            dolphinGIF.play();
-            setTimeout(() => {
-                  dolphinGIF.style.display = "none";
-            }, 2500);
-      } 
-});
-document.addEventListener("click", function() {
-      let dolphinGIF = document.getElementById("dolphinGIF");
-      if (dolphinGIF.style.display === "none") {
+      function showDolphin(){
+            let dolphinGIF = document.getElementById("dolphinGIF");
             dolphinGIF.style.display = "block";
             setTimeout(() => {
                   dolphinGIF.style.display = "none";
             }, 2500);
-      } else {
-            dolphinGIF.style.display = "none";
+
+      }
+      showDolphin();
+      document.addEventListener("click", showDolphin);
+      // if (!dolphinGIF.playing) {
+      //       dolphinGIF.play();
+      //       setTimeout(() => {
+      //             dolphinGIF.style.display = "none";
+      //       }, 2500);
+      // } 
+});
+
+document.addEventListener("click", function() {
+      let dolphinGIF = document.getElementById("dolphinGIF");
+      if (dolphinGIF) {  // Check if the element exists
+            if (dolphinGIF.style.display === "none") {
+                  dolphinGIF.style.display = "block";
+                  setTimeout(() => {
+                  dolphinGIF.style.display = "none";
+                  }, 2500);
+            } else {
+                  dolphinGIF.style.display = "none";
+            }
       }
 });
 </script>
@@ -219,8 +262,9 @@ p {
 }
 
 .title-section {
+      text-align:center;
       position: absolute;
-      top: 30%;
+      top: 35%;
 }
 
 .responsive-title {
@@ -277,6 +321,32 @@ p {
       margin-top: 30px;
 }
 
+footer {
+      background-color: white;
+      min-width: 100vw;
+      padding: 40px;
+}
+
+footer a {
+color: #999;
+text-decoration:none;
+}
+
+footer a:hover, footer a:focus {
+color: #aaa;
+text-decoration:none;
+border-bottom:1px dotted #999;
+}
+
+footer .form-control {
+      background-color: #1f2022;
+      box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+      border: none;
+      resize: none;
+      color: #d1d2d2;
+      padding: 0.7em 1em;
+}
+
 /* Animations */
 .typewriter {
       overflow: hidden;
@@ -286,7 +356,9 @@ p {
             typing 5s steps(50, end) 3s, 
             blink-caret 1s step-end infinite 3s;
       animation-fill-mode: both;
-      animation-delay: 3s;
+      /* animation-delay: 3s; */
+      display: inline-block;
+      
 }
 
 .typewriter2 {
