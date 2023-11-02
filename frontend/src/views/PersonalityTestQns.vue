@@ -38,7 +38,7 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4 submit">
                     <router-link :to="{ name: 'personalityTestResults', params: { maxAnimal: calcResult() } }">
-                        <button type="button" class="custom-btn">Submit Test</button>
+                        <button type="button" class="custom-btn" :disabled="!allQuestionsAnswered">Submit Test</button>
                     </router-link>
                 </div>
                 <div class="col-md-4"></div>
@@ -75,31 +75,13 @@ export default {
                                     dolphin: "Coral bleaching and the threat to coral reefs.",
                                     otter: "Oil spills and coastal habitat destruction.",
                                     penguin: "Climate change and its effect on polar ecosystems."}},
-                            {question: "What’s your ideal vacation activity?",
-                            options: {turtle: "Lounging on a tropical beach with a good book.",
-                                    dolphin: "Going on an underwater adventure to explore reefs.",
-                                    otter: "Participating in water sports like surfing or kayaking.",
-                                    penguin: "Embarking on an expedition to polar regions."}},
                             {question: "What’s your favourite way to unwind after a long day?",
                             options: {turtle: "Taking a nap or meditating.",
                                     dolphin: "Going for a swim or a run.",
                                     otter: "Playing games and being sociable.",
-                                    penguin: "Solving challenges and being productive."}},
-                            {question: "What’s your outlook on life?",
-                            options: {turtle: "Content and at ease with the present.",
-                                    dolphin: "Filled with curiosity and exploration.",
-                                    otter: "Joyful and full of humour and play.",
-                                    penguin: "Focused on overcoming challenges and thriving."}},
-                            {question: "Choose a marine-inspired quote that resonates with you.",
-                            options: {turtle: "In the waves of change, we find our true direction.",
-                                    dolphin: "The sea, once it casts its spell, holds one in its net of wonder forever.",
-                                    otter: "Life is better when you’re surfing.",
-                                    penguin: "Life’s a journey that’s homeward bound."}}
+                                    penguin: "Solving challenges and being productive."}}
             ],
             buttons: [{turtle: false, dolphin: false, otter: false, penguin: false},
-                        {turtle: false, dolphin: false, otter: false, penguin: false},
-                        {turtle: false, dolphin: false, otter: false, penguin: false},
-                        {turtle: false, dolphin: false, otter: false, penguin: false},
                         {turtle: false, dolphin: false, otter: false, penguin: false},
                         {turtle: false, dolphin: false, otter: false, penguin: false},
                         {turtle: false, dolphin: false, otter: false, penguin: false},
@@ -162,6 +144,16 @@ export default {
             return maxAnimal;
         }
     },
+    computed: {
+        allQuestionsAnswered() {
+            for (const button of this.buttons) {
+                if (!button.turtle && !button.dolphin && !button.otter && !button.penguin) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
     
 }
 </script>
