@@ -20,7 +20,7 @@ def get_water_data():
 
             for data in all_data:
                   data_dict = {
-                        'country': data["country"],
+                        'city': data["city"],
                         'water_history': data['water_history'],
                         'water_pH_level': data['water_pH_level']
                   }
