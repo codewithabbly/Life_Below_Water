@@ -1,17 +1,21 @@
 <template>
-    <div class="app">
-        <div class="quizStart">
+    <div class="app gradient-background">
+        <!-- TODO: text inside box is not vertically centered if you change the window size -->
+        <div class="largeBox">
             <div class="largeHeader">What marine animal are you?</div>
-            <div class="medHeader">Take this quick personality test and find out what marine animal you are!</div>
-            <button type="button" class="custom-btn">Click to begin</button>
+            <div class="medHeader">Take this quick personality test to find out what marine animal you are!</div>
 
+            <router-link :to="{ name: 'personalityTestQns'}">
+                <button type="button" class="custom-btn">Click to begin</button>
+            </router-link>
+            
             <img class="seaweed-left" src="../assets/images/seaweed.png">
             <img class="seaweed-right" src="../assets/images/seaweed.png">
 
             
             <section class="sticky">
                 <div class="bubbles">
-                    <div class="bubble"></div>
+                <div class="bubble"></div>
                 <div class="bubble"></div>
                 <div class="bubble"></div>
                 <div class="bubble"></div>
@@ -41,18 +45,19 @@ export default {
 
 <style scoped>
 .app {
-    background-color: #8FC1E3;
     font-family: "glacial", sans-serif;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
-.quizStart {
+.largeBox {
     text-align: center;
     background-color: #F7F9FB;
-    color: #0B3146;
+    color: #023047;
     margin: auto;
     border-radius: 20px;
     height: 80%;
@@ -70,6 +75,7 @@ export default {
     margin: auto;
     font-size: 2.5vw;
     width: 80%;
+    color: black;
 }
 
 button {
@@ -90,6 +96,14 @@ button {
     width: 20%;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+}
+
+.gradient-background {
+    background-image: url('../assets/images/homePage_background.png');
+    min-width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: repeat; 
 }
 
 /* start of CSS for bubble animation */
