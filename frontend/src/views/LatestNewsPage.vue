@@ -83,9 +83,9 @@
 <script>
 
 import axios from 'axios'; //importing the axios a HTTP library to connects the app with the API
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap'
-import 'jquery/dist/jquery.min.js'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap';
+import 'jquery/dist/jquery.min.js';
 // import * as d3 from 'd3';
 
 export default {
@@ -235,20 +235,20 @@ export default {
     transform: translate3d(0,0,0);
 }
 @keyframes snow {
-  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
-  100% {background-position: 50000px 50000px, 10000px 20000px, -10000px 15000px;}          
+  0% {background-position: 100% 0px, 100% 0px, 100% 0px;}
+  100% {background-position: -50000px 15000px, -10000px 15000px, 0px 100%;}          
 }
 @-moz-keyframes snow {
-  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
-  100% {background-position: 50000px 50000px, 10000px 20000px, -10000px 15000px;}          
+  0% {background-position: 100% 0px, 100% 0px, 100% 0px;}
+  100% {background-position: -50000px 15000px, -10000px 15000px, 0px 100%;}          
 }
 @-webkit-keyframes snow {
-  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
-  100% {background-position: 50000px 50000px, 10000px 20000px, -10000px 15000px;}          
+  0% {background-position: 100% 0px, 100% 0px, 100% 0px;}
+  100% {background-position: -50000px 15000px, -10000px 15000px, 0px 100%;}          
 }
 @-ms-keyframes snow {
-  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
-  100% {background-position: 50000px 50000px, 10000px 20000px, -10000px 15000px;}          
+  0% {background-position: 100% 0px, 100% 0px, 100% 0px;}
+  100% {background-position: -50000px 15000px, -10000px 15000px, 0px 100%;}          
 }   
 /** styling for background effects end here */
 
