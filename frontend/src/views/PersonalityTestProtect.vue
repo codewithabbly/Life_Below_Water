@@ -4,13 +4,28 @@
             How can we protect {{ getAnimalName(maxAnimal) }}s?
         </div>
 
-        <div>
-            <ol>
-                <li v-for="(step, index) in getAnimalSteps(maxAnimal)" :key="index">
-                    {{ step }}
-                </li>
-            </ol>
+        <div class="container">
+            <div class="row m-5" v-for="(step, index) in getAnimalSteps(maxAnimal)" :key="index">
+                <div class="col-md-1"></div>
+                <div class="col-md-1">
+                    <div class="stepCount">
+                        {{ index + 1 }}
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="stepBox">
+                        {{ step }}
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
         </div>
+
+        <router-link :to="{ name: 'personalityTest'}">
+            <button type="button" class="custom-btn">Exit Test</button>
+        </router-link>
+
     </div>
 </template>
 
@@ -58,6 +73,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin: 0;
     padding: 0;
 }
@@ -65,6 +81,24 @@ export default {
 .largeHeader {
     font-size: 4vw;
     font-weight: bold;
+}
+
+.stepBox {
+    font-size: 2vw;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+}
+.stepCount {
+    margin: auto;
+    padding: 10px;
+    border-radius: 20px;
+    background: #F7F9FB;
+    color: #FF6B35;
+    height: fit-content;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 900;
 }
 
 </style>

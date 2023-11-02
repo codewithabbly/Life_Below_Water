@@ -1,38 +1,46 @@
 <template>
     <div class="app gradient-background">
-        <div class="resultsBox">
+        <div class="resultsBox mt-5" id="results">
             <div class="largeHeader">You are a <span class="animalName">{{ getAnimalName(maxAnimal) }}</span></div>
             <img class="animalImage move" :src="getAnimalImage(maxAnimal)">
-            <div class="medHeader">{{ getAnimalShortDesc(maxAnimal) }}</div>
+            <div class="shortDesc">{{ getAnimalShortDesc(maxAnimal) }}</div>
 
             <div class="descBody">{{ getAnimalLongDesc(maxAnimal) }}</div>
             
-            <router-link :to="{ name: 'personalityTestProtect', params: { maxAnimal: maxAnimal } }">
-                <button type="button" class="custom-btn special-btn">Learn More</button>
-            </router-link>
-            
-            <button type="button" class="custom-btn">Share Results</button>
-
             <section class="sticky">
                 <div class="bubbles">
                     <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
                 </div>
             </section>
+        </div>
+
+        <div class="buttons-container mt-4">
+            <button type="button" class="custom-btn" @click="generatePDF">Save Results</button>
+
+            <router-link :to="{ name: 'personalityTestProtect', params: { maxAnimal: maxAnimal } }">
+                <button type="button" class="custom-btn">Learn More</button>
+            </router-link>
         </div>
     </div>
 </template>
 
 <script>
+import turtleImage from "@/assets/images/turtle2.png";
+import dolphinImage from "@/assets/images/dolphin2.png";
+import otterImage from "@/assets/images/otter.png";
+import penguinImage from "@/assets/images/penguin.png";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 export default {
     name: "personalityTestResults",
     mounted() {
@@ -42,10 +50,10 @@ export default {
     data() {
         return {
             animals: {
-                    turtle: {name: "Sea Turtle", shortDesc: "Gentle, Patient, Resilient", longDesc: "Sea turtles are gentle and resilient creatures that inhabit both tropical and temperate waters. They are known for their serenity and patience as they gracefully navigate the ocean.", img: "../assets/images/turtle2.png"},
-                    dolphin: {name: "Dolphin", shortDesc: "Intelligent, Social, Adventurous", longDesc: "Dolphins are inquisitive, intelligent, and social creatures that thrive in the dynamic world of the oceans. They are known for their adventurous spirit and strong social bonds.", img: "../assets/images/dolphin2.png"},
-                    otter: {name: "Sea Otter", shortDesc: "Playful, Energetic, Curious", longDesc: "Sea otters are playful and energetic creatures that inhabit both freshwater and marine environments. They are known for their curiosity and their ability to adapt to different environments.", img: "../assets/images/otter.png"},
-                    penguin: {name: "Penguin", shortDesc: "Resilient, Resourceful, Adaptable", longDesc: "Penguins are resilient and resourceful creatures that thrive in polar regions with icy waters. They are known for their adaptability and their ability to thrive in harsh environments.", img: "../assets/images/penguin.png"},
+                    turtle: {name: "Sea Turtle", shortDesc: "Gentle, Patient, Resilient", longDesc: "Sea turtles are gentle and resilient creatures that inhabit both tropical and temperate waters. They are known for their serenity and patience as they gracefully navigate the ocean.", img: turtleImage},
+                    dolphin: {name: "Dolphin", shortDesc: "Intelligent, Social, Adventurous", longDesc: "Dolphins are inquisitive, intelligent, and social creatures that thrive in the dynamic world of the oceans. They are known for their adventurous spirit and strong social bonds.", img: dolphinImage},
+                    otter: {name: "Sea Otter", shortDesc: "Playful, Energetic, Curious", longDesc: "Sea otters are playful and energetic creatures that inhabit both freshwater and marine environments. They are known for their curiosity and their ability to adapt to different environments.", img: otterImage},
+                    penguin: {name: "Penguin", shortDesc: "Resilient, Resourceful, Adaptable", longDesc: "Penguins are resilient and resourceful creatures that thrive in polar regions with icy waters. They are known for their adaptability and their ability to thrive in harsh environments.", img: penguinImage},
             },
             maxAnimal: this.$route.params.maxAnimal
         }
@@ -63,6 +71,16 @@ export default {
         },
         getAnimalLongDesc(animal) {
             return this.animals[animal].longDesc;
+        },
+        generatePDF() {
+            const pdf = new jsPDF();
+            const toPrint = document.getElementById('results');
+
+            html2canvas(toPrint).then((canvas) => {
+                const imgToPrint = canvas.toDataURL('image/png');
+                pdf.addImage(imgToPrint, 'PNG', 10, 10, 190, 0);
+                pdf.save('results.pdf')
+            })
         }
     }
 }
@@ -72,10 +90,10 @@ export default {
 .gradient-background {
     background-image: url('../assets/images/homePage_background.png');
     min-width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-size: cover;
-    background-repeat: repeat; 
-  }
+    background-repeat: repeat;
+}
 
 .app {
     font-family: "glacial", sans-serif;
@@ -83,6 +101,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin: 0;
     padding: 0;
 }
@@ -91,11 +110,23 @@ export default {
     text-align: center;
     background-color: #F7F9FB;
     color: #023047;
-    margin: auto;
+    padding: 30px;
     border-radius: 20px;
     height: 70%;
     width: 80%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    min-width: 400px;
 }
 
 .largeHeader {
@@ -103,18 +134,20 @@ export default {
     font-weight: bold;
 }
 
-.medHeader {
+.shortDesc {
     margin: auto;
     font-size: 2.5vw;
-    width: 80%;
+    height: fit-content;
+    width: fit-content;
+    background-color: #5085A5;
+    color: #F7F9FB;
+    padding: 10px;
+    border-radius: 20px;
 }
 
 .descBody {
     padding: 30px;
     font-size: 1.5vw;
-}
-button {
-    margin: 10%;
 }
 
 .animalName {
@@ -122,7 +155,8 @@ button {
 }
 
 .animalImage {
-    width: 20%;
+    height: 40%;
+    margin: 20px;
 }
 
 .move {
