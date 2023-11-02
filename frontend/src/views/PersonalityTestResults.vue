@@ -1,11 +1,15 @@
 <template>
     <div class="app gradient-background">
-        <div class="resultsBox mt-5" id="results">
+        <div class="resultsBox" id="results">
             <div class="largeHeader">You are a <span class="animalName">{{ getAnimalName(maxAnimal) }}</span>!</div>
             <img class="animalImage move" :src="getAnimalImage(maxAnimal)">
             <div class="shortDesc">{{ getAnimalShortDesc(maxAnimal) }}</div>
 
             <div class="descBody">{{ getAnimalLongDesc(maxAnimal) }}</div>
+            
+            <div class="buttons-container">
+                <button type="button" class="custom-btn" @click="generatePDF">Save Results</button>
+            </div>
             
             <section class="sticky">
                 <div class="bubbles">
@@ -21,15 +25,52 @@
                     <div class="bubble"></div>
                 </div>
             </section>
+
         </div>
 
-        <div class="buttons-container mt-4">
-            <button type="button" class="custom-btn" @click="generatePDF">Save Results</button>
+        <div class="resultsBox2 mb-5">
+            <div class="largeHeader">
+                How can we protect {{ getAnimalName(maxAnimal) }}s?
+            </div>
+    
+            <div class="stepsOverall">
+                <div class="stepBox">
+                    <!-- card 1 -->
+                    <div class="stepCount">
+                        1
+                    </div>
+                    <div class="stepWords">
+                        {{ getAnimalSteps(maxAnimal)[0] }}
+                    </div>
+                </div>
+                <div class="stepBox">
+                    <!-- card 2 -->
+                    <div class="stepCount">
+                        2
+                    </div>
+                    <div class="stepWords">
+                        {{ getAnimalSteps(maxAnimal)[1] }}
+                    </div>
+                </div>
+                <div class="stepBox">
+                    <!-- card 3 -->
+                    <div class="stepCount">
+                        3
+                    </div>
+                    <div class="stepWords">
+                        {{ getAnimalSteps(maxAnimal)[2] }}
+                    </div>
+                </div>
+                
+                        </div>
+        </div>
 
-            <router-link :to="{ name: 'personalityTestProtect', params: { maxAnimal: maxAnimal } }">
-                <button type="button" class="custom-btn">Learn More</button>
+        <div class="buttons-container">
+            <router-link :to="{ name: 'getInvolved' }">
+                <button type="button" class="custom-btn">Get Involved</button>
             </router-link>
         </div>
+        
     </div>
 </template>
 
@@ -50,10 +91,10 @@ export default {
     data() {
         return {
             animals: {
-                    turtle: {name: "Sea Turtle", shortDesc: "Gentle, Patient, Resilient", longDesc: "Sea turtles are gentle and resilient creatures that inhabit both tropical and temperate waters. They are known for their serenity and patience as they gracefully navigate the ocean.", img: turtleImage},
-                    dolphin: {name: "Dolphin", shortDesc: "Intelligent, Social, Adventurous", longDesc: "Dolphins are inquisitive, intelligent, and social creatures that thrive in the dynamic world of the oceans. They are known for their adventurous spirit and strong social bonds.", img: dolphinImage},
-                    otter: {name: "Sea Otter", shortDesc: "Playful, Energetic, Curious", longDesc: "Sea otters are playful and energetic creatures that inhabit both freshwater and marine environments. They are known for their curiosity and their ability to adapt to different environments.", img: otterImage},
-                    penguin: {name: "Penguin", shortDesc: "Resilient, Resourceful, Adaptable", longDesc: "Penguins are resilient and resourceful creatures that thrive in polar regions with icy waters. They are known for their adaptability and their ability to thrive in harsh environments.", img: penguinImage},
+                    turtle: {name: "Sea Turtle", shortDesc: "Gentle, Patient, Resilient", longDesc: "Sea turtles are gentle and resilient creatures that inhabit both tropical and temperate waters. They are known for their serenity and patience as they gracefully navigate the ocean.", img: turtleImage, steps: ["Participate in beach cleanup initiatives to remove plastic and other debris from nesting beaches.", "Reduce plastic consumption and properly dispose of plastic waste to prevent ingestion and entanglement.", "Support sea turtle conservation projects and awareness campaigns."]},
+                    dolphin: {name: "Dolphin", shortDesc: "Intelligent, Social, Adventurous", longDesc: "Dolphins are inquisitive, intelligent, and social creatures that thrive in the dynamic world of the oceans. They are known for their adventurous spirit and strong social bonds.", img: dolphinImage, steps: ["Advocate for the protection of marine environments and reduced ocean pollution.", "Participate in research initiatives focused on dolphin behavior and well-being.", "Report any incidents of illegal fishing or harmful activities that affect dolphins."]},
+                    otter: {name: "Sea Otter", shortDesc: "Playful, Energetic, Curious", longDesc: "Sea otters are playful and energetic creatures that inhabit both freshwater and marine environments. They are known for their curiosity and their ability to adapt to different environments.", img: otterImage, steps: ["Be mindful of boat traffic in sea otter habitats and follow regulations to prevent collisions.", "Avoid using harmful chemicals and pollutants that can harm sea otters and their environment.", "Educate others about the importance of kelp forests and rocky shore ecosystems to sea otters."]},
+                    penguin: {name: "Penguin", shortDesc: "Resilient, Resourceful, Adaptable", longDesc: "Penguins are resilient and resourceful creatures that thrive in polar regions with icy waters. They are known for their adaptability and their ability to thrive in harsh environments.", img: penguinImage, steps: ["Reduce your carbon footprint to help combat climate change, which affects penguin habitats.", "Participate in campaigns to reduce plastic waste and prevent plastic pollution in the ocean.", "Stay informed about the impact of overfishing on penguin food sources and support sustainable fishing practices."]},
             },
             maxAnimal: this.$route.params.maxAnimal
         }
@@ -71,6 +112,9 @@ export default {
         },
         getAnimalLongDesc(animal) {
             return this.animals[animal].longDesc;
+        },
+        getAnimalSteps(animal) {
+            return this.animals[animal].steps;
         },
         generatePDF() {
             const pdf = new jsPDF();
@@ -97,28 +141,42 @@ export default {
 
 .app {
     font-family: "glacial", sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 0;
-    padding: 0;
 }
 
 .resultsBox {
     text-align: center;
     background-color: #F7F9FB;
     color: #023047;
-    padding: 30px;
+    padding: 100px;
     border-radius: 20px;
-    height: 70%;
+    height: 600px;
     width: 80%;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 90px;
+}
+
+.resultsBox2 {
+    text-align: center;
+    background-color: #F7F9FB;
+    color: #023047;
+    border-radius: 20px;
+    height: 600px;
+    width: 80%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
 }
 
 .buttons-container {
@@ -127,20 +185,21 @@ export default {
     justify-content: space-evenly;
     align-items: center;
     min-width: 400px;
+    margin-bottom: 20px;
 }
 
 .largeHeader {
-    font-size: 4vw;
+    font-size: 3vw;
     font-weight: bold;
 }
 
 .shortDesc {
     margin: auto;
-    font-size: 2.5vw;
+    font-size: 1.75vw;
     height: fit-content;
     width: fit-content;
-    background-color: #5085A5;
-    color: #F7F9FB;
+    background-color: #F7C59F;
+    color: #023047;
     padding: 10px;
     border-radius: 20px;
 }
@@ -159,6 +218,42 @@ export default {
     margin: 20px;
 }
 
+.stepWords {
+    font-size: 1.5vw;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+}
+
+.stepBox {
+    border-radius: 20px;
+    border: #5085A5 3px solid;
+    padding: 20px;
+    width: 25%;
+    height: 100%;
+}
+
+.stepCount {
+    margin: auto;
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
+    background: #F7C59F;
+    color: #023047;
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 900;
+}
+
+.stepsOverall {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    min-width: 400px;
+    margin-top: 50px;
+}
 .move {
     animation: rotate 4s infinite;
 }

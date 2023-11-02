@@ -3,7 +3,7 @@
         <!-- TODO: text inside box is not vertically centered if you change the window size -->
         <div class="largeBox">
             <div class="largeHeader">What marine animal are you?</div>
-            <div class="medHeader">Take this quick personality test to find out what marine animal you are!</div>
+            <div class="medHeader">Take this quick personality test to find out what marine animal you are and how you can protect them!</div>
 
             <router-link :to="{ name: 'personalityTestQns'}">
                 <button type="button" class="custom-btn">Click to begin</button>
