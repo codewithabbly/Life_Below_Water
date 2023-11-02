@@ -55,7 +55,7 @@
                   <h1 style="color: #0B3146"><b>Our Goals</b></h1>
 
                   <!-- TODO: carousel's image is stuck on the last image -->
-                  <div id="carouselExampleIndicators" class="carousel slide center-items">
+                  <div id="carouselExampleIndicators" class="carousel slide center-items" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -63,7 +63,7 @@
                         </div>  
                   
                         <div class="carousel-inner">
-                              <div class="carousel-item active d-flex justify-content-center align-items-center">
+                              <div class="carousel-item active justify-content-center align-items-center">
                                     <img src="../assets/images/homePage_fishes.jpeg" class="w-75" alt="Slide 1 Image">
                                     <div class="carousel-caption">
                                           <h4 class="text-center">Raise Awareness About Ocean Sustainability</h4>
@@ -71,7 +71,7 @@
                                     </div>
                               </div>
                         
-                              <div class="carousel-item d-flex justify-content-center align-items-center">
+                              <div class="carousel-item justify-content-center align-items-center">
                                     <img src="../assets/images/homePage_turtle.jpg" class="w-75" alt="Slide 2 Image">
                                     <div class="carousel-caption">
                                           <h4 class="text-center">Provide a Platform for Activists to Organize Cleanup Projects for Rivers and Oceans</h4>
@@ -79,7 +79,7 @@
                                     </div>
                               </div>
                   
-                              <div class="carousel-item d-flex justify-content-center align-items-center">
+                              <div class="carousel-item justify-content-center align-items-center">
                                     <img src="../assets/images/homePage_dolphins.jpg" class="w-75" alt="Slide 3 Image">
                                     <div class="carousel-caption">
                                           <h4 class="text-center">Establish a Platform for Donations Supporting Scientific Knowledge, Research, and Technology for Ocean Health</h4>
