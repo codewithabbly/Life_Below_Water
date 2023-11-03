@@ -1,4 +1,4 @@
-pymongo
-requests
-flask
-flask-cors
+pymongo==4.5.0
+requests==2.31.0
+Flask==3.0.0
+Flask-Cors==4.0.0
