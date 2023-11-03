@@ -1,5 +1,5 @@
 <template>
-<div class="container gradient-background">
+<div class="container gradient-background overflow-scroll">
 
       <!-- landing screen -->
       <div id="main" class="main-section center-items">
