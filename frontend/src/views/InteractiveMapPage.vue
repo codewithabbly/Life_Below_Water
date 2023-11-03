@@ -6,7 +6,7 @@
                         <l-popup>
                               <div>
                               <h3>{{ marker.city }}</h3>
-                              <p><b>Water History</b>: {{ marker.waterHistory }}</p>
+                              <p v-html="marker.waterHistory"></p>
                               <p><b>pH Level</b>: {{ marker.pHLevel }}</p>
                               </div>
                         </l-popup>
