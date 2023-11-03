@@ -268,7 +268,7 @@ export default {
   background-image: url("../assets/images/homePage_background.png");
   min-width: 100vw;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 }
 .amount {
   font-size: 1.5rem;
