@@ -1,9 +1,9 @@
-<!-- markdownlint-disable MD022 MD032 MD033 MD034 -->
+<!-- markdownlint-disable MD022 MDO31 MD032 MD033 MD034 -->
 <p align="center">
       <img src="https://readme-typing-svg.demolab.com/?lines=G4T5+Life+Below+Water&font=Fira%20Code&center=true&width=380&height=50&duration=4000&pause=1000">
 </p>
 <p align="center">
-      <img src="./frontend/src/assets/images/ourLogo.png" style="height: 30vh; width: 30vw;">
+      <img src="./frontend/src/assets/images/ourLogo.png" style="height: 10vh; width: 10vw;">
 </p>
 
 ## Members
@@ -85,4 +85,4 @@ https://github.com/L1uM4rt1n/WAD2_Project
       ```bash
       http://localhost:8000/
       ```
-<!-- markdownlint-enable MD022 MD032 MD033 MD034-->
+
