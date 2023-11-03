@@ -2,67 +2,68 @@
   <ErrorScreen v-if="isError"></ErrorScreen>
   <LoadingScreen v-if="isLoading"></LoadingScreen>
   <div v-else id="snow" :style="displayStyle">
-    
     <div class="latest-news-header">
       <form class="form-inline" @submit.prevent="getSearchResult">
         <div class="row" style="padding-right: 50px">
-          
           <div class="col-md-3 order-1 order-md-1">
-            <h1 style="color: #023047; font-weight: bold;">Latest News</h1>
+            <h1 style="color: #023047; font-weight: bold">Latest News</h1>
           </div>
 
           <!-- search bar -->
           <!-- <div class="col float-end order-md-last"> -->
-            <div class="col-md-9 order-3 order-md-2 d-flex justify-content-md-end">
-              <!-- search bar input box -->
-              <input
-                id="titleSearch"
-                class="form-control d-inline"
-                style="width: 219px; height: 44.195px;"
-                @keyup="getSearchResultAfterEnter"
-                type="search"
-                placeholder="Search for keyword in title"
-                aria-label="Search"
-              />
+          <div
+            class="col-md-9 order-3 order-md-2 d-flex justify-content-md-end"
+          >
+            <!-- search bar input box -->
+            <input
+              id="titleSearch"
+              class="form-control d-inline"
+              style="width: 219px; height: 44.195px"
+              @keyup="getSearchResultAfterEnter"
+              type="search"
+              placeholder="Search for keyword in title"
+              aria-label="Search"
+            />
 
-              <!-- search button -->
-              <button
-                id="searchBtn"
-                class="btn my-2 my-sm-0 custom-btn d-inline"
-                @click="getSearchResult"
-                style="
-                  margin-left: 10px; 
-                  width: 6em;
-                  border-radius: var(--bs-border-radius);
-                  background-color: #f3ebdf;
-                  border: 2px solid var(--color);
-                "
-                type="button"
-              >
-                Search
-              </button>
+            <!-- search button -->
+            <button
+              id="searchBtn"
+              class="btn my-2 my-sm-0 custom-btn d-inline"
+              @click="getSearchResult"
+              style="
+                margin-left: 10px;
+                width: 6em;
+                border-radius: var(--bs-border-radius);
+                background-color: #f3ebdf;
+                border: 2px solid var(--color);
+              "
+              type="button"
+            >
+              Search
+            </button>
 
-              <!-- reset button -->
-              <button
-                id="resetBtn"
-                class="btn my-2 my-sm-0 custom-btn d-inline"
-                @click="resetSearch"
-                style="
-                  margin-left: 10px; 
-                  border-radius: var(--bs-border-radius);
-                  background-color: #f3ebdf;
-                  border: 2px solid var(--color);
-                "
-                type="button"
-              >
-                Reset Search
-              </button>
-            </div>
+            <!-- reset button -->
+            <button
+              id="resetBtn"
+              class="btn my-2 my-sm-0 custom-btn d-inline"
+              @click="resetSearch"
+              style="
+                margin-left: 10px;
+                border-radius: var(--bs-border-radius);
+                background-color: #f3ebdf;
+                border: 2px solid var(--color);
+              "
+              type="button"
+            >
+              Reset Search
+            </button>
+          </div>
           <!-- </div> -->
 
           <div class="col-12 order-2 order-md-2">
             <h4>
-              Welcome to the latest news page. Here, you can find the most recent updates and articles.
+              Welcome to the latest news page. Here, you can find the most
+              recent updates and articles.
             </h4>
           </div>
           <!-- <div class="col-1">
@@ -78,21 +79,20 @@
             </h4>
           </div>
         </div> -->
-      
       </form>
     </div>
     <div class="result-header">
       <div class="row p-0">
-          <div class="col">
-            <h3 id="showResult"></h3>
-          </div>
+        <div class="col">
+          <h3 id="showResult"></h3>
         </div>
+      </div>
     </div>
 
     <div class="container-fluid">
       <button id="back-to-top" title="Back to Top">Back to Top ↑</button>
 
-      <div class="row" style="padding-right: 100px;">
+      <div class="row" style="padding-right: 100px">
         <!-- Bootstrap card -->
         <div
           class="card ms-5 mb-5 me-5 p-0"
@@ -110,7 +110,12 @@
             </div>
             <div class="col-12 col-sm-6 col-lg-7">
               <div class="card-body">
-                <h3 class="card-title" style="color: #023047; font-weight: bold;">{{ article.title }}</h3>
+                <h3
+                  class="card-title"
+                  style="color: #023047; font-weight: bold"
+                >
+                  {{ article.title }}
+                </h3>
                 <p class="card-text">{{ article.description }}</p>
                 <a
                   class="btn custom-btn"
@@ -155,6 +160,7 @@ export default {
     setTimeout(() => {
       this.isLoading = false;
     }, 3000);
+    document.title = "Latest News";
   },
   created() {
     this.getArticles();
@@ -205,16 +211,19 @@ export default {
 
     getSearchResult() {
       console.log("search function called");
-      let userInput = document.getElementById("titleSearch").value.toLowerCase();
+      let userInput = document
+        .getElementById("titleSearch")
+        .value.toLowerCase();
       console.log(userInput);
       console.log(userInput.length);
-      
+
       if (userInput.length > 0) {
-        document.getElementById("showResult").textContent = "Seach result for '" + userInput + "'";
+        document.getElementById("showResult").textContent =
+          "Seach result for '" + userInput + "'";
         this.hasActivatedSearch = true;
 
         for (var i = 0; i < this.articles.length; i++) {
-        // console.log(articles[i]);
+          // console.log(articles[i]);
 
           let title = this.articles[i].title.toLowerCase();
 
@@ -223,21 +232,24 @@ export default {
           }
         }
       } else {
-        document.getElementById("showResult").textContent = "Please enter a word or phrase. eg. carbon";
+        document.getElementById("showResult").textContent =
+          "Please enter a word or phrase. eg. carbon";
       }
-      
     },
 
     getSearchResultAfterEnter() {
       // console.log(event); // event is a global object that points to the event that just occurs, not recommended to use this
 
-      document.querySelector("#titleSearch").addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          console.log("user hit enter, now rendering getSearchResult() function......");
-          this.getSearchResult();
-        }
-      })
-      
+      document
+        .querySelector("#titleSearch")
+        .addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            console.log(
+              "user hit enter, now rendering getSearchResult() function......"
+            );
+            this.getSearchResult();
+          }
+        });
     },
 
     resetSearch() {
@@ -245,7 +257,6 @@ export default {
       document.getElementById("showResult").textContent = "";
       document.getElementById("titleSearch").value = "";
     },
-
   },
   computed: {
     filteredArticles() {
@@ -343,20 +354,36 @@ export default {
   transform: translate3d(0, 0, 0);
 }
 @keyframes snow {
-  0% {background-position: 100% 0px, 100% 0px, 100% 0px;}
-  100% {background-position: -50000px 15000px, -10000px 15000px, 0px 100%;}          
+  0% {
+    background-position: 100% 0px, 100% 0px, 100% 0px;
+  }
+  100% {
+    background-position: -50000px 15000px, -10000px 15000px, 0px 100%;
+  }
 }
 @-moz-keyframes snow {
-  0% {background-position: 100% 0px, 100% 0px, 100% 0px;}
-  100% {background-position: -50000px 15000px, -10000px 15000px, 0px 100%;}          
+  0% {
+    background-position: 100% 0px, 100% 0px, 100% 0px;
+  }
+  100% {
+    background-position: -50000px 15000px, -10000px 15000px, 0px 100%;
+  }
 }
 @-webkit-keyframes snow {
-  0% {background-position: 100% 0px, 100% 0px, 100% 0px;}
-  100% {background-position: -50000px 15000px, -10000px 15000px, 0px 100%;}          
+  0% {
+    background-position: 100% 0px, 100% 0px, 100% 0px;
+  }
+  100% {
+    background-position: -50000px 15000px, -10000px 15000px, 0px 100%;
+  }
 }
 @-ms-keyframes snow {
-  0% {background-position: 100% 0px, 100% 0px, 100% 0px;}
-  100% {background-position: -50000px 15000px, -10000px 15000px, 0px 100%;}          
-}   
+  0% {
+    background-position: 100% 0px, 100% 0px, 100% 0px;
+  }
+  100% {
+    background-position: -50000px 15000px, -10000px 15000px, 0px 100%;
+  }
+}
 /** styling for background effects end here */
 </style>

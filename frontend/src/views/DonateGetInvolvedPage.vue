@@ -2,7 +2,7 @@
   <ErrorScreen v-if="isError"></ErrorScreen>
   <LoadingScreen v-if="isLoading"></LoadingScreen>
 
-  <div class="gradient-background" v-else>
+  <div class="gradient-background overflow-scroll" v-else>
     <div class="container" :style="displayStyle">
       <div>
         <h1 class="text-center get-involved-header">Donate!</h1>
@@ -136,6 +136,8 @@ export default {
   name: "gIDonate",
   components: { LoadingScreen, ErrorScreen },
   mounted() {
+    document.title = "Donate";
+
     setTimeout(() => {
       this.isLoading = false;
     }, 7000);
@@ -268,11 +270,22 @@ export default {
 </script>
 
 <style>
+.container {
+  font-family: "glacial", sans-serif;
+}
+h4 {
+  font-family: "glacial_bold", sans-serif;
+}
+h5 {
+  font-family: "glacial_bold", sans-serif;
+}
 .gradient-background {
   background-image: url("../assets/images/homePage_background.png");
   min-width: 100vw;
   background-size: cover;
   background-repeat: repeat;
+
+  /* background-color: #8fc1e3; */
 }
 .amount {
   font-size: 1.5rem;
@@ -286,7 +299,7 @@ export default {
 }
 .oppTitle {
   color: #023047;
-  font-weight: 700;
+  font-family: "glacial_bold", sans-serif;
   font-size: 1.6em;
   padding-bottom: 0;
 }
@@ -304,5 +317,6 @@ export default {
   padding-top: 150px;
   padding-bottom: 50px;
   padding-left: 50px;
+  font-family: "glacial_bold", sans-serif;
 }
 </style>

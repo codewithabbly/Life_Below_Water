@@ -1,5 +1,5 @@
 <template>
-  <div class="gradient-background">
+  <div class="gradient-background overflow-scroll">
     <div class="container">
       <div>
         <h1 class="text-center get-involved-header">Volunteer!</h1>
@@ -165,6 +165,9 @@ import { volunteeringOpp } from "../data/volunteerOpportunities";
 
 export default {
   name: "gIVolunteer",
+  mounted() {
+    document.title = "Volunteer";
+  },
   data() {
     return {
       volunteeringOpp,
@@ -233,6 +236,15 @@ export default {
 };
 </script>
 <style>
+.container {
+  font-family: "glacial", sans-serif;
+}
+h4 {
+  font-family: "glacial_bold", sans-serif;
+}
+h5 {
+  font-family: "glacial_bold", sans-serif;
+}
 .read {
   text-decoration: underline;
   color: black;
@@ -242,7 +254,7 @@ export default {
 }
 .oppTitle {
   color: #023047;
-  font-weight: 700;
+  font-family: "glacial_bold", sans-serif;
   font-size: 1.6em;
   padding-bottom: 0;
 }
@@ -260,7 +272,7 @@ export default {
 .infoHeader {
   padding-top: 10px;
   margin-bottom: 0;
-  font-weight: 500;
+  font-family: "glacial_bold", sans-serif;
   font-size: 1rem;
   color: #023047;
 }
@@ -277,10 +289,12 @@ export default {
   min-width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
+  /* background-color: #8fc1e3; */
 }
 .get-involved-header {
   padding-top: 150px;
   padding-bottom: 50px;
   padding-left: 50px;
+  font-family: "glacial_bold", sans-serif;
 }
 </style>

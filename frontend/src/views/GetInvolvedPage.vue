@@ -1,5 +1,5 @@
 <template>
-  <div class="gradient-background">
+  <div class="gradient-background overflow-scroll">
     <div class="container get-involved-header">
       <div class="row">
         <h1>Wave goodbye to pollution!</h1>
@@ -42,8 +42,6 @@
   </div>
 </template>
 <style>
-
-
 .options {
   display: flex;
   justify-content: space-around;
@@ -62,15 +60,16 @@
 }
 
 .get-involved-header h1 {
-  
   text-align: center;
-
 }
 </style>
 
 <script>
 export default {
   name: "GetInvolvedPage",
+  mounted() {
+    document.title = "Get Involved";
+  },
 
   methods: {},
 };
