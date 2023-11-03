@@ -89,7 +89,7 @@
                     </div>
                   </div>
                   <!-- right side of card -->
-                  <div class="col-md-4" style="background-color: #f3ebdf;">
+                  <div class="col-md-4">
                     <div>
                       <img
                         :src="item.dataImage"
