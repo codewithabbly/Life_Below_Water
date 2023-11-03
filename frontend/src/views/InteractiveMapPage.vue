@@ -14,8 +14,8 @@
             </l-map>
             <div class="legend">
                   <p>Hello there! 👋 </p>
-                  <p>It takes about 10 seconds for the data to load, we appreciate you patience in waiting.</p>
-                  <p>Once you zoom out, you will see markers 📍 on the map and you can click on them to see the data.</p>
+                  <p>Here, you can zoom out and click on the markers 📍 to view data on the history of water bodies in a country and their respective pH levels. </p>
+                  <p>It takes about 10 seconds for the data to fully load, so we'll appreciate your patience in waiting!</p>
             </div>
       </div>
 </template>
