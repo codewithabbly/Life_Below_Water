@@ -157,6 +157,7 @@ export default {
     };
   },
   mounted() {
+    document.title = "Life Below Water";
     setTimeout(() => {
       this.isLoading = false;
     }, 3000);

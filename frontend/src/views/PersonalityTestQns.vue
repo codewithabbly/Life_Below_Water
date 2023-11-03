@@ -1,5 +1,5 @@
 <template>
-    <div class="app gradient-background">
+    <div class="app gradient-background overflow-scroll">
         <div class="container m-5">
             <div class="row m-5" v-for="(qn, index) in testQuestions" :key="index" :id="index">
                 <div class="overallBox container text-center">
@@ -51,7 +51,7 @@
   export default {
     name: "personalityTestQns",
     mounted() {
-      document.title = "Fun Quiz Questions";
+      document.title = "Life Below Water";
     },
     data() {
         return {
@@ -180,7 +180,6 @@
     background-color: #f7f9fb;
     border-radius: 20px;
     border: 2px solid #5085a5;
-    margin: auto;
     font-size: 1em;
     font-weight: bold;
     color: #5085a5;

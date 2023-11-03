@@ -166,7 +166,7 @@ import { volunteeringOpp } from "../data/volunteerOpportunities";
 export default {
   name: "gIVolunteer",
   mounted() {
-    document.title = "Volunteer";
+    document.title = "Life Below Water";
   },
   data() {
     return {

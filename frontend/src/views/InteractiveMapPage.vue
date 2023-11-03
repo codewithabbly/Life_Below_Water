@@ -2,33 +2,40 @@
       <div style="height: 100vh; width: 100%;">
             <l-map :zoom="zoom" :center="center" :options="mapOptions">
                   <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-                  <l-marker 
-                        v-for="(item, index) in waterData" 
-                        :key="index" 
-                        :lat-lng="item.latLng" 
-                        @update:click="selectedCity = item"
-                        >
-                        <l-popup v-if="selectedCity === item">
-                              <h2>{{ item.city }}</h2>
-                              <p>{{ item.water_history }}</p>
-                              <p>Water pH Level: {{ item.water_pH_level }}</p>
+                  <l-marker v-for="marker in markers" :key="marker.city" :lat-lng="marker.latLng">
+                        <l-popup>
+                              <div>
+                              <h3>{{ marker.city }}</h3>
+                              <p><b>Water History</b>: {{ marker.waterHistory }}</p>
+                              <p><b>pH Level</b>: {{ marker.pHLevel }}</p>
+                              </div>
                         </l-popup>
                   </l-marker>
             </l-map>
+            <div class="legend">
+                  <p>Hello there! 👋 </p>
+                  <p>It takes about 10 seconds for the data to load, we appreciate you patience in waiting.</p>
+                  <p>Once you zoom out, you will see markers 📍 on the map and you can click on them to see the data.</p>
+            </div>
       </div>
 </template>
 
 <script>
-      import { LMap, LTileLayer } from 'vue3-leaflet'
+      import { LMap, LTileLayer, LMarker, LPopup } from 'vue3-leaflet'
       import { server } from "../utils/helper.js"
       import axios from 'axios'
       import 'leaflet/dist/leaflet.css'
 
       export default {
             name: 'IMaps',
+            mounted() {
+                  document.title = "Life Below Water";
+            },
             components: {
                   LMap,
                   LTileLayer,
+                  LMarker,
+                  LPopup
             },
             data() {
                   return {
@@ -47,6 +54,7 @@
                         latitude: null,
                         longitude: null,
                         selectedCity: null,
+                        markers: [],
                   };
             },
             async created() {
@@ -56,34 +64,45 @@
                   }
             },
             methods: {
-                  getData() {
-                        axios.get(`${server.baseURL}/water_data`)
-                              .then(
-                                    (response) => {
-                                          this.waterData = response.data.data.data_list
-                                    }
-                              ) 
-                              .catch(
-                                    (error) => {
-                                          console.error(error)
-                                    }
-                              )
+                  async getData() {
+                        try {
+                              const response = await axios.get(`${server.baseURL}/water_data`)
+                              this.waterData = response.data.data.data_list
+                              // console.log(this.waterData)
+      
+                              for (let item of this.waterData) {
+                                    const latLng = await this.getLatLng(item.city)
+                                    item.latitude= latLng.latitude
+                                    item.longitude = latLng.longitude
+                              }
+      
+                              this.plotMarkers()
+                        } catch (error) {
+                              console.error(error)
+                        }
                   },
                   async getLatLng(city) {
                         try {
-                              const response = await axios.get("https://api.api-ninjas.com/v1/geocoding?city=" + city, {
+                              const response = await axios.get(`https://api.api-ninjas.com/v1/geocoding?city=${city}`, {
                                     headers: {
                                           'X-Api-Key': 'FEpzYx8KU1vP+l8s/9IZow==WBoyeHhJnShjOtjq'
                                     }
                               });
 
-                              this.latLngData = response.data
-                              const firstLocation = this.latLngData[0]
-                              this.latitude= firstLocation.latitude
-                              this.longitude = firstLocation.longitude
+                              // console.log(response.data[0])
+                              return response.data[0]
                         } catch (error) {
                               console.error(error);
                         }
+                  },
+                  plotMarkers() {
+                        this.markers = this.waterData.map(item => ({
+                              latLng: [item.latitude, item.longitude],
+                              city: item.city,
+                              waterHistory: item.water_history,
+                              pHLevel: item.water_pH_level
+                        }))
+                        // console.log(this.markers)
                   }
             },
       }
@@ -93,5 +112,16 @@
       .l-map {
             height: 100%;
             width: 100%;
+      }
+      .legend {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            width: 300px;
       }
 </style>

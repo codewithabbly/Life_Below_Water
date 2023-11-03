@@ -68,7 +68,7 @@
 export default {
   name: "GetInvolvedPage",
   mounted() {
-    document.title = "Get Involved";
+    document.title = "Life Below Water";
   },
 
   methods: {},
