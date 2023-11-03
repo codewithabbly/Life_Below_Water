@@ -48,10 +48,10 @@
 </template>
 
 <script>
-export default {
+  export default {
     name: "personalityTestQns",
     mounted() {
-        document.title = "Personality Test Questions";
+      document.title = "Personality Test Questions";
     },
     data() {
         return {
@@ -91,58 +91,57 @@ export default {
         }
     },
     methods: {
-        toggleActive(animal, index) {
-            console.log(index);
-            console.log(animal);
-            this.buttons[index][animal] = !this.buttons[index][animal];
-            this.computeScore(animal, index);
+      toggleActive(animal, index) {
+        console.log(index);
+        console.log(animal);
+        this.buttons[index][animal] = !this.buttons[index][animal];
+        this.computeScore(animal, index);
 
-            if (index < this.testQuestions.length-1) {
-                var nextContent = document.getElementById(index + 1);
-                nextContent.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
-            
-        },
-        computeScore(animal, index) {
-            if (this.buttons[index][animal]) {
-                if (animal === "turtle") {
-                    this.score.turtle += 1;
-                } else if (animal === "dolphin") {
-                    this.score.dolphin += 1;
-                } else if (animal === "otter") {
-                    this.score.otter += 1;
-                } else if (animal === "penguin") {
-                    this.score.penguin += 1;
-                }
-            } else {
-                if (animal === "turtle") {
-                    this.score.turtle -= 1;
-                } else if (animal === "dolphin") {
-                    this.score.dolphin -= 1;
-                } else if (animal === "otter") {
-                    this.score.otter -= 1;
-                } else if (animal === "penguin") {
-                    this.score.penguin -= 1;
-                }
-            }
-            
-            console.log(this.score);
-        },
-        calcResult() {
-            let maxScore = -1;
-            let maxAnimal = null;
-
-            for (const animal in this.score) {
-                if (this.score[animal] > maxScore) {
-                    maxScore = this.score[animal];
-                    maxAnimal = animal;
-                }
-            }
-
-            console.log(maxAnimal);
-
-            return maxAnimal;
+        if (index < this.testQuestions.length - 1) {
+          var nextContent = document.getElementById(index + 1);
+          nextContent.scrollIntoView({ behavior: "smooth", block: "center" });
         }
+      },
+      computeScore(animal, index) {
+        if (this.buttons[index][animal]) {
+          if (animal === "turtle") {
+            this.score.turtle += 1;
+          } else if (animal === "dolphin") {
+            this.score.dolphin += 1;
+          } else if (animal === "otter") {
+            this.score.otter += 1;
+          } else if (animal === "penguin") {
+            this.score.penguin += 1;
+          }
+        } else {
+          if (animal === "turtle") {
+            this.score.turtle -= 1;
+          } else if (animal === "dolphin") {
+            this.score.dolphin -= 1;
+          } else if (animal === "otter") {
+            this.score.otter -= 1;
+          } else if (animal === "penguin") {
+            this.score.penguin -= 1;
+          }
+        }
+
+        console.log(this.score);
+      },
+      calcResult() {
+        let maxScore = -1;
+        let maxAnimal = null;
+
+        for (const animal in this.score) {
+          if (this.score[animal] > maxScore) {
+            maxScore = this.score[animal];
+            maxAnimal = animal;
+          }
+        }
+
+        console.log(maxAnimal);
+
+        return maxAnimal;
+      },
     },
     computed: {
         allQuestionsAnswered() {
@@ -159,74 +158,74 @@ export default {
 </script>
 
 <style scoped>
-.app {
+  .app {
     min-height: 100vh;
     font-family: "glacial", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+  }
 
-.overallBox {
+  .overallBox {
     background-color: #023047;
-    color: #F7F9FB;
+    color: #f7f9fb;
     border-radius: 20px;
     height: 80%;
     width: 80%;
     display: block;
     padding: 30px;
-}
+  }
 
-.questionBox {
-    background-color: #F7F9FB;
+  .questionBox {
+    background-color: #f7f9fb;
     border-radius: 20px;
-    border: 2px solid #5085A5;
+    border: 2px solid #5085a5;
     margin: auto;
     font-size: 1em;
     font-weight: bold;
-    color: #5085A5;
+    color: #5085a5;
     height: 140px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+  }
 
-@media (max-width: 992px) {
+  @media (max-width: 992px) {
     .questionBox {
-        font-size: 0.75em;
+      font-size: 0.75em;
     }
-}
+  }
 
-.questionBox:hover {
-    background-color: #5085A5;
-    color: #F7F9FB;
-}
+  .questionBox:hover {
+    background-color: #5085a5;
+    color: #f7f9fb;
+  }
 
-.active {
-    background-color: #5085A5;
-    color: #F7F9FB;
-}
+  .active {
+    background-color: #5085a5;
+    color: #f7f9fb;
+  }
 
-.questionBox:disabled {
+  .questionBox:disabled {
     background-color: #d4d3d3;
-    color: #5085A5;
-}
+    color: #5085a5;
+  }
 
-.largeHeader {
+  .largeHeader {
     font-size: 2.5vw;
     font-weight: bold;
-}
+  }
 
-.gradient-background {
-    background-image: url('../assets/images/homePage_background.png');
+  .gradient-background {
+    background-image: url("../assets/images/homePage_background.png");
     min-width: 100vw;
     min-height: 100vh;
     background-size: cover;
     background-repeat: repeat;
-}
+  }
 
-.submit {
+  .submit {
     display: flex;
     justify-content: center;
-}
+  }
 </style>

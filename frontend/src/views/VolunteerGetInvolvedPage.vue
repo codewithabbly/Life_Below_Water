@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div>
-      <h1 class="text-center" style="margin-top: 150px">Volunteer!</h1>
-    </div>
+  <div class="gradient-background">
     <div class="container">
+      <div>
+        <h1 class="text-center latest-news-header">Volunteer!</h1>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <!-- Display the card count in a separate row -->
@@ -64,7 +64,7 @@
         <div class="col-md-9">
           <div class="row">
             <div v-for="(item, index) in filteredItems" :key="index">
-              <div class="card container" style="height: auto">
+              <div class="card container space" style="height: auto">
                 <div class="row">
                   <!-- left side of card -->
                   <div class="col-md-8">
@@ -91,13 +91,14 @@
                   <!-- right side of card -->
                   <div class="col-md-4">
                     <div>
-                      <!-- <img
-                        :src="item.image"
+                      <img
+                        :src="item.dataImage"
                         class="card-img-top"
-                        alt="Item Image"
+                        :alt="item.dataImage"
                         style="max-height: 200px; object-fit: cover"
-                      /> -->
+                      />
                     </div>
+
                     <!-- information header -->
                     <div class="infoHeader">Volunteering Details:</div>
 
@@ -140,7 +141,7 @@
                     <div class="information">
                       {{ listCategories(item) }}
                     </div>
-                    <div class="text-center mt-5 mb-1">
+                    <div class="text-center mt-4 mb-4">
                       <a
                         :href="item.volunteerLink"
                         target="_blank"
@@ -161,6 +162,7 @@
 
 <script>
 import { volunteeringOpp } from "../data/volunteerOpportunities";
+
 export default {
   name: "gIVolunteer",
   data() {
@@ -202,18 +204,17 @@ export default {
   },
   methods: {
     toggleExpand(item) {
-      console.log(item);
       item.expanded = !item.expanded;
     },
     shortenDescription(item) {
-      if (item.description.length > 300) {
+      if (item.description.length > 600) {
         // Change the character limit as needed
-        return item.description.slice(0, 300) + "...";
+        return item.description.slice(0, 600) + "...";
       }
       return item.description;
     },
     shouldShowButton(item) {
-      if (item.description.length > 300) {
+      if (item.description.length > 600) {
         return true;
       }
       return false;
@@ -228,7 +229,6 @@ export default {
   },
   created() {
     console.log("get involved volunteer page works");
-    console.log(this.volunteeringOpp);
   },
 };
 </script>
@@ -255,8 +255,11 @@ export default {
   flex-direction: row;
   font-weight: 350;
   margin: 10px;
+  margin-top: 0;
 }
 .infoHeader {
+  padding-top: 10px;
+  margin-bottom: 0;
   font-weight: 500;
   font-size: 1rem;
   color: #023047;
@@ -266,10 +269,18 @@ export default {
   height: 1.5rem;
   margin-right: 5px;
 }
-/* .gradient-background {
+.space {
+  margin-bottom: 20px;
+}
+.gradient-background {
   background-image: url("../assets/images/homePage_background.png");
   min-width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
-} */
+}
+.latest-news-header {
+  padding-top: 150px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+}
 </style>
