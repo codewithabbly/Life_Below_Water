@@ -1,21 +1,23 @@
 <template>
   <LoadingScreen v-if="isLoading"></LoadingScreen>
-  <div v-else id="snow" style="background-color: #8fc1e3">
+  <div v-else id="snow">
+    
     <div class="latest-news-header">
       <form class="form-inline" @submit.prevent="getSearchResult">
         <div class="row" style="padding-right: 50px">
-          <div class="col float-start">
+          
+          <div class="col-md-3 order-1 order-md-1">
             <h1>Latest News</h1>
           </div>
 
           <!-- search bar -->
-          <div class="col float-end">
-            <div class="float-end">
+          <!-- <div class="col float-end order-md-last"> -->
+            <div class="col-md-9 order-3 order-md-2 d-flex justify-content-md-end">
               <!-- search bar input box -->
               <input
                 id="titleSearch"
                 class="form-control d-inline"
-                style="width: 219px; height: 44.19px"
+                style="width: 219px; height: 44.195px;"
                 @keyup="getSearchResultAfterEnter"
                 type="search"
                 placeholder="Search for keyword in title"
@@ -28,7 +30,8 @@
                 class="btn my-2 my-sm-0 custom-btn d-inline"
                 @click="getSearchResult"
                 style="
-                  margin-left: 10px;
+                  margin-left: 10px; 
+                  width: 6em;
                   border-radius: var(--bs-border-radius);
                   background-color: #f3ebdf;
                 "
@@ -43,7 +46,7 @@
                 class="btn my-2 my-sm-0 custom-btn d-inline"
                 @click="resetSearch"
                 style="
-                  margin-left: 10px;
+                  margin-left: 10px; 
                   border-radius: var(--bs-border-radius);
                   background-color: #f3ebdf;
                 "
@@ -52,21 +55,35 @@
                 Reset Search
               </button>
             </div>
+          <!-- </div> -->
+
+          <div class="col-12 order-2 order-md-2">
+            <h4>
+              Welcome to the latest news page. Here, you can find the most recent updates and articles.
+            </h4>
           </div>
           <!-- <div class="col-1">
             <button id="searchBtn" class="btn my-2 my-sm-0 custom-btn" @click="getSearchResult" style="margin-left:10px; border-radius: var(--bs-border-radius); background-color: #f3ebdf;" type="submit">Search</button>
           </div> -->
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-12">
             <h4>
               Welcome to the latest news page. Here, you can find the most
               recent updates and articles.
             </h4>
           </div>
-        </div>
+        </div> -->
+      
       </form>
+    </div>
+    <div class="result-header">
+      <div class="row p-0">
+          <div class="col">
+            <h3 id="showResult"></h3>
+          </div>
+        </div>
     </div>
 
     <div class="container-fluid">
@@ -180,19 +197,27 @@ export default {
 
     getSearchResult() {
       console.log("search function called");
-      for (var i = 0; i < this.articles.length; i++) {
+      let userInput = document.getElementById("titleSearch").value.toLowerCase();
+      console.log(userInput);
+      console.log(userInput.length);
+      
+      if (userInput.length > 0) {
+        document.getElementById("showResult").textContent = "Seach result for '" + userInput + "'";
+        this.hasActivatedSearch = true;
+
+        for (var i = 0; i < this.articles.length; i++) {
         // console.log(articles[i]);
 
-        let title = this.articles[i].title;
-        let userInput = document.getElementById("titleSearch").value;
-        console.log(userInput);
-        console.log(userInput.length);
-        
-        if (title.includes(userInput)) {
-          this.searchResults.push(this.articles[i]);
+          let title = this.articles[i].title.toLowerCase();
+
+          if (title.includes(userInput)) {
+            this.searchResults.push(this.articles[i]);
+          }
         }
+      } else {
+        document.getElementById("showResult").textContent = "Please enter a word or phrase. eg. carbon";
       }
-      this.hasActivatedSearch = true;
+      
     },
 
     getSearchResultAfterEnter() {
@@ -209,7 +234,10 @@ export default {
 
     resetSearch() {
       this.hasActivatedSearch = false;
-    }
+      document.getElementById("showResult").textContent = "";
+      document.getElementById("titleSearch").value = "";
+    },
+
   },
   computed: {
     filteredArticles() {
@@ -218,13 +246,7 @@ export default {
         return this.articles;
       } else {
         console.log("filtered articles based on input");
-        if (this.searchResults.length > 0) {
-          console.log("length", this.searchResults.length);
-          return this.searchResults;
-        } else {
-          // return a (JSON object / message) to say that there's no related search result
-          return "";
-        }
+        return this.searchResults;
       }
     },
   },
@@ -267,10 +289,16 @@ export default {
 
 .latest-news-header {
   padding-top: 150px;
-  padding-bottom: 50px;
-  padding-left: 50px;
+  padding-bottom: 25px;
+  padding-left: 48px;
 
   position: sticky; /* why is it not sticky?? */
+}
+
+#showResult {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 25px;
 }
 
 /** styling for background effects start here */
@@ -285,7 +313,7 @@ export default {
   background-image: url("../assets/images/dolphin.png"),
     url("../assets/images/turtle.png");
   background-repeat: no-repeat;
-  height: 1000%;
+  min-height: 100vh;
   left: 0;
   position: absolute;
   top: 0;
