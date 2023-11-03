@@ -106,9 +106,15 @@
 </script>
 
 <style>
+  .main {
+    padding-top: 60px;
+  }
+
   .navbar {
     position: sticky;
     top: 0;
+    width: 100%;
+    z-index: 1000;
   }
 
   .navbar-brand {
