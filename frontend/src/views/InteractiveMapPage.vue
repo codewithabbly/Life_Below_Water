@@ -28,6 +28,9 @@
 
       export default {
             name: 'IMaps',
+            mounted() {
+                  document.title = "Life Below Water";
+            },
             components: {
                   LMap,
                   LTileLayer,

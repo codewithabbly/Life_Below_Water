@@ -40,7 +40,7 @@
 export default {
     name: "personalityTest",
     mounted() {
-        document.title = "Fun Quiz";
+        document.title = "Life Below Water";
     }
 }
 </script>

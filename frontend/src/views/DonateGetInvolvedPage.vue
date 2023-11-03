@@ -136,6 +136,7 @@ export default {
   name: "gIDonate",
   components: { LoadingScreen, ErrorScreen },
   mounted() {
+    document.title = "Life Below Water";
     setTimeout(() => {
       this.isLoading = false;
     }, 7000);

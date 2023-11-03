@@ -86,7 +86,7 @@ export default {
     name: "personalityTestResults",
     mounted() {
         console.log(this.maxAnimal);
-        document.title = "Fun Quiz Results";
+        document.title = "Life Below Water";
     },
     data() {
         return {

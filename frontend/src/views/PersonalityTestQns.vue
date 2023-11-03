@@ -51,7 +51,7 @@
   export default {
     name: "personalityTestQns",
     mounted() {
-      document.title = "Fun Quiz Questions";
+      document.title = "Life Below Water";
     },
     data() {
         return {

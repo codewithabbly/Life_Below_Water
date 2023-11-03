@@ -71,6 +71,9 @@
 <script>
 export default {
   name: "GetInvolvedPage",
+  mounted() {
+    document.title = "Life Below Water";
+  },
 
   methods: {},
 };
