@@ -161,7 +161,6 @@ export default {
     setTimeout(() => {
       this.isLoading = false;
     }, 3000);
-    document.title = "Latest News";
   },
   created() {
     this.getArticles();
