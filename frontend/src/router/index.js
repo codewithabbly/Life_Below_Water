@@ -39,22 +39,22 @@ const routes = [
   {
     path: "/Personality-Test/Questions",
     name: "personalityTestQns",
-    component: () => import("../views/PersonalityTestQns.vue")
+    component: () => import("../views/PersonalityTestQns.vue"),
   },
   {
     path: "/Personality-Test/Results/:maxAnimal",
     name: "personalityTestResults",
     component: () => import("../views/PersonalityTestResults.vue"),
-    props: true
-  }
+    props: true,
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-  scrollBehavior () {
-    return { top: 0, left: 0 }
-  }
+  scrollBehavior() {
+    return { top: 0, left: 0 };
+  },
 });
 
 export default router;
