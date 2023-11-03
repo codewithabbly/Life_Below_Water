@@ -1,13 +1,14 @@
 <template>
+  <ErrorScreen v-if="isError"></ErrorScreen>
   <LoadingScreen v-if="isLoading"></LoadingScreen>
-  <div v-else id="snow">
+  <div v-else id="snow" :style="displayStyle">
     
     <div class="latest-news-header">
       <form class="form-inline" @submit.prevent="getSearchResult">
         <div class="row" style="padding-right: 50px">
           
           <div class="col-md-3 order-1 order-md-1">
-            <h1>Latest News</h1>
+            <h1 style="color: #023047; font-weight: bold;">Latest News</h1>
           </div>
 
           <!-- search bar -->
@@ -34,6 +35,7 @@
                   width: 6em;
                   border-radius: var(--bs-border-radius);
                   background-color: #f3ebdf;
+                  border: 2px solid var(--color);
                 "
                 type="button"
               >
@@ -49,6 +51,7 @@
                   margin-left: 10px; 
                   border-radius: var(--bs-border-radius);
                   background-color: #f3ebdf;
+                  border: 2px solid var(--color);
                 "
                 type="button"
               >
@@ -89,13 +92,13 @@
     <div class="container-fluid">
       <button id="back-to-top" title="Back to Top">Back to Top ↑</button>
 
-      <div class="row">
+      <div class="row" style="padding-right: 100px;">
         <!-- Bootstrap card -->
         <div
           class="card ms-5 mb-5 me-5 p-0"
           v-for="article in filteredArticles"
           :key="article.title"
-          style="border: 1px solid #5085a5; background-color: #f3ebdf"
+          style="border: 1px solid #5085a5; background-color: white"
         >
           <div class="row g-0 p-0">
             <div class="col-12 col-sm-6 col-lg-5">
@@ -107,7 +110,7 @@
             </div>
             <div class="col-12 col-sm-6 col-lg-7">
               <div class="card-body">
-                <h3 class="card-title">{{ article.title }}</h3>
+                <h3 class="card-title" style="color: #023047; font-weight: bold;">{{ article.title }}</h3>
                 <p class="card-text">{{ article.description }}</p>
                 <a
                   class="btn custom-btn"
@@ -132,16 +135,18 @@ import "bootstrap/dist/js/bootstrap";
 import "jquery/dist/jquery.min.js";
 // import * as d3 from 'd3';
 import LoadingScreen from "@/components/LoadingScreen.vue";
+import ErrorScreen from "../components/ErrorScreen.vue";
 
 export default {
   name: "LatestNewsPage",
-  components: { LoadingScreen },
+  components: { LoadingScreen, ErrorScreen },
   data() {
     return {
       api_key: "131bc06ba3ec4c71b80d985828b87d0b",
       articles: [],
       searchResults: [],
-      errors: [],
+      // errors: [],
+      isError: false,
       hasActivatedSearch: false,
       isLoading: true,
     };
@@ -172,26 +177,29 @@ export default {
         //   this.errors.push(e)
         // })
         .catch((error) => {
-          // Handle errors in this block
-          if (error.response) {
-            // The request was made and the server responded with a status code
-            console.error("Status Code:", error.response.status);
-            console.error("Response Data:", error.response.data);
-          } else if (error.request) {
-            // The request was made, but no response was received
-            console.error("No response received:", error.request);
-          } else {
-            // Something else went wrong
-            console.error("Error:", error.message);
-          }
-          // // Check if the error is due to a network issue (ERR_NAME_NOT_RESOLVED)
-          // if (error.message.includes('ERR_NAME_NOT_RESOLVED')) {
-          //   console.error('Network error: Failed to resolve domain name');
-          //   // Handle the specific network error here
+          console.log(error.message);
+          this.isError = true;
+          this.isLoading = false;
+          // // Handle errors in this block
+          // if (error.response) {
+          //   // The request was made and the server responded with a status code
+          //   console.error("Status Code:", error.response.status);
+          //   console.error("Response Data:", error.response.data);
+          // } else if (error.request) {
+          //   // The request was made, but no response was received
+          //   console.error("No response received:", error.request);
           // } else {
-          //   // Handle other types of errors
-          //   console.error('Error:', error.message);
+          //   // Something else went wrong
+          //   console.error("Error:", error.message);
           // }
+          // // // Check if the error is due to a network issue (ERR_NAME_NOT_RESOLVED)
+          // // if (error.message.includes('ERR_NAME_NOT_RESOLVED')) {
+          // //   console.error('Network error: Failed to resolve domain name');
+          // //   // Handle the specific network error here
+          // // } else {
+          // //   // Handle other types of errors
+          // //   console.error('Error:', error.message);
+          // // }
         });
     },
 
@@ -249,6 +257,11 @@ export default {
         return this.searchResults;
       }
     },
+    displayStyle() {
+      return {
+        display: this.isError ? "none" : "true",
+      };
+    },
   },
 
   // make the search value all toLowerCase()
@@ -269,9 +282,9 @@ export default {
   } */
 /** end of boostrap card border-radius */
 
-.row {
+/* .row {
   padding-right: 100px;
-}
+} */
 
 #back-to-top {
   display: none;
