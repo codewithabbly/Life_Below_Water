@@ -32,17 +32,17 @@ const routes = [
     component: () => import("../views/VolunteerGetInvolvedPage.vue"),
   },
   {
-    path: "/Personality-Test",
+    path: "/Fun-Quiz",
     name: "personalityTest",
     component: () => import("../views/PersonalityTest.vue"),
   },
   {
-    path: "/Personality-Test/Questions",
+    path: "/Fun-Quiz/Questions",
     name: "personalityTestQns",
     component: () => import("../views/PersonalityTestQns.vue"),
   },
   {
-    path: "/Personality-Test/Results/:maxAnimal",
+    path: "/Fun-Quiz/Results/:maxAnimal",
     name: "personalityTestResults",
     component: () => import("../views/PersonalityTestResults.vue"),
     props: true,

@@ -62,13 +62,13 @@
                     </div>
                 </div>
                 
-                        </div>
-        </div>
-
-        <div class="buttons-container">
-            <router-link :to="{ name: 'getInvolved' }">
-                <button type="button" class="custom-btn">Get Involved</button>
-            </router-link>
+            </div>
+            
+            <div class="buttons-container">
+                <router-link :to="{ name: 'getInvolved' }">
+                    <button type="button" class="custom-btn">Get Involved</button>
+                </router-link>
+            </div>
         </div>
         
     </div>
@@ -86,7 +86,7 @@ export default {
     name: "personalityTestResults",
     mounted() {
         console.log(this.maxAnimal);
-        document.title = "Personality Test Results";
+        document.title = "Fun Quiz Results";
     },
     data() {
         return {
@@ -147,6 +147,7 @@ export default {
     flex-direction: column;
 }
 
+/* general boxes */
 .resultsBox {
     text-align: center;
     background-color: #F7F9FB;
@@ -188,6 +189,12 @@ export default {
     margin-bottom: 20px;
 }
 
+.descBody {
+    padding: 30px;
+    font-size: 1.5vw;
+}
+
+/* text styling */
 .largeHeader {
     font-size: 3vw;
     font-weight: bold;
@@ -204,11 +211,7 @@ export default {
     border-radius: 20px;
 }
 
-.descBody {
-    padding: 30px;
-    font-size: 1.5vw;
-}
-
+/* animal styling */
 .animalName {
     color: #5085A5;
 }
@@ -216,6 +219,16 @@ export default {
 .animalImage {
     height: 40%;
     margin: 20px;
+}
+
+/* step styling */
+.stepsOverall {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .stepWords {
@@ -246,14 +259,7 @@ export default {
     font-weight: 900;
 }
 
-.stepsOverall {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    min-width: 400px;
-    margin-top: 50px;
-}
+/* animation styling */
 .move {
     animation: rotate 4s infinite;
 }
