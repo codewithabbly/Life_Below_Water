@@ -27,14 +27,14 @@
               </a>
             </router-link>
 
-            <!-- about us section -->
+            <!-- about us section
             <a
               href="#about-us"
               class="navbar-brand border-bottom-none hover-underline-animation d-flex d-inline align-items-center"
               style="text-decoration: none; outline: none"
             >
               About Us
-            </a>
+            </a> -->
 
             <!-- map page -->
             <router-link :to="{ name: 'IMaps' }">
@@ -63,6 +63,16 @@
                 class="navbar-brand border-bottom-none hover-underline-animation d-flex d-inline align-items-center"
               >
                 Get Involved
+              </a>
+            </router-link>
+
+            <!-- fun quiz page -->
+            <router-link :to="{ name: 'personalityTest' }">
+              <a
+                href="./views/PersonalityTest.vue"
+                class="navbar-brand border-bottom-none hover-underline-animation d-flex d-inline align-items-center"
+              >
+                Fun Quiz
               </a>
             </router-link>
           </div>

@@ -5,19 +5,19 @@
   <div class="gradient-background" v-else>
     <div class="container" :style="displayStyle">
       <div>
-        <h1 class="text-center latest-news-header">Donate!</h1>
+        <h1 class="text-center get-involved-header">Donate!</h1>
       </div>
       <div class="row">
         <div class="col-md-12">
           <!-- Display the card count in a separate row -->
-          <div class="row">
+          <div class="row p-0">
             <div>
               <p>{{ filteredItems.length }} RESULT(S) FOUND</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row p-0">
         <div class="col-md-3">
           <!-- START filter  -->
           <p class="d-md-none">
@@ -65,7 +65,7 @@
           <!-- END filter -->
         </div>
         <div class="col-md-9">
-          <div class="row">
+          <div class="row p-0">
             <div v-for="(item, index) in filteredItems" :key="index">
               <div class="card container space" style="height: auto">
                 <div class="row">
@@ -129,8 +129,8 @@
 
 <script>
 import axios from "axios";
-import LoadingScreen from "../components/LoadingScreen.vue";
 import ErrorScreen from "../components/ErrorScreen.vue";
+import LoadingScreen from "../components/LoadingScreen.vue";
 
 export default {
   name: "gIDonate",
@@ -300,7 +300,7 @@ export default {
 .space {
   margin-bottom: 20px;
 }
-.latest-news-header {
+.get-involved-header {
   padding-top: 150px;
   padding-bottom: 50px;
   padding-left: 50px;

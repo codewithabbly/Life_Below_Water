@@ -2,7 +2,7 @@
   <div class="gradient-background">
     <div class="container">
       <div>
-        <h1 class="text-center latest-news-header">Volunteer!</h1>
+        <h1 class="text-center get-involved-header">Volunteer!</h1>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -89,11 +89,11 @@
                     </div>
                   </div>
                   <!-- right side of card -->
-                  <div class="col-md-4">
+                  <div class="col-md-4" style="background-color: #f3ebdf;">
                     <div>
                       <img
                         :src="item.dataImage"
-                        class="card-img-top"
+                        class="card-img"
                         :alt="item.dataImage"
                         style="max-height: 200px; object-fit: cover"
                       />
@@ -278,7 +278,7 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
 }
-.latest-news-header {
+.get-involved-header {
   padding-top: 150px;
   padding-bottom: 50px;
   padding-left: 50px;

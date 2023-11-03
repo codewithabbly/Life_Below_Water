@@ -1,6 +1,6 @@
 <template>
   <div class="gradient-background">
-    <div class="container latest-news-header">
+    <div class="container get-involved-header">
       <div class="row">
         <h1>Wave goodbye to pollution!</h1>
         <h1>Every drop counts in making a <em>splash-ing</em> difference!</h1>
@@ -42,9 +42,7 @@
   </div>
 </template>
 <style>
-h1 {
-  text-align: center;
-}
+
 
 .options {
   display: flex;
@@ -57,10 +55,16 @@ h1 {
   background-repeat: no-repeat;
   height: 100vh;
 }
-.latest-news-header {
+.get-involved-header {
   padding-top: 150px;
   padding-bottom: 50px;
   padding-left: 50px;
+}
+
+.get-involved-header h1 {
+  
+  text-align: center;
+
 }
 </style>
 
