@@ -4,7 +4,7 @@
   <div class="gradient-background" v-else>
     <div class="container">
       <div>
-        <h1 class="text-center latest-news-header">Donate!</h1>
+        <h1 class="text-center get-involved-header">Donate!</h1>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -128,8 +128,8 @@
 
 <script>
 import axios from "axios";
-import LoadingScreen from "../components/LoadingScreen.vue";
 import ErrorScreen from "../components/ErrorScreen.vue";
+import LoadingScreen from "../components/LoadingScreen.vue";
 
 export default {
   name: "gIDonate",
@@ -296,7 +296,7 @@ export default {
 .space {
   margin-bottom: 20px;
 }
-.latest-news-header {
+.get-involved-header {
   padding-top: 150px;
   padding-bottom: 50px;
   padding-left: 50px;
