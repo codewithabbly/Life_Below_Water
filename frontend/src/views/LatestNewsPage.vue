@@ -6,7 +6,7 @@
       <form class="form-inline" @submit.prevent="getSearchResult">
         <div class="row" style="padding-right: 50px">
           <div class="col-md-3 order-1 order-md-1">
-            <h1 style="color: #023047; font-weight: bold">Latest News</h1>
+            <h1 style="color: #023047; font-family: 'glacial_bold', sans-serif;">Latest News</h1>
           </div>
 
           <!-- search bar -->
@@ -61,7 +61,7 @@
           <!-- </div> -->
 
           <div class="col-12 order-2 order-md-2">
-            <h4>
+            <h4 style="color: var(--color);">
               Welcome to the latest news page. Here, you can find the most
               recent updates and articles.
             </h4>

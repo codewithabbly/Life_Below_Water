@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid" id="loading">
     <div class="row d-flex p-0 align-items-center justify-content-center">
-      <h1 class="d-flex align-items-center justify-content-center">Stay afloat, we're loading...</h1>
+      <h1 class="d-flex align-items-center justify-content-center" style="color: #023047">Stay afloat, we're loading...</h1>
     </div>
     <div class="row d-flex p-0 align-items-center justify-content-center">
       <img
