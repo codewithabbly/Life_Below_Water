@@ -1,21 +1,22 @@
 <template>
   <LoadingScreen v-if="isLoading"></LoadingScreen>
-  <div v-else>
-    <div>
-      <h1 class="text-center" style="margin-top: 150px">Donate!</h1>
-    </div>
+  <ErrorScreen v-if="isError"></ErrorScreen>
+  <div class="gradient-background" v-else>
     <div class="container">
+      <div>
+        <h1 class="text-center get-involved-header">Donate!</h1>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <!-- Display the card count in a separate row -->
-          <div class="row">
+          <div class="row p-0">
             <div>
               <p>{{ filteredItems.length }} RESULT(S) FOUND</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row p-0">
         <div class="col-md-3">
           <!-- START filter  -->
           <p class="d-md-none">
@@ -63,9 +64,9 @@
           <!-- END filter -->
         </div>
         <div class="col-md-9">
-          <div class="row">
+          <div class="row p-0">
             <div v-for="(item, index) in filteredItems" :key="index">
-              <div class="card container test" style="height: auto">
+              <div class="card container space" style="height: auto">
                 <div class="row">
                   <!-- left side of card -->
                   <div class="col-md-8">
@@ -93,8 +94,12 @@
                       alt="Item Image"
                       style="max-height: 200px; object-fit: cover"
                     />
+
                     <!-- progress bar  -->
-                    <div></div>
+                    <div class="text-center mt-2">
+                      <span class="amount">${{ item.currentAmt }}</span>
+                      raised of <span class="amount">${{ item.goalAmt }}</span>
+                    </div>
                     <div class="progress">
                       <div
                         class="progress-bar"
@@ -123,10 +128,12 @@
 
 <script>
 import axios from "axios";
+import ErrorScreen from "../components/ErrorScreen.vue";
 import LoadingScreen from "../components/LoadingScreen.vue";
+
 export default {
   name: "gIDonate",
-  components: { LoadingScreen },
+  components: { LoadingScreen, ErrorScreen },
   mounted() {
     setTimeout(() => {
       this.isLoading = false;
@@ -135,6 +142,7 @@ export default {
   data() {
     return {
       isLoading: true,
+      isError: false,
       selectedCountries: [], // Stores selected countries
       selectedCategories: [], // Stores selected categories
       items: [],
@@ -181,7 +189,6 @@ export default {
         })
         .then((response) => {
           var arrProj = response.data.projects.project;
-          console.log(arrProj[0]);
           for (var obj of arrProj) {
             var title = obj.title;
             var image = obj.image.imagelink.find(
@@ -223,13 +230,17 @@ export default {
         })
         .catch((error) => {
           console.log(error.message);
+          this.isError = true;
         });
     },
     toggleExpand(item) {
       // console.log(item);
       item.expanded = !item.expanded;
     },
-
+    showErrorMessage() {
+      document.getElementById("error-message").style.display = "block";
+      document.getElementById("whenErrorDisappear").style.display = "none";
+    },
     shortenDescription(item) {
       if (item.description.length > 300) {
         // Change the character limit as needed
@@ -253,6 +264,15 @@ export default {
 </script>
 
 <style>
+.gradient-background {
+  background-image: url("../assets/images/homePage_background.png");
+  min-width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.amount {
+  font-size: 1.5rem;
+}
 .read {
   text-decoration: underline;
   color: black;
@@ -273,7 +293,12 @@ export default {
   padding-top: 0;
   padding-bottom: 0;
 }
-.test {
+.space {
   margin-bottom: 20px;
+}
+.get-involved-header {
+  padding-top: 150px;
+  padding-bottom: 50px;
+  padding-left: 50px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div style="margin-top: 150px">
-    <div class="container">
+  <div class="gradient-background">
+    <div class="container get-involved-header">
       <div class="row">
         <h1>Wave goodbye to pollution!</h1>
         <h1>Every drop counts in making a <em>splash-ing</em> difference!</h1>
@@ -38,20 +38,33 @@
         </div>
         <!-- end of volunteer card -->
       </div>
-      <!-- <router-link to="/Get-Involved/Donate">
-      <button class="btn btn-primary">CLICK ME TO DONATE</button>
-    </router-link> -->
     </div>
   </div>
 </template>
 <style>
-h1 {
-  text-align: center;
-}
+
 
 .options {
   display: flex;
   justify-content: space-around;
+}
+.gradient-background {
+  background-image: url("../assets/images/homePage_background.png");
+  min-width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.get-involved-header {
+  padding-top: 150px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+}
+
+.get-involved-header h1 {
+  
+  text-align: center;
+
 }
 </style>
 

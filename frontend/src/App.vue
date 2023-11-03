@@ -65,17 +65,6 @@
                 Get Involved
               </a>
             </router-link>
-
-            <!-- personality test page -->
-            <router-link :to="{ name: 'personalityTest' }">
-              <a
-                href="./views/PersonalityTest.vue"
-                class="navbar-brand border-bottom-none hover-underline-animation d-flex d-inline align-items-center"
-              >
-                Personality Test
-              </a>
-            </router-link>
-
           </div>
         </div>
       </div>
@@ -106,13 +95,16 @@ export default {
         case "/":
           return "#8fc1e3";
         case "/Interactive-Maps":
-          return "#5085A5";
+          return "#8fc1e3";
         case "/Latest-News":
           return "#8fc1e3";
-        case "/Get-Involved":
-          return "#5085A5";
+        case "/Get-Involved/Donate":
+          return "#8fc1e3";
+        case "/Get-Involved/Volunteer":
+          return "#8fc1e3";
+
         default:
-          return "transparent";
+          return "#8fc1e3";
       }
     },
   },
@@ -120,23 +112,23 @@ export default {
 </script>
 
 <style>
-  /* .navbar {
+/* .navbar {
     position: sticky;
     top: 0;
   } */
-  
-  .navbar-brand {
-    font-family: 'glacial', sans-serif;
-    font-size: 20px;
-    color: white;
-    text-decoration: none !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-    text-decoration: none;
-    outline: none;
-  }
+
+.navbar-brand {
+  font-family: "glacial", sans-serif;
+  font-size: 20px;
+  color: white;
+  text-decoration: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  text-decoration: none;
+  outline: none;
+}
 
 .border-bottom-none {
   border-bottom: none !important;
@@ -172,25 +164,25 @@ export default {
 }
 
 .hover-underline-animation:hover {
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .hover-underline-animation::after {
-content: '';
-position: absolute;
-width: 100%;
-transform: scaleX(0);
-height: 2px;
-bottom: 0;
-left: 0;
-background-color: #000000;
-transform-origin: bottom right;
-transition: transform 0.25s ease-out;
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000000;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
 
 .hover-underline-animation:hover::after {
-transform: scaleX(1);
-transform-origin: bottom left;
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .custom-btn {
@@ -203,7 +195,7 @@ transform-origin: bottom left;
   position: relative;
   overflow: hidden;
   border: 2px solid var(--color);
-  transition: color .5s;
+  transition: color 0.5s;
   z-index: 1;
   font-size: 17px;
   border-radius: 6px;
@@ -227,13 +219,13 @@ transform-origin: bottom left;
 
 .custom-btn:before {
   top: 100%;
-  right: 100%;
-  transition: all .7s;
+  left: 100%;
+  transition: all 0.7s;
 }
 
 .custom-btn:hover:before {
   top: -30px;
-  right: -30px;
+  left: -30px;
 }
 
 .custom-btn:active:before {
