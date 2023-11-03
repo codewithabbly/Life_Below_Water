@@ -40,6 +40,8 @@ In light of Japan's recent decision to release treated contaminated water from t
 <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="45"/> </a>
 
 ### Deployment
+<!-- https://deployment.d3rfeip13ibxct.amplifyapp.com/ (We will be deploying it again as we have to deploy a separate Flask app as well) -->
+It will be up soon...
 
 ### GitHub Repository
 https://github.com/L1uM4rt1n/WAD2_Project
