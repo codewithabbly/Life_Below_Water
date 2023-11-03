@@ -86,6 +86,6 @@ https://github.com/L1uM4rt1n/WAD2_Project
       ```
 9. Open the application on your browser locally using the command below
       ```bash
-      http://localhost:8000/
+      http://localhost:8080/
       ```
 
