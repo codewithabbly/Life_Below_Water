@@ -2,7 +2,7 @@
   <LoadingScreen v-if="isLoading"></LoadingScreen>
   <div v-else id="snow" style="background-color: #8fc1e3">
     <div class="latest-news-header">
-      <form class="form-inline">
+      <form class="form-inline" @submit.prevent="getSearchResult">
         <div class="row" style="padding-right: 50px">
           <div class="col float-start">
             <h1>Latest News</h1>
@@ -11,6 +11,7 @@
           <!-- search bar -->
           <div class="col float-end">
             <div class="float-end">
+              <!-- search bar input box -->
               <input
                 id="titleSearch"
                 class="form-control d-inline"
@@ -21,6 +22,7 @@
                 aria-label="Search"
               />
 
+              <!-- search button -->
               <button
                 id="searchBtn"
                 class="btn my-2 my-sm-0 custom-btn d-inline"
@@ -30,9 +32,24 @@
                   border-radius: var(--bs-border-radius);
                   background-color: #f3ebdf;
                 "
-                type="submit"
+                type="button"
               >
                 Search
+              </button>
+
+              <!-- reset button -->
+              <button
+                id="resetBtn"
+                class="btn my-2 my-sm-0 custom-btn d-inline"
+                @click="resetSearch"
+                style="
+                  margin-left: 10px;
+                  border-radius: var(--bs-border-radius);
+                  background-color: #f3ebdf;
+                "
+                type="button"
+              >
+                Reset Search
               </button>
             </div>
           </div>
@@ -161,36 +178,48 @@ export default {
         });
     },
 
-    getSearchResultAfterEnter() {
-      console.log(event); // event is a global object that points to the event that just occurs, not recommended to use this
-
-      if (event.key == "Enter") {
-        this.getSearchResult();
-        console.log(
-          "user hit enter, now rendering getSearchResult() function......"
-        );
-      }
-    },
-
     getSearchResult() {
-      this.hasActivatedSearch = true;
+      console.log("search function called");
       for (var i = 0; i < this.articles.length; i++) {
         // console.log(articles[i]);
 
         let title = this.articles[i].title;
-        let userInput = document.getElementById("titleSearch").ariaValueMax;
+        let userInput = document.getElementById("titleSearch").value;
+        console.log(userInput);
+        console.log(userInput.length);
+        
         if (title.includes(userInput)) {
           this.searchResults.push(this.articles[i]);
         }
       }
+      this.hasActivatedSearch = true;
     },
+
+    getSearchResultAfterEnter() {
+      // console.log(event); // event is a global object that points to the event that just occurs, not recommended to use this
+
+      document.querySelector("#titleSearch").addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          console.log("user hit enter, now rendering getSearchResult() function......");
+          this.getSearchResult();
+        }
+      })
+      
+    },
+
+    resetSearch() {
+      this.hasActivatedSearch = false;
+    }
   },
   computed: {
     filteredArticles() {
       if (!this.hasActivatedSearch) {
+        console.log("default articles");
         return this.articles;
       } else {
+        console.log("filtered articles based on input");
         if (this.searchResults.length > 0) {
+          console.log("length", this.searchResults.length);
           return this.searchResults;
         } else {
           // return a (JSON object / message) to say that there's no related search result
