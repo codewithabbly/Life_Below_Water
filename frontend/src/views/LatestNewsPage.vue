@@ -66,7 +66,15 @@
             </h4>
           </div>
         </div>
+      
       </form>
+    </div>
+    <div class="result-header">
+      <div class="row p-0">
+          <div class="col">
+            <h3 id="showResult"></h3>
+          </div>
+        </div>
     </div>
 
     <div class="container-fluid">
@@ -180,19 +188,27 @@ export default {
 
     getSearchResult() {
       console.log("search function called");
-      for (var i = 0; i < this.articles.length; i++) {
+      let userInput = document.getElementById("titleSearch").value.toLowerCase();
+      console.log(userInput);
+      console.log(userInput.length);
+      
+      if (userInput.length > 0) {
+        document.getElementById("showResult").textContent = "Seach result for '" + userInput + "'";
+        this.hasActivatedSearch = true;
+
+        for (var i = 0; i < this.articles.length; i++) {
         // console.log(articles[i]);
 
-        let title = this.articles[i].title;
-        let userInput = document.getElementById("titleSearch").value;
-        console.log(userInput);
-        console.log(userInput.length);
-        
-        if (title.includes(userInput)) {
-          this.searchResults.push(this.articles[i]);
+          let title = this.articles[i].title.toLowerCase();
+
+          if (title.includes(userInput)) {
+            this.searchResults.push(this.articles[i]);
+          }
         }
+      } else {
+        document.getElementById("showResult").textContent = "Please enter a word or phrase. eg. carbon";
       }
-      this.hasActivatedSearch = true;
+      
     },
 
     getSearchResultAfterEnter() {
@@ -209,7 +225,10 @@ export default {
 
     resetSearch() {
       this.hasActivatedSearch = false;
-    }
+      document.getElementById("showResult").textContent = "";
+      document.getElementById("titleSearch").value = "";
+    },
+
   },
   computed: {
     filteredArticles() {
@@ -218,13 +237,7 @@ export default {
         return this.articles;
       } else {
         console.log("filtered articles based on input");
-        if (this.searchResults.length > 0) {
-          console.log("length", this.searchResults.length);
-          return this.searchResults;
-        } else {
-          // return a (JSON object / message) to say that there's no related search result
-          return "";
-        }
+        return this.searchResults;
       }
     },
   },
@@ -267,10 +280,16 @@ export default {
 
 .latest-news-header {
   padding-top: 150px;
-  padding-bottom: 50px;
-  padding-left: 50px;
+  padding-bottom: 25px;
+  padding-left: 48px;
 
   position: sticky; /* why is it not sticky?? */
+}
+
+#showResult {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 25px;
 }
 
 /** styling for background effects start here */

@@ -7,14 +7,14 @@
       <div class="row">
         <div class="col-md-12">
           <!-- Display the card count in a separate row -->
-          <div class="row">
+          <div class="row p-0">
             <div>
               <p>{{ filteredItems.length }} RESULT(S) FOUND</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row p-0">
         <div class="col-md-3">
           <!-- START filter  -->
           <p class="d-md-none">
@@ -62,7 +62,7 @@
           <!-- END filter -->
         </div>
         <div class="col-md-9">
-          <div class="row">
+          <div class="row p-0">
             <div v-for="(item, index) in filteredItems" :key="index">
               <div class="card container space" style="height: auto">
                 <div class="row">
