@@ -89,11 +89,11 @@
                     </div>
                   </div>
                   <!-- right side of card -->
-                  <div class="col-md-4">
+                  <div class="col-md-4" style="background-color: #f3ebdf;">
                     <div>
                       <img
                         :src="item.dataImage"
-                        class="card-img-top"
+                        class="card-img"
                         :alt="item.dataImage"
                         style="max-height: 200px; object-fit: cover"
                       />
