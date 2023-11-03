@@ -47,12 +47,6 @@ const routes = [
     component: () => import("../views/PersonalityTestResults.vue"),
     props: true,
   },
-  {
-    path: "/Personality-Test/How-to-Protect/:maxAnimal",
-    name: "personalityTestProtect",
-    component: () => import("../views/PersonalityTestProtect.vue"),
-    props: true,
-  },
 ];
 
 const router = createRouter({

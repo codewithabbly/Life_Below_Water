@@ -100,10 +100,10 @@
                     </div>
 
                     <!-- information header -->
-                    <!-- <div class="infoHeader">Volunteering Details:</div> -->
+                    <div class="infoHeader">Volunteering Details:</div>
 
                     <!-- date -->
-                    <!-- <div class="information">
+                    <div class="information">
                       <img
                         src="../assets/images/dateIcon.png"
                         alt=""
@@ -112,9 +112,9 @@
                       <div style="padding: 0; font-size: 1rem">
                         {{ item.date }}
                       </div>
-                    </div> -->
+                    </div>
                     <!-- time -->
-                    <!-- <div class="information">
+                    <div class="information">
                       <img
                         src="../assets/images/timeIcon.png"
                         alt=""
@@ -123,9 +123,9 @@
                       <div style="padding: 0; font-size: 1rem">
                         {{ item.time }}
                       </div>
-                    </div> -->
+                    </div>
                     <!-- location -->
-                    <!-- <div class="information">
+                    <div class="information">
                       <img
                         src="../assets/images/locationIcon.png"
                         alt="Location: "
@@ -134,7 +134,7 @@
                       <div style="padding: 0; font-size: 1rem">
                         {{ item.location }}
                       </div>
-                    </div> -->
+                    </div>
                     <!-- information header -->
                     <div class="infoHeader">Profile Categories:</div>
                     <!-- category -->
@@ -207,14 +207,14 @@ export default {
       item.expanded = !item.expanded;
     },
     shortenDescription(item) {
-      if (item.description.length > 300) {
+      if (item.description.length > 600) {
         // Change the character limit as needed
-        return item.description.slice(0, 300) + "...";
+        return item.description.slice(0, 600) + "...";
       }
       return item.description;
     },
     shouldShowButton(item) {
-      if (item.description.length > 300) {
+      if (item.description.length > 600) {
         return true;
       }
       return false;

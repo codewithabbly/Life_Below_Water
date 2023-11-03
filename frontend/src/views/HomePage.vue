@@ -19,7 +19,7 @@
       </div>
 
       <!-- dolphin animation -->
-      <!-- TODO: make dolphin size responsive, make dolphin appear onload (delay typewriter), might need to replace the whole gif tbh -->
+      <!-- TODO: make dolphin size responsive, dolphin feels like stop motion -->
       <div class="dolphin-section">
         <img
           id="dolphinGIF"
@@ -64,40 +64,11 @@
         </div>
       </div>
     </div>
-                  <!-- dolphin animation -->
-                  <!-- TODO: make dolphin size responsive, dolphin feels like stop motion -->
-                  <div class="dolphin-section">
-                        <img id="dolphinGIF" style="display: none" src="../assets/images/homepage_dolphinAnimation.gif">
-                  </div>
-                  
-                  <!-- find out more -->
-                  <div class="row find-out-section center-items float">
-                        <a href="#mission-section" style="text-decoration: none;">
-                              <p style="margin: 0px; padding: 0px">Find Out More</p>
-                              <img src="../assets/images/findOutMore.png"> 
-                        </a>
-                  </div>
-            </div>
-            
-            <!-- our mission -->
-            <div class="mission-section" id="mission-section">
-                  <div class="row center-items vertical-center">
-                        <div class="col-4 mission-logo reveal fade-left">
-                              <img src="../assets/images/ourLogo.png" class="img-fluid">
-                        </div>
-                        <div class="col-6 mission-card reveal fade-right">
-                              <h1>Our Mission</h1>
-                              <p>There are many research about water pollution and its effects. However, access to these information takes time and the data lacks proper consolidation. Hence, people only have a vague idea of the water pollution problem. As a result, they fail to see the extent of environmental challenges it poses and the how we need to take action urgently. People also do not fully understand how they can contribute to the water conservation efforts.</p>
-                              <p>Life Below Water seeks to provide a platform where we can bring insights into latest news about the recent events, allow seamless sharing of information between people, and hopefully, increase one’s social awareness to the sustainable use and management of our water bodies.</p>
-                        </div>
-                  </div>
-            </div>
 
     <!-- our goals -->
     <div class="row goals-section center-items reveal fade-bottom">
       <h1 style="color: #0b3146"><b>Our Goals</b></h1>
 
-      <!-- TODO: carousel's image is stuck on the last image -->
       <div
         id="carouselExampleIndicators"
         class="carousel slide center-items"
@@ -135,11 +106,11 @@
               class="w-75"
               alt="Slide 1 Image"
             />
-            <div class="carousel-caption">
-              <h4 class="text-center">
+            <div class="carousel-caption carousel-center">
+              <h3 class="carousel-medium text-center">
                 Raise Awareness About Ocean Sustainability
-              </h4>
-              <p class="text-center p-4">
+              </h3>
+              <p class="carousel-small text-center p-4">
                 Inform and educate the public about the detrimental effects of
                 marine pollution on ocean ecosystems. We aim to inspire
                 individuals to take a more active role in preserving our oceans.
@@ -153,12 +124,12 @@
               class="w-75"
               alt="Slide 2 Image"
             />
-            <div class="carousel-caption">
-              <h4 class="text-center">
+            <div class="carousel-caption carousel-center">
+              <h3 class="carousel-medium text-center">
                 Provide a Platform for Activists to Organize Cleanup Projects
                 for Rivers and Oceans
-              </h4>
-              <p class="text-center p-4">
+              </h3>
+              <p class="carousel-small text-center p-4">
                 Empower activists and concerned citizens to initiate and
                 coordinate cleanup efforts in their local communities, by
                 serving as a hub for organizing events, sharing resources, and
@@ -174,12 +145,12 @@
               class="w-75"
               alt="Slide 3 Image"
             />
-            <div class="carousel-caption">
-              <h4 class="text-center">
+            <div class="carousel-caption carousel-center">
+              <h3 class="carousel-medium text-center">
                 Establish a Platform for Donations Supporting Scientific
                 Knowledge, Research, and Technology for Ocean Health
-              </h4>
-              <p class="text-center p-4">
+              </h3>
+              <p class="carousel-small text-center p-4">
                 Facilitate contributions to initiatives aimed at advancing
                 scientific research and technological innovation play, in hopes
                 of driving financial support towards research projects,
@@ -218,7 +189,7 @@
           <img
             src="../assets/images/ourLogo.png"
             class="img-fluid"
-            width="50px"
+            style="height: 100px"
           />
         </div>
 
@@ -283,29 +254,28 @@ function reveal() {
 }
 window.addEventListener("scroll", reveal);
 
-// TODO: fix this function
+// TODO: dolphin does not appear when screen loads
 document.addEventListener("DOMContentLoaded", function () {
+  let dolphinGIF = document.getElementById("dolphinGIF");
   function showDolphin() {
-    let dolphinGIF = document.getElementById("dolphinGIF");
-    dolphinGIF.style.display = "block";
-    setTimeout(() => {
-      dolphinGIF.style.display = "none";
-    }, 2500);
+    if (dolphinGIF) {
+      if (dolphinGIF.style.display === "none") {
+        dolphinGIF.style.display = "block";
+        setTimeout(() => {
+          dolphinGIF.style.display = "none";
+        }, 2500);
+      } else {
+        dolphinGIF.style.display = "none";
+      }
+    }
   }
   showDolphin();
   document.addEventListener("click", showDolphin);
-  // if (!dolphinGIF.playing) {
-  //       dolphinGIF.play();
-  //       setTimeout(() => {
-  //             dolphinGIF.style.display = "none";
-  //       }, 2500);
-  // }
 });
 
 document.addEventListener("click", function () {
   let dolphinGIF = document.getElementById("dolphinGIF");
   if (dolphinGIF) {
-    // Check if the element exists
     if (dolphinGIF.style.display === "none") {
       dolphinGIF.style.display = "block";
       setTimeout(() => {
@@ -468,30 +438,22 @@ p {
 }
 
 footer {
-  background-color: white;
+  background-color: #8fc1e3;
   min-width: 100vw;
   padding: 40px;
+  margin-top: 300px;
 }
 
 footer a {
-  color: #999;
+  color: #ffffff;
   text-decoration: none;
 }
 
 footer a:hover,
 footer a:focus {
-  color: #aaa;
+  color: #ffffff;
   text-decoration: none;
   border-bottom: 1px dotted #999;
-}
-
-footer .form-control {
-  background-color: #1f2022;
-  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
-  border: none;
-  resize: none;
-  color: #d1d2d2;
-  padding: 0.7em 1em;
 }
 
 /* Animations */
