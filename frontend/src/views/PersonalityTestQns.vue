@@ -51,7 +51,7 @@
   export default {
     name: "personalityTestQns",
     mounted() {
-      document.title = "Personality Test Questions";
+      document.title = "Fun Quiz Questions";
     },
     data() {
         return {
