@@ -1,5 +1,5 @@
 <template>
-    <div class="app gradient-background overflow-scroll">
+    <div class="app gradient-background overflow-scroll" style="padding-top: 60px;">
         <div class="container m-5">
             <div class="row m-5" v-for="(qn, index) in testQuestions" :key="index" :id="index">
                 <div class="overallBox container text-center">
