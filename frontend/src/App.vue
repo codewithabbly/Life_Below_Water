@@ -201,7 +201,7 @@ export default {
   display: inline-block;
   width: 8em;
   height: 2.6em;
-  line-height: 2em;
+  line-height: 1.5em;
   position: relative;
   overflow: hidden;
   border: 2px solid var(--color);
@@ -229,13 +229,13 @@ export default {
 
 .custom-btn:before {
   top: 100%;
-  left: 100%;
+  right: 100%;
   transition: all 0.7s;
 }
 
 .custom-btn:hover:before {
   top: -30px;
-  left: -30px;
+  right: -30px;
 }
 
 .custom-btn:active:before {

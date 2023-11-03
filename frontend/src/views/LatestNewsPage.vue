@@ -1,21 +1,24 @@
 <template>
+  <ErrorScreen v-if="isError"></ErrorScreen>
   <LoadingScreen v-if="isLoading"></LoadingScreen>
-  <div v-else id="snow" style="background-color: #8fc1e3">
+  <div v-else id="snow" :style="displayStyle">
+    
     <div class="latest-news-header">
       <form class="form-inline" @submit.prevent="getSearchResult">
         <div class="row" style="padding-right: 50px">
-          <div class="col float-start">
-            <h1>Latest News</h1>
+          
+          <div class="col-md-3 order-1 order-md-1">
+            <h1 style="color: #023047; font-weight: bold;">Latest News</h1>
           </div>
 
           <!-- search bar -->
-          <div class="col float-end">
-            <div class="float-end">
+          <!-- <div class="col float-end order-md-last"> -->
+            <div class="col-md-9 order-3 order-md-2 d-flex justify-content-md-end">
               <!-- search bar input box -->
               <input
                 id="titleSearch"
                 class="form-control d-inline"
-                style="width: 219px; height: 44.19px"
+                style="width: 219px; height: 44.195px;"
                 @keyup="getSearchResultAfterEnter"
                 type="search"
                 placeholder="Search for keyword in title"
@@ -28,9 +31,11 @@
                 class="btn my-2 my-sm-0 custom-btn d-inline"
                 @click="getSearchResult"
                 style="
-                  margin-left: 10px;
+                  margin-left: 10px; 
+                  width: 6em;
                   border-radius: var(--bs-border-radius);
                   background-color: #f3ebdf;
+                  border: 2px solid var(--color);
                 "
                 type="button"
               >
@@ -43,42 +48,57 @@
                 class="btn my-2 my-sm-0 custom-btn d-inline"
                 @click="resetSearch"
                 style="
-                  margin-left: 10px;
+                  margin-left: 10px; 
                   border-radius: var(--bs-border-radius);
                   background-color: #f3ebdf;
+                  border: 2px solid var(--color);
                 "
                 type="button"
               >
                 Reset Search
               </button>
             </div>
+          <!-- </div> -->
+
+          <div class="col-12 order-2 order-md-2">
+            <h4>
+              Welcome to the latest news page. Here, you can find the most recent updates and articles.
+            </h4>
           </div>
           <!-- <div class="col-1">
             <button id="searchBtn" class="btn my-2 my-sm-0 custom-btn" @click="getSearchResult" style="margin-left:10px; border-radius: var(--bs-border-radius); background-color: #f3ebdf;" type="submit">Search</button>
           </div> -->
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-12">
             <h4>
               Welcome to the latest news page. Here, you can find the most
               recent updates and articles.
             </h4>
           </div>
-        </div>
+        </div> -->
+      
       </form>
+    </div>
+    <div class="result-header">
+      <div class="row p-0">
+          <div class="col">
+            <h3 id="showResult"></h3>
+          </div>
+        </div>
     </div>
 
     <div class="container-fluid">
       <button id="back-to-top" title="Back to Top">Back to Top ↑</button>
 
-      <div class="row">
+      <div class="row" style="padding-right: 100px;">
         <!-- Bootstrap card -->
         <div
           class="card ms-5 mb-5 me-5 p-0"
           v-for="article in filteredArticles"
           :key="article.title"
-          style="border: 1px solid #5085a5; background-color: #f3ebdf"
+          style="border: 1px solid #5085a5; background-color: white"
         >
           <div class="row g-0 p-0">
             <div class="col-12 col-sm-6 col-lg-5">
@@ -90,7 +110,7 @@
             </div>
             <div class="col-12 col-sm-6 col-lg-7">
               <div class="card-body">
-                <h3 class="card-title">{{ article.title }}</h3>
+                <h3 class="card-title" style="color: #023047; font-weight: bold;">{{ article.title }}</h3>
                 <p class="card-text">{{ article.description }}</p>
                 <a
                   class="btn custom-btn"
@@ -115,16 +135,18 @@ import "bootstrap/dist/js/bootstrap";
 import "jquery/dist/jquery.min.js";
 // import * as d3 from 'd3';
 import LoadingScreen from "@/components/LoadingScreen.vue";
+import ErrorScreen from "../components/ErrorScreen.vue";
 
 export default {
   name: "LatestNewsPage",
-  components: { LoadingScreen },
+  components: { LoadingScreen, ErrorScreen },
   data() {
     return {
       api_key: "131bc06ba3ec4c71b80d985828b87d0b",
       articles: [],
       searchResults: [],
-      errors: [],
+      // errors: [],
+      isError: false,
       hasActivatedSearch: false,
       isLoading: true,
     };
@@ -155,44 +177,55 @@ export default {
         //   this.errors.push(e)
         // })
         .catch((error) => {
-          // Handle errors in this block
-          if (error.response) {
-            // The request was made and the server responded with a status code
-            console.error("Status Code:", error.response.status);
-            console.error("Response Data:", error.response.data);
-          } else if (error.request) {
-            // The request was made, but no response was received
-            console.error("No response received:", error.request);
-          } else {
-            // Something else went wrong
-            console.error("Error:", error.message);
-          }
-          // // Check if the error is due to a network issue (ERR_NAME_NOT_RESOLVED)
-          // if (error.message.includes('ERR_NAME_NOT_RESOLVED')) {
-          //   console.error('Network error: Failed to resolve domain name');
-          //   // Handle the specific network error here
+          console.log(error.message);
+          this.isError = true;
+          this.isLoading = false;
+          // // Handle errors in this block
+          // if (error.response) {
+          //   // The request was made and the server responded with a status code
+          //   console.error("Status Code:", error.response.status);
+          //   console.error("Response Data:", error.response.data);
+          // } else if (error.request) {
+          //   // The request was made, but no response was received
+          //   console.error("No response received:", error.request);
           // } else {
-          //   // Handle other types of errors
-          //   console.error('Error:', error.message);
+          //   // Something else went wrong
+          //   console.error("Error:", error.message);
           // }
+          // // // Check if the error is due to a network issue (ERR_NAME_NOT_RESOLVED)
+          // // if (error.message.includes('ERR_NAME_NOT_RESOLVED')) {
+          // //   console.error('Network error: Failed to resolve domain name');
+          // //   // Handle the specific network error here
+          // // } else {
+          // //   // Handle other types of errors
+          // //   console.error('Error:', error.message);
+          // // }
         });
     },
 
     getSearchResult() {
       console.log("search function called");
-      for (var i = 0; i < this.articles.length; i++) {
+      let userInput = document.getElementById("titleSearch").value.toLowerCase();
+      console.log(userInput);
+      console.log(userInput.length);
+      
+      if (userInput.length > 0) {
+        document.getElementById("showResult").textContent = "Seach result for '" + userInput + "'";
+        this.hasActivatedSearch = true;
+
+        for (var i = 0; i < this.articles.length; i++) {
         // console.log(articles[i]);
 
-        let title = this.articles[i].title;
-        let userInput = document.getElementById("titleSearch").value;
-        console.log(userInput);
-        console.log(userInput.length);
-        
-        if (title.includes(userInput)) {
-          this.searchResults.push(this.articles[i]);
+          let title = this.articles[i].title.toLowerCase();
+
+          if (title.includes(userInput)) {
+            this.searchResults.push(this.articles[i]);
+          }
         }
+      } else {
+        document.getElementById("showResult").textContent = "Please enter a word or phrase. eg. carbon";
       }
-      this.hasActivatedSearch = true;
+      
     },
 
     getSearchResultAfterEnter() {
@@ -209,7 +242,10 @@ export default {
 
     resetSearch() {
       this.hasActivatedSearch = false;
-    }
+      document.getElementById("showResult").textContent = "";
+      document.getElementById("titleSearch").value = "";
+    },
+
   },
   computed: {
     filteredArticles() {
@@ -218,14 +254,13 @@ export default {
         return this.articles;
       } else {
         console.log("filtered articles based on input");
-        if (this.searchResults.length > 0) {
-          console.log("length", this.searchResults.length);
-          return this.searchResults;
-        } else {
-          // return a (JSON object / message) to say that there's no related search result
-          return "";
-        }
+        return this.searchResults;
       }
+    },
+    displayStyle() {
+      return {
+        display: this.isError ? "none" : "true",
+      };
     },
   },
 
@@ -247,9 +282,9 @@ export default {
   } */
 /** end of boostrap card border-radius */
 
-.row {
+/* .row {
   padding-right: 100px;
-}
+} */
 
 #back-to-top {
   display: none;
@@ -267,10 +302,16 @@ export default {
 
 .latest-news-header {
   padding-top: 150px;
-  padding-bottom: 50px;
-  padding-left: 50px;
+  padding-bottom: 25px;
+  padding-left: 48px;
 
   position: sticky; /* why is it not sticky?? */
+}
+
+#showResult {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 25px;
 }
 
 /** styling for background effects start here */
@@ -285,7 +326,7 @@ export default {
   background-image: url("../assets/images/dolphin.png"),
     url("../assets/images/turtle.png");
   background-repeat: no-repeat;
-  height: 1000%;
+  min-height: 100vh;
   left: 0;
   position: absolute;
   top: 0;

@@ -9,10 +9,10 @@
 ## Members
 | Team Members         | Student ID | Email                           |
 | :------------------: | :--------: | :-----------------------------: |
-| Abigail Jalin Lee    | 01463644   | abigaillee.2022.scis.smu.edu.sg |
-| Danelle Goh Ruoqing  | 01434382   | danellegoh.2021.scis.smu.edu.sg |
-| Koh Jia Wen Chloe    | 01442628   | chloekoh.2021.scis.smu.edu,sg   |
-| Guan Bingyan         | 01463615   | byguan.2022.scis.smu.edu.sg     |
+| Abigail Jalin Lee    | 01463644   | abigaillee.2022@scis.smu.edu.sg |
+| Danelle Goh Ruoqing  | 01434382   | danellegoh.2021@scis.smu.edu.sg |
+| Guan Bingyan         | 01463615   | byguan.2022@scis.smu.edu.sg     |
+| Koh Jia Wen Chloe    | 01442628   | chloekoh.2021@scis.smu.edu.sg   |
 | Liu Ze Wei Martin    | 01398322   | martin.liu.2021@scis.smu.edu.sg |
 
 ## Project Overview
