@@ -1,13 +1,15 @@
 <template>
-    <div class="app gradient-background">
+    <div class="app gradient-background overflow-scroll">
         <!-- TODO: text inside box is not vertically centered if you change the window size -->
         <div class="largeBox">
             <div class="largeHeader">What marine animal are you?</div>
             <div class="medHeader">Take this quick personality test to find out what marine animal you are and how you can protect them!</div>
 
-            <router-link :to="{ name: 'personalityTestQns'}">
-                <button type="button" class="custom-btn">Click to begin</button>
-            </router-link>
+            <div class="buttons-container">
+                <router-link :to="{ name: 'personalityTestQns'}">
+                    <button type="button" class="custom-btn">Click to begin</button>
+                </router-link>
+            </div>
             
             <img class="seaweed-left" src="../assets/images/seaweed.png">
             <img class="seaweed-right" src="../assets/images/seaweed.png">
@@ -38,7 +40,7 @@
 export default {
     name: "personalityTest",
     mounted() {
-        document.title = "Fun Quiz";
+        document.title = "Life Below Water";
     }
 }
 </script>
@@ -63,23 +65,23 @@ export default {
     height: 80%;
     width: 80%;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
 }
 
 .largeHeader {
     font-size: 4vw;
     font-weight: bold;
-    margin-top: 15%;
 }
 
 .medHeader {
     margin: auto;
     font-size: 2.5vw;
     width: 80%;
-    color: black;
-}
-
-button {
-    margin: 10%;
+    color: #023047;
 }
 
 .seaweed-left {
@@ -104,6 +106,14 @@ button {
     height: 100vh;
     background-size: cover;
     background-repeat: repeat; 
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 /* start of CSS for bubble animation */
