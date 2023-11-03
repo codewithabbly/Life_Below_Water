@@ -102,8 +102,7 @@ export default {
           return "#8fc1e3";
         case "/Get-Involved/Volunteer":
           return "#8fc1e3";
-        // case "/Get-Involved":
-        //   return "#8fc1e3";
+
         default:
           return "transparent";
       }

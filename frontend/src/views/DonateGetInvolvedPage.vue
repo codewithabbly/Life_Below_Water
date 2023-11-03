@@ -1,5 +1,6 @@
 <template>
   <LoadingScreen v-if="isLoading"></LoadingScreen>
+  <ErrorScreen v-if="isError"></ErrorScreen>
   <div class="gradient-background" v-else>
     <div class="container">
       <div>
@@ -128,9 +129,11 @@
 <script>
 import axios from "axios";
 import LoadingScreen from "../components/LoadingScreen.vue";
+import ErrorScreen from "../components/ErrorScreen.vue";
+
 export default {
   name: "gIDonate",
-  components: { LoadingScreen },
+  components: { LoadingScreen, ErrorScreen },
   mounted() {
     setTimeout(() => {
       this.isLoading = false;
@@ -139,6 +142,7 @@ export default {
   data() {
     return {
       isLoading: true,
+      isError: false,
       selectedCountries: [], // Stores selected countries
       selectedCategories: [], // Stores selected categories
       items: [],
@@ -185,7 +189,6 @@ export default {
         })
         .then((response) => {
           var arrProj = response.data.projects.project;
-          console.log(arrProj[0]);
           for (var obj of arrProj) {
             var title = obj.title;
             var image = obj.image.imagelink.find(
@@ -227,7 +230,7 @@ export default {
         })
         .catch((error) => {
           console.log(error.message);
-          // showErrorMessage();
+          this.isError = true;
         });
     },
     toggleExpand(item) {

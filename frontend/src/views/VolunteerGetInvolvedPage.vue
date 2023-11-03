@@ -204,7 +204,6 @@ export default {
   },
   methods: {
     toggleExpand(item) {
-      console.log(item);
       item.expanded = !item.expanded;
     },
     shortenDescription(item) {
@@ -230,7 +229,6 @@ export default {
   },
   created() {
     console.log("get involved volunteer page works");
-    console.log(this.volunteeringOpp);
   },
 };
 </script>
