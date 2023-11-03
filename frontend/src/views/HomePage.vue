@@ -316,7 +316,7 @@ p {
 
 .responsive-title {
       color: #023047;
-      line-height: 1em;
+      line-height: 1.1em;
       padding: 0;
       margin: 0;
       font-family: "Times New Roman", Times, serif;
@@ -340,7 +340,7 @@ p {
 
 .find-out-section img {
       padding: 0;
-      width: 40px;
+      width: 50px;
       height: auto;
 }
 
@@ -381,31 +381,12 @@ p {
       font-size: 1.5vw;
 }
 
-footer {
-      background-color: #8fc1e3;
-      min-width: 100vw;
-      padding: 40px;
-      margin-top: 300px;
-}
-
-footer a {
-      color: #ffffff;
-      text-decoration: none;
-}
-
-footer a:hover,
-footer a:focus {
-      color: #ffffff;
-      text-decoration: none;
-      border-bottom: 1px dotted #999;
-}
-
 /* Animations */
 .typewriter {
       overflow: hidden;
       white-space: nowrap;
       margin: 0 auto;
-      animation: typing 3s steps(40, end) 3s, blink-caret 1s step-end infinite 3s;
+      animation: typing 2s steps(20, end) 3s, blink-caret 1s step-end infinite 3s;
       animation-fill-mode: both;
       display: inline-block;
 }
@@ -414,9 +395,9 @@ footer a:focus {
       overflow: hidden;
       white-space: nowrap;
       margin: 0 auto;
-      animation: typing2 3s steps(40, end) 3s, blink-caret2 1s step-end infinite 3s;
+      animation: typing2 2s steps(20, end) 3s, blink-caret2 1s step-end infinite 3s;
       animation-fill-mode: both;
-      animation-delay: 6s;
+      animation-delay: 5s;
 }
 
 @media screen and (max-width: 576px) {
