@@ -64,6 +64,34 @@
         </div>
       </div>
     </div>
+                  <!-- dolphin animation -->
+                  <!-- TODO: make dolphin size responsive, dolphin feels like stop motion -->
+                  <div class="dolphin-section">
+                        <img id="dolphinGIF" style="display: none" src="../assets/images/homepage_dolphinAnimation.gif">
+                  </div>
+                  
+                  <!-- find out more -->
+                  <div class="row find-out-section center-items float">
+                        <a href="#mission-section" style="text-decoration: none;">
+                              <p style="margin: 0px; padding: 0px">Find Out More</p>
+                              <img src="../assets/images/findOutMore.png"> 
+                        </a>
+                  </div>
+            </div>
+            
+            <!-- our mission -->
+            <div class="mission-section" id="mission-section">
+                  <div class="row center-items vertical-center">
+                        <div class="col-4 mission-logo reveal fade-left">
+                              <img src="../assets/images/ourLogo.png" class="img-fluid">
+                        </div>
+                        <div class="col-6 mission-card reveal fade-right">
+                              <h1>Our Mission</h1>
+                              <p>There are many research about water pollution and its effects. However, access to these information takes time and the data lacks proper consolidation. Hence, people only have a vague idea of the water pollution problem. As a result, they fail to see the extent of environmental challenges it poses and the how we need to take action urgently. People also do not fully understand how they can contribute to the water conservation efforts.</p>
+                              <p>Life Below Water seeks to provide a platform where we can bring insights into latest news about the recent events, allow seamless sharing of information between people, and hopefully, increase one’s social awareness to the sustainable use and management of our water bodies.</p>
+                        </div>
+                  </div>
+            </div>
 
     <!-- our goals -->
     <div class="row goals-section center-items reveal fade-bottom">
@@ -344,6 +372,14 @@ p {
   height: 100%;
 }
 
+.carousel-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .header-background {
   background-color: #0b3146;
   padding: 10px;
@@ -417,6 +453,18 @@ p {
 .goals-section {
   color: #023047;
   margin-top: 30px;
+}
+
+.carousel-item img {
+  opacity: 50%;
+}
+
+.carousel-medium {
+  font-size: 2.5vw;
+}
+
+.carousel-small {
+  font-size: 1.5vw;
 }
 
 footer {
@@ -581,4 +629,6 @@ footer .form-control {
     opacity: 1;
   }
 }
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
 </style>
