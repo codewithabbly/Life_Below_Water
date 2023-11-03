@@ -219,7 +219,7 @@ export default {
 
       if (userInput.length > 0) {
         document.getElementById("showResult").textContent =
-          "Seach result for '" + userInput + "'";
+          "Search result for '" + userInput + "'";
         this.hasActivatedSearch = true;
 
         for (var i = 0; i < this.articles.length; i++) {
