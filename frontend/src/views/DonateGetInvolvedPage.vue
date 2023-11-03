@@ -1,8 +1,9 @@
 <template>
-  <LoadingScreen v-if="isLoading"></LoadingScreen>
   <ErrorScreen v-if="isError"></ErrorScreen>
+  <LoadingScreen v-if="isLoading"></LoadingScreen>
+
   <div class="gradient-background" v-else>
-    <div class="container">
+    <div class="container" :style="displayStyle">
       <div>
         <h1 class="text-center get-involved-header">Donate!</h1>
       </div>
@@ -137,7 +138,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.isLoading = false;
-    }, 3000);
+    }, 7000);
   },
   data() {
     return {
@@ -174,6 +175,11 @@ export default {
         .reduce((categories, item) => categories.concat(item.category), [])
         .filter((value, index, self) => self.indexOf(value) === index);
       return uniqueCategories;
+    },
+    displayStyle() {
+      return {
+        display: this.isError ? "none" : "true",
+      };
     },
   },
   methods: {
@@ -231,16 +237,14 @@ export default {
         .catch((error) => {
           console.log(error.message);
           this.isError = true;
+          this.isLoading = false;
         });
     },
     toggleExpand(item) {
       // console.log(item);
       item.expanded = !item.expanded;
     },
-    showErrorMessage() {
-      document.getElementById("error-message").style.display = "block";
-      document.getElementById("whenErrorDisappear").style.display = "none";
-    },
+
     shortenDescription(item) {
       if (item.description.length > 300) {
         // Change the character limit as needed
