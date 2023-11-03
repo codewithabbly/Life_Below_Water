@@ -12,6 +12,11 @@
                         </l-popup>
                   </l-marker>
             </l-map>
+            <div class="legend">
+                  <p>Hello there! 👋 </p>
+                  <p>It takes about 10 seconds for the data to load, we appreciate you patience in waiting.</p>
+                  <p>Once you zoom out, you will see markers 📍 on the map and you can click on them to see the data.</p>
+            </div>
       </div>
 </template>
 
@@ -104,5 +109,16 @@
       .l-map {
             height: 100%;
             width: 100%;
+      }
+      .legend {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            width: 300px;
       }
 </style>
