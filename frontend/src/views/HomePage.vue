@@ -22,9 +22,8 @@
                   </div>
 
                   <!-- dolphin animation -->
-                  <!-- TODO: make dolphin size responsive, dolphin feels like stop motion -->
                   <div class="dolphin-section">
-                        <img id="dolphinGIF" style="display: none" src="../assets/images/homepage_dolphinAnimation.gif">
+                        <img id="dolphinGIF" class="img-fluid" style="display: none" src="../assets/images/dolphinJumping.gif">
                   </div>
                   
                   <!-- find out more -->
