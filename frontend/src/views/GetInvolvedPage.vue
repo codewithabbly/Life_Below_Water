@@ -57,6 +57,7 @@
   padding-top: 150px;
   padding-bottom: 50px;
   padding-left: 50px;
+  font-family: "glacial_bold", sans-serif;
 }
 
 .get-involved-header h1 {

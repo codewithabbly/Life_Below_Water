@@ -44,6 +44,7 @@ export default {
   background-color: #8fc1e3;
   height: 100vh;
   width: 100%;  
+  font-family: "glacial", sans-serif;
 
   position: relative;
 }
