@@ -2,7 +2,7 @@
   <div class="gradient-background">
     <div class="container">
       <div>
-        <h1 class="text-center latest-news-header">Volunteer!</h1>
+        <h1 class="text-center get-involved-header">Volunteer!</h1>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -278,7 +278,7 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
 }
-.latest-news-header {
+.get-involved-header {
   padding-top: 150px;
   padding-bottom: 50px;
   padding-left: 50px;
