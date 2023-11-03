@@ -1,5 +1,5 @@
 <template>
-    <div class="app gradient-background">
+    <div class="app gradient-background overflow-scroll">
         <div class="resultsBox" id="results">
             <div class="largeHeader">You are a <span class="animalName">{{ getAnimalName(maxAnimal) }}</span>!</div>
             <img class="animalImage move" :src="getAnimalImage(maxAnimal)">
