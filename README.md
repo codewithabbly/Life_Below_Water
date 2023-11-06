@@ -21,8 +21,8 @@ In light of Japan's recent decision to release treated contaminated water from t
 ### Functionalities of Life Below Water 🌊
 1. 🗺<b> Interactive Map</b>: This displays the historical data of the main water bodies in most countries in Asia. As our problem statement is mainly targeted at raising awareness for the actions which Japan did recently, we are only giving context about water bodies in closer proximity to Japan's water bodies. It will also give information on the average pH level of the water bodies in the countries displayed.
 2. 📰<b> Latest News</b>: Fetches latest news worldwide, which gives users a 1-stop option to find relevant news which can help them to gain more awareness of the current environmental issues around the world.
-3. 🏃<b>Get Involved</b>: Allows users to actively contribute where our web app provides an ease of convenience to users who do now know where they can start. We will direct them to verified Donation pages were they can contribute monetarily to the cause, or physically be a part of the cause to change by volunteering themselves.
-4. 🧑🏼‍💻<b> Fun Quiz</b>: This page allows users to find out which animal symbolises them. From there, our web app will give users recommendations based on their personality as to how they can actively contribute to the cause of sustainable use and management of our water bodies.
+3. 🏃<b>Get Involved</b>: Allows users to actively contribute where our web app provides an ease of convenience to users who do now know where they can start. We will direct them to either verified Donation pages were they can contribute monetarily to the cause, or Volunteer pages where they can physically be a part of the cause to change through active participation.
+4. 🧑🏼‍💻<b> Fun Quiz</b>: This page allows users to find out which animal symbolises them after answering our questionnaire. From there, our web app will give users recommendations based on their personality as to how they can actively protect the animal which symbolises them. 
 
 ## Tech Stack
 ### Frontend
