@@ -12,10 +12,10 @@
                         </l-popup>
                   </l-marker>
             </l-map>
-            <div class="legend">
+            <div class="legend" v-if="markers.length === 0">
                   <p>Hello there! 👋 </p>
                   <p>Here, you can zoom out and click on the markers 📍 to view data on the history of water bodies in a country and their respective pH levels. </p>
-                  <p>It takes about 10 seconds for the data to fully load, so we'll appreciate your patience in waiting!</p>
+                  <p>It takes about 10 - 20 seconds for the data to fully load, so we'll appreciate your patience in waiting!</p>
             </div>
       </div>
 </template>
